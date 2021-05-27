@@ -212,4 +212,3 @@ def create_tabular_pipeline(num_mode, categorical_ix=[0], numerical_ix=[1,2,3], 
     clf = get_clf(clf_mode)
     pipe = Pipeline(ops + [('classifier', clf)])
     return pipe
-    

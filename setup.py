@@ -1,9 +1,9 @@
 from setuptools import setup
 
 setup(
-    name='ds_pipes',
+    name='dspipes',
     version='0.0.1',
     packages=[
-        'src', 
+        'dspipes', 
     ],
 )

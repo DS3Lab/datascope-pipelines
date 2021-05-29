@@ -145,8 +145,8 @@ def get_pipe_ops(mode):
     elif mode == 'pipe_2':
         # 2-step function scaler (*map)
         def logVar(x):
-            return StandardScaler(np.log(x))
-        ops = [('logscaler', FunctionTransformer(logVar))]
+            return np.log(x)
+        ops = [('log', FunctionTransformer(logVar)),('scaler', StandardScaler())]
 
     elif mode == 'pipe_3':
         # dimensionality reduction (*map)

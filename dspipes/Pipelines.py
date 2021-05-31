@@ -29,22 +29,6 @@ import numpy as np
 import skimage
 from skimage.feature import hog
 
-# Image processing operators (complex pipeline)
-
-class RGB2GrayTransformer(BaseEstimator, TransformerMixin):
-    """
-    Convert an array of RGB images to grayscale
-    """
-    def __init__(self):
-        pass
- 
-    def fit(self, X, y=None):
-        """returns itself"""
-        return self
- 
-    def transform(self, X, y=None):
-        """perform the transformation and return an array"""
-        return np.array([skimage.color.rgb2gray(img) for img in X])
      
 class HogTransformer(BaseEstimator, TransformerMixin):
     """
@@ -71,7 +55,7 @@ class HogTransformer(BaseEstimator, TransformerMixin):
                        pixels_per_cell=self.pixels_per_cell,
                        cells_per_block=self.cells_per_block,
                        block_norm=self.block_norm)
- 
+
         try: # parallel
             return np.array([local_hog(img) for img in X])
         except:
@@ -144,9 +128,9 @@ def get_pipe_ops(mode):
 
     elif mode == 'pipe_2':
         # 2-step function scaler (*map)
-        def logVar(x):
-            return np.log(x)
-        ops = [('log', FunctionTransformer(logVar)),('scaler', StandardScaler())]
+        def log1p(x):
+            return np.log1p(x)
+        ops = [('log', FunctionTransformer(log1p)),('scaler', StandardScaler())]
 
     elif mode == 'pipe_3':
         # dimensionality reduction (*map)
@@ -167,21 +151,25 @@ def get_pipe_ops(mode):
 
     elif mode == 'pipe_6':
         # image blurring operator
-        grayify = RGB2GrayTransformer()
         def gaussian_blur(x):
+            #x = x.reshape(1, -1)
             return skimage.filters.gaussian(x)
-        ops = [('grayify', grayify), ('blur', FunctionTransformer(gaussian_blur))]
+        ops = [('blur', FunctionTransformer(gaussian_blur))]
 
     elif mode == 'pipe_7':
         # complex image processing operators
-        grayify = RGB2GrayTransformer()
+        def gaussian_blur(x):
+            #x = x.reshape(1, -1)
+            return skimage.filters.gaussian(x)
+
         hogify = HogTransformer(
             pixels_per_cell=(4, 4), 
             cells_per_block=(2,2), 
             orientations=9, 
             block_norm='L2-Hys'
         )
-        ops = [('grayify', grayify), ('hogify', hogify)]
+        #ops = [('blur', FunctionTransformer(gaussian_blur)), ('hogify', hogify)]
+        ops = [('hogify', hogify)]
 
     else:
         raise ValueError("Invalid mode!")

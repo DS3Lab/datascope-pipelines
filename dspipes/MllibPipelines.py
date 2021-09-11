@@ -79,7 +79,7 @@ def get_pipe_ops(mode, inputCol="data", outputCol="features"):
         vecAssembler = VectorAssembler(outputCol=outputCol)
         vecAssembler.setInputCols(["pca_output"])
 
-        ops = [vecAssembler]
+        ops = [pca, vecAssembler]
 
     # elif mode == 'pipe_6':
     #     # image blurring operator

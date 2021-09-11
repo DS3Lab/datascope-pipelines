@@ -144,9 +144,9 @@ def get_pipe_ops(mode):
 
     elif mode == 'pipe_5':
         # multiple dimensionality reductions (fork)
-        union = FeatureUnion([("pca", PCA()), 
-                            ("svd", TruncatedSVD()),
-                            ("lda", LatentDirichletAllocation())])
+        union = FeatureUnion([("pca", PCA(iterated_power=1)), 
+                            ("svd", TruncatedSVD(n_iter=1)),
+                            ("lda", LatentDirichletAllocation(max_iter=1))])
         ops = [('union', union)]
 
     elif mode == 'pipe_6':

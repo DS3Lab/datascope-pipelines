@@ -16,7 +16,7 @@ def get_clf(mode, outputCol="transformedFeatures", **kwargs):
     
     return [(f'{clf[0]}',f'get-estimator("{clf[1]}", {{"featuresCol": "{outputCol}"}})')]
 
-def get_pipe_ops(mode, inputCol='[ "col1", "col2", "col3" ]', outputCol="transformedFeatures"):
+def get_pipe_ops(mode, inputCol='[ "col_0", "col_1", "col_2", "col_3", "col_4", "col_5", "col_6", "col_7", "col_8", "col_9", "col_10", "col_11", "col_12", "col_13" ]', outputCol="transformedFeatures"):
 
     # features
     vector = ('$vector-assembler',f'get-transformer("VectorAssembler", {{"inputCols" : {inputCol}, "outputCol" : "features"}})')
@@ -107,22 +107,26 @@ def create_rumble_program(ops_mode, clf_mode='logistic', **kwargs):
     definitions = _extract_definitions(ops)
     pipeline = _create_pipeline(ops)
 
-    data_type = 'declare type local:mytype as {"id": "integer", "label": "integer", "col1": "decimal", "col2": "decimal", "col3": "decimal"};'
-    tr_data = """validate type local:mytype* {
-    {"id": 0, "label": 1, "col1": 0.0, "col2": 1.1, "col3": 0.1},
-    {"id": 1, "label": 0, "col1": 2.0, "col2": 1.0, "col3": -1.0},
-    {"id": 2, "label": 0, "col1": 2.0, "col2": 1.3, "col3": 1.0},
-    {"id": 3, "label": 1, "col1": 0.0, "col2": 1.2, "col3": -0.5}
-    }"""
-    test_data = """validate type local:mytype* {
-    {"id": 0, "label": 1, "col1": -1.0, "col2": 1.5, "col3": 1.3},
-    {"id": 1, "label": 0, "col1": 3.0, "col2": 2.0, "col3": -0.1},
-    {"id": 2, "label": 1, "col1": 0.0, "col2": 2.2, "col3": -1.5}
-    }"""
+    # data_type = 'declare type local:mytype as {"id": "integer", "label": "integer", "col1": "decimal", "col2": "decimal", "col3": "decimal"};'
+    # tr_data = """validate type local:mytype* {
+    # {"id": 0, "label": 1, "col1": 0.0, "col2": 1.1, "col3": 0.1},
+    # {"id": 1, "label": 0, "col1": 2.0, "col2": 1.0, "col3": -1.0},
+    # {"id": 2, "label": 0, "col1": 2.0, "col2": 1.3, "col3": 1.0},
+    # {"id": 3, "label": 1, "col1": 0.0, "col2": 1.2, "col3": -0.5}
+    # }"""
+    # test_data = """validate type local:mytype* {
+    # {"id": 0, "label": 1, "col1": -1.0, "col2": 1.5, "col3": 1.3},
+    # {"id": 1, "label": 0, "col1": 3.0, "col2": 2.0, "col3": -0.1},
+    # {"id": 2, "label": 1, "col1": 0.0, "col2": 2.2, "col3": -1.5}
+    # }"""
+
+    tr_data = """parquet-file("/Users/david/Projects/pipelines/data/uci.parquet")"""
+    test_data = """parquet-file("/Users/david/Projects/pipelines/data/uci_test.parquet")"""
+
 
     program = (
         f'%%rumble\n'
-        f'{data_type}\n'
+        # f'{data_type}\n'
         f'let $training-data := {tr_data}\n'
         f'let $test-data := {test_data}\n'
         f'{definitions}'

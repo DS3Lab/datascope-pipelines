@@ -23,11 +23,14 @@ from sklearn.neural_network import MLPRegressor, MLPClassifier
 from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier, GradientBoostingClassifier
 from sklearn.preprocessing import StandardScaler, FunctionTransformer, OneHotEncoder
 from sklearn.impute import SimpleImputer
+from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 
 # Utils
 import numpy as np
 import skimage
 from skimage.feature import hog
+import re # used for preprocessing
+
 
      
 class HogTransformer(BaseEstimator, TransformerMixin):
@@ -144,10 +147,11 @@ def get_pipe_ops(mode):
 
     elif mode == 'pipe_5':
         # multiple dimensionality reductions (fork)
-        union = FeatureUnion([("pca", PCA(iterated_power=1)), 
-                            ("svd", TruncatedSVD(n_iter=1)),
-                            ("lda", LatentDirichletAllocation(max_iter=1))])
-        ops = [('union', union)]
+        union = FeatureUnion([("pca", PCA(n_components=2)), 
+                             ("svd", TruncatedSVD(n_iter=1))
+                            #,("lda", LatentDirichletAllocation(n_components=2))
+                            ])
+        ops = [('union', union),('scaler', StandardScaler())]
 
     elif mode == 'pipe_6':
         # image blurring operator
@@ -170,6 +174,22 @@ def get_pipe_ops(mode):
         )
         #ops = [('blur', FunctionTransformer(gaussian_blur)), ('hogify', hogify)]
         ops = [('hogify', hogify)]
+
+    elif mode == 'pipe_8':
+        # text pipeline
+        ops = [('vect', CountVectorizer()),('tfidf', TfidfTransformer())]
+    elif mode == 'pipe_9':
+        # text pipeline
+        def text_lowercase(text_array):
+            return list(map(lambda x: x.lower(), text_array))
+
+        def remove_urls(text_array):
+            def remove_url(text): 
+                return ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)"," ", text).split())
+            return list(map(remove_url, text_array))
+
+
+        ops = [('lower_case', FunctionTransformer(text_lowercase)),('remove_url', FunctionTransformer(remove_urls)),('vect', CountVectorizer()),('tfidf', TfidfTransformer())]
 
     else:
         raise ValueError("Invalid mode!")

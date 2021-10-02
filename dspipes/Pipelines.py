@@ -161,10 +161,10 @@ def get_pipe_ops(mode):
         ops = [('blur', FunctionTransformer(gaussian_blur))]
 
     elif mode == 'pipe_7':
-        # complex image processing operators
-        def gaussian_blur(x):
-            #x = x.reshape(1, -1)
-            return skimage.filters.gaussian(x)
+        # # complex image processing operators
+        # def gaussian_blur(x):
+        #     #x = x.reshape(1, -1)
+        #     return skimage.filters.gaussian(x)
 
         hogify = HogTransformer(
             pixels_per_cell=(4, 4), 

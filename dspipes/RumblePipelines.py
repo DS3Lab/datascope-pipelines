@@ -16,11 +16,12 @@ def get_clf(mode, outputCol="transformedFeatures", **kwargs):
     
     return [(f'{clf[0]}',f'get-estimator("{clf[1]}", {{"featuresCol": "{outputCol}"}})')]
 
-def get_pipe_ops(mode, inputCol='[ "col_0", "col_1", "col_2", "col_3", "col_4", "col_5", "col_6", "col_7", "col_8", "col_9", "col_10", "col_11", "col_12", "col_13" ]', outputCol="transformedFeatures"):
+def get_pipe_ops(mode, inputCol="features", outputCol="transformedFeatures"):
 
     # features
-    vector = ('$vector-assembler',f'get-transformer("VectorAssembler", {{"inputCols" : {inputCol}, "outputCol" : "features"}})')
-    ops = [vector]
+    #vector = ('$vector-assembler',f'get-transformer("VectorAssembler", {{"inputCols" : {inputCol}, "outputCol" : "features"}})')
+    #ops = [vector]
+    ops = []
 
     if mode == 'pipe_0':
         # just the classifier
@@ -97,7 +98,7 @@ def _create_pipeline(ops):
     res = f'get-estimator("Pipeline", {{"stages": {arr}}})'
     return res
 
-def create_rumble_program(ops_mode, clf_mode='logistic', **kwargs):
+def create_rumble_program(ops_mode, clf_mode='logistic', accuracy=True, n_test=6042135, **kwargs):
 
     pipe_ops = get_pipe_ops(ops_mode)
     clf = get_clf(clf_mode, **kwargs)
@@ -120,19 +121,32 @@ def create_rumble_program(ops_mode, clf_mode='logistic', **kwargs):
     # {"id": 2, "label": 1, "col1": 0.0, "col2": 2.2, "col3": -1.5}
     # }"""
 
-    tr_data = """parquet-file("/Users/david/Projects/pipelines/data/uci.parquet")"""
-    test_data = """parquet-file("/Users/david/Projects/pipelines/data/uci_test.parquet")"""
+    tr_data = """parquet-file("s3://rumbleml-data/criteo.train.parquet")"""
+    test_data = """parquet-file("s3://rumbleml-data/criteo.test.parquet")"""
 
-
-    program = (
-        f'%%rumble\n'
-        # f'{data_type}\n'
-        f'let $training-data := {tr_data}\n'
-        f'let $test-data := {test_data}\n'
-        f'{definitions}'
-        f'let $pipeline := {pipeline}\n'
-        f'let $pip := $pipeline($training-data, {{}})\n'
-        f'return $pip($test-data, {{}})'
-    )
+    if accuracy:
+        program = (
+            f'%%rumble\n'
+            # f'{data_type}\n'
+            f'let $training-data := {tr_data}\n'
+            f'let $test-data := {test_data}\n'
+            f'{definitions}'
+            f'let $pipeline := {pipeline}\n'
+            f'let $pip := $pipeline($training-data, {{}})\n'
+            f'return count(for $i in $test-data\n'
+            f'return $i\n'
+            f') div 6042135\n'
+        )
+    else:
+        program = (
+            f'%%rumble\n'
+            # f'{data_type}\n'
+            f'let $training-data := {tr_data}\n'
+            f'let $test-data := {test_data}\n'
+            f'{definitions}'
+            f'let $pipeline := {pipeline}\n'
+            f'let $pip := $pipeline($training-data, {{}})\n'
+            f'return $pip($test-data, {{}})'
+        )
 
     return program

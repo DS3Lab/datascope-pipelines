@@ -14,7 +14,7 @@ def get_clf(mode, outputCol="transformedFeatures", **kwargs):
     elif mode=='linear':
         clf = ('$linearregression','LinearRegression')
     
-    return [(f'{clf[0]}',f'get-estimator("{clf[1]}", {{"featuresCol": "{outputCol}"}})')]
+    return [(f'{clf[0]}',f'get-estimator("{clf[1]}", {{"featuresCol": "{outputCol}", "maxIter": "5"}})')]
 
 def get_pipe_ops(mode, inputCol="features", outputCol="transformedFeatures"):
 
@@ -122,23 +122,22 @@ def create_rumble_program(ops_mode, clf_mode='logistic', accuracy=True, n_test=6
     # }"""
 
     tr_data = """parquet-file("s3://rumbleml-data/output/output.parquet/")"""
-    test_data = """parquet-file("s3://rumbleml-data/criteo.test.parquet")"""
+    test_data = """parquet-file("s3://rumbleml-data/criteo.kaggle2014.test.parquet")"""
 
     if accuracy:
         program = (
-            f'%%rumble\n'
             # f'{data_type}\n'
             f'let $training-data := {tr_data}\n'
             f'let $test-data := {test_data}\n'
             f'{definitions}'
             f'let $pipeline := {pipeline}\n'
             f'let $pip := $pipeline($training-data, {{}})\n'
+            f'let $prediction := $pip($test-data, {{}})'
             f'let $total := 6042135\n' 
             f'return count($prediction[$$.label eq $$.prediction]) div $total'
         )
     else:
         program = (
-            f'%%rumble\n'
             # f'{data_type}\n'
             f'let $training-data := {tr_data}\n'
             f'let $test-data := {test_data}\n'

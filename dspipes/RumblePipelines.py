@@ -14,7 +14,7 @@ def get_clf(mode, outputCol="transformedFeatures", **kwargs):
     elif mode=='linear':
         clf = ('$linearregression','LinearRegression')
     
-    return [(f'{clf[0]}',f'get-estimator("{clf[1]}", {{"featuresCol": "{outputCol}", "maxIter": "5"}})')]
+    return [(f'{clf[0]}',f'get-estimator("{clf[1]}", {{"featuresCol": "{outputCol}", "maxIter": 5}})')]
 
 def get_pipe_ops(mode, inputCol="features", outputCol="transformedFeatures"):
 

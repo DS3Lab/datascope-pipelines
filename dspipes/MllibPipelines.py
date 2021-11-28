@@ -18,10 +18,10 @@ def get_clf(mode, **kwargs):
     Code returning mllib classifier for pipelines
     '''
     if mode == 'logistic':
-        max_iter = kwargs.get('max_iter', 5000)
+        max_iter = kwargs.get('max_iter', 5)
         model = LogisticRegression(maxIter=max_iter)
     elif mode=='RandomForest':
-        n_estimators = kwargs.get('n_estimators', 50)
+        n_estimators = kwargs.get('n_estimators', 10)
         model = RandomForestClassifier(numTrees=n_estimators)
     elif mode=='LinearSVC':
         model = LinearSVC()

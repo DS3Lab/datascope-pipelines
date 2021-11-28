@@ -42,7 +42,7 @@ def get_clf(mode, **kwargs):
                                 maxIter=max_iter)
     return model
 
-def get_pipe_ops(mode, inputCol="data", outputCol="features"):
+def get_pipe_ops(mode, inputCol="features", outputCol="transformed_features"):
     if mode == 'pipe_0':
         # just the classifier
         vecAssembler = VectorAssembler(outputCol=outputCol)
@@ -110,9 +110,9 @@ def create_numerical_pipeline(ops_mode, imputer=True, clf_mode='logistic', **kwa
 
     ops = get_pipe_ops(ops_mode)
     clf = get_clf(clf_mode, **kwargs)
-    vecAssembler = VectorAssembler(outputCol="data")
-    vecAssembler.setInputCols(["col_0", "col_1", "col_2", "col_3", "col_4", "col_5", "col_6", "col_7", "col_8", "col_9", "col_10", "col_11", "col_12", "col_13"])
-    ops = [vecAssembler] + ops
+    # vecAssembler = VectorAssembler(outputCol="data")
+    # vecAssembler.setInputCols(["col_0", "col_1", "col_2", "col_3", "col_4", "col_5", "col_6", "col_7", "col_8", "col_9", "col_10", "col_11", "col_12", "col_13"])
+    # ops = [vecAssembler] + ops
     if imputer:
         imp = Imputer(strategy='mean')
         ops = [imp] + ops

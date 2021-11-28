@@ -121,7 +121,7 @@ def create_rumble_program(ops_mode, clf_mode='logistic', accuracy=True, n_test=6
     # {"id": 2, "label": 1, "col1": 0.0, "col2": 2.2, "col3": -1.5}
     # }"""
 
-    tr_data = """parquet-file("s3://rumbleml-data/criteo.train.parquet")"""
+    tr_data = """parquet-file("s3://rumbleml-data/output/output.parquet/")"""
     test_data = """parquet-file("s3://rumbleml-data/criteo.test.parquet")"""
 
     if accuracy:
@@ -133,9 +133,8 @@ def create_rumble_program(ops_mode, clf_mode='logistic', accuracy=True, n_test=6
             f'{definitions}'
             f'let $pipeline := {pipeline}\n'
             f'let $pip := $pipeline($training-data, {{}})\n'
-            f'return count(for $i in $test-data\n'
-            f'return $i\n'
-            f') div 6042135\n'
+            f'let $total := 6042135\n' 
+            f'return count($prediction[$$.label eq $$.prediction]) div $total'
         )
     else:
         program = (

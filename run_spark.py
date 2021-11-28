@@ -44,7 +44,7 @@ if __name__ == "__main__":
         sc = SparkContext("local", "SparkML script")
         spark = SparkSession(sc)
 
-    pipeline = MllibPipelines.create_numerical_pipeline(f'pipe_{pipeline_number}', imputer=False, clf_mode=f'{modelname}')
+    pipeline = MllibPipelines.create_numerical_pipeline('pipe_' + pipeline_number, imputer=False, clf_mode=str(modelname))
 
     if dataset == 'Criteo':
         if run_type == 'cluster':
@@ -65,5 +65,5 @@ if __name__ == "__main__":
     correctY = predictionAndLabels.filter("label == prediction").count()
     total = predictionAndLabels.count()
     #end = time.perf_counter()
-    print(f'{dataset} {modelname} {pipeline_number} {correctY / total}')
+    print(dataset, modelname, pipeline_number, (correctY / total))
     #print(f'Time: {end - start}')

@@ -132,7 +132,7 @@ def create_rumble_program(ops_mode, clf_mode='logistic', accuracy=True, n_test=6
             f'{definitions}'
             f'let $pipeline := {pipeline}\n'
             f'let $pip := $pipeline($training-data, {{}})\n'
-            f'let $prediction := $pip($test-data, {{}})'
+            f'let $prediction := $pip($test-data, {{}})\n'
             f'let $total := 6042135\n' 
             f'return count($prediction[$$.label eq $$.prediction]) div $total'
         )

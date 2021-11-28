@@ -1,105 +1,811 @@
-21/11/28 13:42:32 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+21/11/28 14:29:09 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
-Setting default log level to "WARN".
-To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
-21/11/28 13:42:32 WARN Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
-[Stage 0:>                                                          (0 + 1) / 1]                                                                                [Stage 2:>                                                        (0 + 12) / 12][Stage 2:=================================>                        (7 + 5) / 12]Traceback (most recent call last):
-  File "run_spark.py", line 52, in <module>
-    model = pipeline.fit(training)
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/pyspark/ml/base.py", line 161, in fit
-    return self._fit(dataset)
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/pyspark/ml/pipeline.py", line 114, in _fit
-    model = stage.fit(dataset)
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/pyspark/ml/base.py", line 161, in fit
-    return self._fit(dataset)
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/pyspark/ml/wrapper.py", line 335, in _fit
-    java_model = self._fit_java(dataset)
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/pyspark/ml/wrapper.py", line 332, in _fit_java
-    return self._java_obj.fit(dataset._jdf)
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/py4j/java_gateway.py", line 1303, in __call__
-    answer = self.gateway_client.send_command(command)
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/py4j/java_gateway.py", line 1033, in send_command
-    response = connection.send_command(command)
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/py4j/java_gateway.py", line 1200, in send_command
-    answer = smart_decode(self.stream.readline()[:-1])
-  File "/usr/local/anaconda3/lib/python3.7/socket.py", line 589, in readinto
-    return self._sock.recv_into(b)
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/pyspark/context.py", line 285, in signal_handler
-    raise KeyboardInterrupt()
-KeyboardInterrupt
-21/11/28 13:42:45 ERROR Executor: Exception in task 9.0 in stage 2.0 (TID 11)
-java.lang.OutOfMemoryError: Java heap space
-21/11/28 13:42:45 ERROR Executor: Exception in task 4.0 in stage 2.0 (TID 6)
-java.lang.OutOfMemoryError: Java heap space
-	at scala.reflect.ManifestFactory$DoubleManifest.newArray(Manifest.scala:194)
-	at scala.reflect.ManifestFactory$DoubleManifest.newArray(Manifest.scala:191)
-	at scala.Array$.ofDim(Array.scala:221)
-	at org.apache.spark.ml.stat.SummarizerBuffer.add(Summarizer.scala:472)
-	at org.apache.spark.ml.stat.SummarizerBuffer.add(Summarizer.scala:544)
-	at org.apache.spark.ml.stat.Summarizer$.$anonfun$getClassificationSummarizers$1(Summarizer.scala:234)
-	at org.apache.spark.ml.stat.Summarizer$$$Lambda$2454/1541066980.apply(Unknown Source)
-	at scala.collection.TraversableOnce.$anonfun$foldLeft$1(TraversableOnce.scala:162)
-	at scala.collection.TraversableOnce.$anonfun$foldLeft$1$adapted(TraversableOnce.scala:162)
-	at scala.collection.TraversableOnce$$Lambda$139/1841396611.apply(Unknown Source)
-	at scala.collection.Iterator.foreach(Iterator.scala:941)
-	at scala.collection.Iterator.foreach$(Iterator.scala:941)
-	at scala.collection.AbstractIterator.foreach(Iterator.scala:1429)
-	at scala.collection.TraversableOnce.foldLeft(TraversableOnce.scala:162)
-	at scala.collection.TraversableOnce.foldLeft$(TraversableOnce.scala:160)
-	at scala.collection.AbstractIterator.foldLeft(Iterator.scala:1429)
-	at scala.collection.TraversableOnce.aggregate(TraversableOnce.scala:219)
-	at scala.collection.TraversableOnce.aggregate$(TraversableOnce.scala:219)
-	at scala.collection.AbstractIterator.aggregate(Iterator.scala:1429)
-	at org.apache.spark.rdd.RDD.$anonfun$treeAggregate$3(RDD.scala:1230)
-	at org.apache.spark.rdd.RDD$$Lambda$2456/2030165684.apply(Unknown Source)
-	at org.apache.spark.rdd.RDD.$anonfun$treeAggregate$5(RDD.scala:1231)
-	at org.apache.spark.rdd.RDD$$Lambda$2457/1025209582.apply(Unknown Source)
-	at org.apache.spark.rdd.RDD.$anonfun$mapPartitions$2(RDD.scala:863)
-	at org.apache.spark.rdd.RDD.$anonfun$mapPartitions$2$adapted(RDD.scala:863)
-	at org.apache.spark.rdd.RDD$$Lambda$1406/1889553831.apply(Unknown Source)
-	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
-	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:373)
-	at org.apache.spark.rdd.RDD.iterator(RDD.scala:337)
-	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
-	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:373)
-	at org.apache.spark.rdd.RDD.iterator(RDD.scala:337)
-21/11/28 13:42:45 ERROR Executor: Exception in task 7.0 in stage 2.0 (TID 9)
-java.lang.OutOfMemoryError: Java heap space
-21/11/28 13:42:45 ERROR Executor: Exception in task 1.0 in stage 2.0 (TID 3)
-java.lang.OutOfMemoryError: Java heap space
-	at scala.reflect.ManifestFactory$DoubleManifest.newArray(Manifest.scala:194)
-	at scala.reflect.ManifestFactory$DoubleManifest.newArray(Manifest.scala:191)
-	at scala.Array$.ofDim(Array.scala:221)
-	at org.apache.spark.ml.stat.SummarizerBuffer.add(Summarizer.scala:476)
-	at org.apache.spark.ml.stat.SummarizerBuffer.add(Summarizer.scala:544)
-	at org.apache.spark.ml.stat.Summarizer$.$anonfun$getClassificationSummarizers$1(Summarizer.scala:234)
-	at org.apache.spark.ml.stat.Summarizer$$$Lambda$2454/1541066980.apply(Unknown Source)
-	at scala.collection.TraversableOnce.$anonfun$foldLeft$1(TraversableOnce.scala:162)
-	at scala.collection.TraversableOnce.$anonfun$foldLeft$1$adapted(TraversableOnce.scala:162)
-	at scala.collection.TraversableOnce$$Lambda$139/1841396611.apply(Unknown Source)
-	at scala.collection.Iterator.foreach(Iterator.scala:941)
-	at scala.collection.Iterator.foreach$(Iterator.scala:941)
-	at scala.collection.AbstractIterator.foreach(Iterator.scala:1429)
-	at scala.collection.TraversableOnce.foldLeft(TraversableOnce.scala:162)
-	at scala.collection.TraversableOnce.foldLeft$(TraversableOnce.scala:160)
-	at scala.collection.AbstractIterator.foldLeft(Iterator.scala:1429)
-	at scala.collection.TraversableOnce.aggregate(TraversableOnce.scala:219)
-	at scala.collection.TraversableOnce.aggregate$(TraversableOnce.scala:219)
-	at scala.collection.AbstractIterator.aggregate(Iterator.scala:1429)
-	at org.apache.spark.rdd.RDD.$anonfun$treeAggregate$3(RDD.scala:1230)
-	at org.apache.spark.rdd.RDD$$Lambda$2456/2030165684.apply(Unknown Source)
-	at org.apache.spark.rdd.RDD.$anonfun$treeAggregate$5(RDD.scala:1231)
-	at org.apache.spark.rdd.RDD$$Lambda$2457/1025209582.apply(Unknown Source)
-	at org.apache.spark.rdd.RDD.$anonfun$mapPartitions$2(RDD.scala:863)
-	at org.apache.spark.rdd.RDD.$anonfun$mapPartitions$2$adapted(RDD.scala:863)
-	at org.apache.spark.rdd.RDD$$Lambda$1406/1889553831.apply(Unknown Source)
-	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
-	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:373)
-	at org.apache.spark.rdd.RDD.iterator(RDD.scala:337)
-	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
-	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:373)
-	at org.apache.spark.rdd.RDD.iterator(RDD.scala:337)
-21/11/28 13:42:45 ERROR Instrumentation: org.apache.spark.SparkException: Job 2 cancelled as part of cancellation of all jobs
+21/11/28 14:29:10 INFO SparkContext: Running Spark version 3.1.2
+21/11/28 14:29:10 INFO ResourceUtils: ==============================================================
+21/11/28 14:29:10 INFO ResourceUtils: No custom resources configured for spark.driver.
+21/11/28 14:29:10 INFO ResourceUtils: ==============================================================
+21/11/28 14:29:10 INFO SparkContext: Submitted application: SparkML script
+21/11/28 14:29:10 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+21/11/28 14:29:10 INFO ResourceProfile: Limiting resource is cpu
+21/11/28 14:29:10 INFO ResourceProfileManager: Added ResourceProfile id: 0
+21/11/28 14:29:10 INFO SecurityManager: Changing view acls to: david
+21/11/28 14:29:10 INFO SecurityManager: Changing modify acls to: david
+21/11/28 14:29:10 INFO SecurityManager: Changing view acls groups to: 
+21/11/28 14:29:10 INFO SecurityManager: Changing modify acls groups to: 
+21/11/28 14:29:10 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(david); groups with view permissions: Set(); users  with modify permissions: Set(david); groups with modify permissions: Set()
+21/11/28 14:29:10 INFO Utils: Successfully started service 'sparkDriver' on port 63059.
+21/11/28 14:29:10 INFO SparkEnv: Registering MapOutputTracker
+21/11/28 14:29:10 INFO SparkEnv: Registering BlockManagerMaster
+21/11/28 14:29:10 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+21/11/28 14:29:10 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+21/11/28 14:29:10 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+21/11/28 14:29:10 INFO DiskBlockManager: Created local directory at /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/blockmgr-9fe05d2e-254b-4f83-9258-6dbf5e0c08c0
+21/11/28 14:29:10 INFO MemoryStore: MemoryStore started with capacity 366.3 MiB
+21/11/28 14:29:10 INFO SparkEnv: Registering OutputCommitCoordinator
+21/11/28 14:29:10 WARN Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
+21/11/28 14:29:10 INFO Utils: Successfully started service 'SparkUI' on port 4041.
+21/11/28 14:29:10 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://eliza.home:4041
+21/11/28 14:29:10 INFO Executor: Starting executor ID driver on host eliza.home
+21/11/28 14:29:10 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 63060.
+21/11/28 14:29:10 INFO NettyBlockTransferService: Server created on eliza.home:63060
+21/11/28 14:29:10 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+21/11/28 14:29:10 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, eliza.home, 63060, None)
+21/11/28 14:29:10 INFO BlockManagerMasterEndpoint: Registering block manager eliza.home:63060 with 366.3 MiB RAM, BlockManagerId(driver, eliza.home, 63060, None)
+21/11/28 14:29:10 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, eliza.home, 63060, None)
+21/11/28 14:29:10 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, eliza.home, 63060, None)
+21/11/28 14:29:11 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir ('file:/Users/david/Projects/pipelines/spark-warehouse').
+21/11/28 14:29:11 INFO SharedState: Warehouse path is 'file:/Users/david/Projects/pipelines/spark-warehouse'.
+21/11/28 14:29:11 INFO InMemoryFileIndex: It took 25 ms to list leaf files for 1 paths.
+21/11/28 14:29:12 INFO SparkContext: Starting job: load at NativeMethodAccessorImpl.java:0
+21/11/28 14:29:12 INFO DAGScheduler: Got job 0 (load at NativeMethodAccessorImpl.java:0) with 1 output partitions
+21/11/28 14:29:12 INFO DAGScheduler: Final stage: ResultStage 0 (load at NativeMethodAccessorImpl.java:0)
+21/11/28 14:29:12 INFO DAGScheduler: Parents of final stage: List()
+21/11/28 14:29:12 INFO DAGScheduler: Missing parents: List()
+21/11/28 14:29:12 INFO DAGScheduler: Submitting ResultStage 0 (MapPartitionsRDD[1] at load at NativeMethodAccessorImpl.java:0), which has no missing parents
+21/11/28 14:29:12 INFO MemoryStore: Block broadcast_0 stored as values in memory (estimated size 83.7 KiB, free 366.2 MiB)
+21/11/28 14:29:12 INFO MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 29.5 KiB, free 366.2 MiB)
+21/11/28 14:29:12 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on eliza.home:63060 (size: 29.5 KiB, free: 366.3 MiB)
+21/11/28 14:29:12 INFO SparkContext: Created broadcast 0 from broadcast at DAGScheduler.scala:1388
+21/11/28 14:29:12 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 0 (MapPartitionsRDD[1] at load at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0))
+21/11/28 14:29:12 INFO TaskSchedulerImpl: Adding task set 0.0 with 1 tasks resource profile 0
+21/11/28 14:29:12 INFO TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0) (eliza.home, executor driver, partition 0, PROCESS_LOCAL, 4648 bytes) taskResourceAssignments Map()
+21/11/28 14:29:12 INFO Executor: Running task 0.0 in stage 0.0 (TID 0)
+21/11/28 14:29:13 INFO Executor: Finished task 0.0 in stage 0.0 (TID 0). 2558 bytes result sent to driver
+21/11/28 14:29:13 INFO TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 458 ms on eliza.home (executor driver) (1/1)
+21/11/28 14:29:13 INFO TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool 
+21/11/28 14:29:13 INFO DAGScheduler: ResultStage 0 (load at NativeMethodAccessorImpl.java:0) finished in 0.754 s
+21/11/28 14:29:13 INFO DAGScheduler: Job 0 is finished. Cancelling potential speculative or zombie tasks for this job
+21/11/28 14:29:13 INFO TaskSchedulerImpl: Killing all running tasks in stage 0: Stage finished
+21/11/28 14:29:13 INFO DAGScheduler: Job 0 finished: load at NativeMethodAccessorImpl.java:0, took 0.796189 s
+21/11/28 14:29:14 INFO BlockManagerInfo: Removed broadcast_0_piece0 on eliza.home:63060 in memory (size: 29.5 KiB, free: 366.3 MiB)
+21/11/28 14:29:14 INFO InMemoryFileIndex: It took 1 ms to list leaf files for 1 paths.
+21/11/28 14:29:14 INFO SparkContext: Starting job: load at NativeMethodAccessorImpl.java:0
+21/11/28 14:29:14 INFO DAGScheduler: Got job 1 (load at NativeMethodAccessorImpl.java:0) with 1 output partitions
+21/11/28 14:29:14 INFO DAGScheduler: Final stage: ResultStage 1 (load at NativeMethodAccessorImpl.java:0)
+21/11/28 14:29:14 INFO DAGScheduler: Parents of final stage: List()
+21/11/28 14:29:14 INFO DAGScheduler: Missing parents: List()
+21/11/28 14:29:14 INFO DAGScheduler: Submitting ResultStage 1 (MapPartitionsRDD[3] at load at NativeMethodAccessorImpl.java:0), which has no missing parents
+21/11/28 14:29:14 INFO MemoryStore: Block broadcast_1 stored as values in memory (estimated size 83.7 KiB, free 366.2 MiB)
+21/11/28 14:29:14 INFO MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 29.5 KiB, free 366.2 MiB)
+21/11/28 14:29:14 INFO BlockManagerInfo: Added broadcast_1_piece0 in memory on eliza.home:63060 (size: 29.5 KiB, free: 366.3 MiB)
+21/11/28 14:29:14 INFO SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:1388
+21/11/28 14:29:14 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 1 (MapPartitionsRDD[3] at load at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0))
+21/11/28 14:29:14 INFO TaskSchedulerImpl: Adding task set 1.0 with 1 tasks resource profile 0
+21/11/28 14:29:14 INFO TaskSetManager: Starting task 0.0 in stage 1.0 (TID 1) (eliza.home, executor driver, partition 0, PROCESS_LOCAL, 4648 bytes) taskResourceAssignments Map()
+21/11/28 14:29:14 INFO Executor: Running task 0.0 in stage 1.0 (TID 1)
+21/11/28 14:29:14 INFO Executor: Finished task 0.0 in stage 1.0 (TID 1). 2472 bytes result sent to driver
+21/11/28 14:29:14 INFO TaskSetManager: Finished task 0.0 in stage 1.0 (TID 1) in 15 ms on eliza.home (executor driver) (1/1)
+21/11/28 14:29:14 INFO TaskSchedulerImpl: Removed TaskSet 1.0, whose tasks have all completed, from pool 
+21/11/28 14:29:14 INFO DAGScheduler: ResultStage 1 (load at NativeMethodAccessorImpl.java:0) finished in 0.031 s
+21/11/28 14:29:14 INFO DAGScheduler: Job 1 is finished. Cancelling potential speculative or zombie tasks for this job
+21/11/28 14:29:14 INFO TaskSchedulerImpl: Killing all running tasks in stage 1: Stage finished
+21/11/28 14:29:14 INFO DAGScheduler: Job 1 finished: load at NativeMethodAccessorImpl.java:0, took 0.034475 s
+21/11/28 14:29:14 INFO BlockManagerInfo: Removed broadcast_1_piece0 on eliza.home:63060 in memory (size: 29.5 KiB, free: 366.3 MiB)
+21/11/28 14:29:15 INFO Instrumentation: [7a00bf9a] Stage class: LogisticRegression
+21/11/28 14:29:15 INFO Instrumentation: [7a00bf9a] Stage uid: LogisticRegression_cc563d6acbdc
+21/11/28 14:29:15 INFO FileSourceStrategy: Pushed Filters: 
+21/11/28 14:29:15 INFO FileSourceStrategy: Post-Scan Filters: 
+21/11/28 14:29:15 INFO FileSourceStrategy: Output Data Schema: struct<label: double, features: vector>
+21/11/28 14:29:16 INFO CodeGenerator: Code generated in 159.750442 ms
+21/11/28 14:29:16 INFO MemoryStore: Block broadcast_2 stored as values in memory (estimated size 309.6 KiB, free 366.0 MiB)
+21/11/28 14:29:16 INFO MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 28.4 KiB, free 366.0 MiB)
+21/11/28 14:29:16 INFO BlockManagerInfo: Added broadcast_2_piece0 in memory on eliza.home:63060 (size: 28.4 KiB, free: 366.3 MiB)
+21/11/28 14:29:16 INFO SparkContext: Created broadcast 2 from rdd at Instrumentation.scala:62
+21/11/28 14:29:16 INFO FileSourceScanExec: Planning scan with bin packing, max size: 134217728 bytes, open cost is considered as scanning 4194304 bytes.
+21/11/28 14:29:16 INFO Instrumentation: [7a00bf9a] training: numPartitions=5 storageLevel=StorageLevel(1 replicas)
+21/11/28 14:29:16 INFO Instrumentation: [7a00bf9a] {"maxIter":5000}
+21/11/28 14:29:16 INFO FileSourceStrategy: Pushed Filters: 
+21/11/28 14:29:16 INFO FileSourceStrategy: Post-Scan Filters: 
+21/11/28 14:29:16 INFO FileSourceStrategy: Output Data Schema: struct<label: double, features: vector>
+21/11/28 14:29:16 INFO CodeGenerator: Code generated in 13.52467 ms
+21/11/28 14:29:16 INFO MemoryStore: Block broadcast_3 stored as values in memory (estimated size 309.6 KiB, free 365.7 MiB)
+21/11/28 14:29:16 INFO MemoryStore: Block broadcast_3_piece0 stored as bytes in memory (estimated size 28.4 KiB, free 365.6 MiB)
+21/11/28 14:29:16 INFO BlockManagerInfo: Added broadcast_3_piece0 in memory on eliza.home:63060 (size: 28.4 KiB, free: 366.2 MiB)
+21/11/28 14:29:16 INFO SparkContext: Created broadcast 3 from rdd at Predictor.scala:81
+21/11/28 14:29:16 INFO FileSourceScanExec: Planning scan with bin packing, max size: 134217728 bytes, open cost is considered as scanning 4194304 bytes.
+21/11/28 14:29:16 INFO SparkContext: Starting job: treeAggregate at Summarizer.scala:232
+21/11/28 14:29:16 INFO DAGScheduler: Got job 2 (treeAggregate at Summarizer.scala:232) with 5 output partitions
+21/11/28 14:29:16 INFO DAGScheduler: Final stage: ResultStage 2 (treeAggregate at Summarizer.scala:232)
+21/11/28 14:29:16 INFO DAGScheduler: Parents of final stage: List()
+21/11/28 14:29:16 INFO DAGScheduler: Missing parents: List()
+21/11/28 14:29:16 INFO DAGScheduler: Submitting ResultStage 2 (MapPartitionsRDD[17] at treeAggregate at Summarizer.scala:232), which has no missing parents
+21/11/28 14:29:16 INFO MemoryStore: Block broadcast_4 stored as values in memory (estimated size 21.3 KiB, free 365.6 MiB)
+21/11/28 14:29:16 INFO MemoryStore: Block broadcast_4_piece0 stored as bytes in memory (estimated size 9.5 KiB, free 365.6 MiB)
+21/11/28 14:29:16 INFO BlockManagerInfo: Added broadcast_4_piece0 in memory on eliza.home:63060 (size: 9.5 KiB, free: 366.2 MiB)
+21/11/28 14:29:16 INFO SparkContext: Created broadcast 4 from broadcast at DAGScheduler.scala:1388
+21/11/28 14:29:16 INFO DAGScheduler: Submitting 5 missing tasks from ResultStage 2 (MapPartitionsRDD[17] at treeAggregate at Summarizer.scala:232) (first 15 tasks are for partitions Vector(0, 1, 2, 3, 4))
+21/11/28 14:29:16 INFO TaskSchedulerImpl: Adding task set 2.0 with 5 tasks resource profile 0
+21/11/28 14:29:16 INFO TaskSetManager: Starting task 0.0 in stage 2.0 (TID 2) (eliza.home, executor driver, partition 0, PROCESS_LOCAL, 4899 bytes) taskResourceAssignments Map()
+21/11/28 14:29:16 INFO Executor: Running task 0.0 in stage 2.0 (TID 2)
+21/11/28 14:29:16 INFO CodeGenerator: Code generated in 14.536042 ms
+21/11/28 14:29:16 INFO CodeGenerator: Code generated in 8.784799 ms
+21/11/28 14:29:16 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 0-134217728, partition values: [empty row]
+21/11/28 14:29:17 INFO InternalParquetRecordReader: RecordReader initialized will read a total of 1419538 records.
+21/11/28 14:29:17 INFO InternalParquetRecordReader: at row 0. reading next block
+21/11/28 14:29:17 INFO CodecPool: Got brand-new decompressor [.snappy]
+21/11/28 14:29:17 INFO InternalParquetRecordReader: block read in memory in 115 ms. row count = 1419538
+21/11/28 14:29:29 INFO MemoryStore: Block taskresult_2 stored as bytes in memory (estimated size 23.0 MiB, free 342.6 MiB)
+21/11/28 14:29:29 INFO BlockManagerInfo: Added taskresult_2 in memory on eliza.home:63060 (size: 23.0 MiB, free: 343.2 MiB)
+21/11/28 14:29:29 INFO Executor: Finished task 0.0 in stage 2.0 (TID 2). 24120077 bytes result sent via BlockManager)
+21/11/28 14:29:29 INFO TaskSetManager: Starting task 1.0 in stage 2.0 (TID 3) (eliza.home, executor driver, partition 1, PROCESS_LOCAL, 4899 bytes) taskResourceAssignments Map()
+21/11/28 14:29:29 INFO Executor: Running task 1.0 in stage 2.0 (TID 3)
+21/11/28 14:29:29 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 134217728-268435456, partition values: [empty row]
+21/11/28 14:29:29 INFO InternalParquetRecordReader: RecordReader initialized will read a total of 1419538 records.
+21/11/28 14:29:29 INFO InternalParquetRecordReader: at row 0. reading next block
+21/11/28 14:29:29 INFO TransportClientFactory: Successfully created connection to Eliza.home/192.168.1.23:63060 after 32 ms (0 ms spent in bootstraps)
+21/11/28 14:29:29 INFO InternalParquetRecordReader: block read in memory in 68 ms. row count = 1419538
+21/11/28 14:29:29 INFO TaskSetManager: Finished task 0.0 in stage 2.0 (TID 2) in 13052 ms on eliza.home (executor driver) (1/5)
+21/11/28 14:29:29 INFO BlockManagerInfo: Removed taskresult_2 on eliza.home:63060 in memory (size: 23.0 MiB, free: 366.2 MiB)
+21/11/28 14:29:41 INFO MemoryStore: Block taskresult_3 stored as bytes in memory (estimated size 23.0 MiB, free 342.6 MiB)
+21/11/28 14:29:41 INFO BlockManagerInfo: Added taskresult_3 in memory on eliza.home:63060 (size: 23.0 MiB, free: 343.2 MiB)
+21/11/28 14:29:41 INFO Executor: Finished task 1.0 in stage 2.0 (TID 3). 24120077 bytes result sent via BlockManager)
+21/11/28 14:29:41 INFO TaskSetManager: Starting task 2.0 in stage 2.0 (TID 4) (eliza.home, executor driver, partition 2, PROCESS_LOCAL, 4899 bytes) taskResourceAssignments Map()
+21/11/28 14:29:41 INFO Executor: Running task 2.0 in stage 2.0 (TID 4)
+21/11/28 14:29:41 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 268435456-402653184, partition values: [empty row]
+21/11/28 14:29:41 INFO InternalParquetRecordReader: RecordReader initialized will read a total of 1418743 records.
+21/11/28 14:29:41 INFO InternalParquetRecordReader: at row 0. reading next block
+21/11/28 14:29:41 INFO TaskSetManager: Finished task 1.0 in stage 2.0 (TID 3) in 12270 ms on eliza.home (executor driver) (2/5)
+21/11/28 14:29:41 INFO BlockManagerInfo: Removed taskresult_3 on eliza.home:63060 in memory (size: 23.0 MiB, free: 366.2 MiB)
+21/11/28 14:29:41 INFO InternalParquetRecordReader: block read in memory in 486 ms. row count = 1418743
+21/11/28 14:29:52 INFO MemoryStore: Block taskresult_4 stored as bytes in memory (estimated size 23.0 MiB, free 342.6 MiB)
+21/11/28 14:29:52 INFO BlockManagerInfo: Added taskresult_4 in memory on eliza.home:63060 (size: 23.0 MiB, free: 343.2 MiB)
+21/11/28 14:29:52 INFO Executor: Finished task 2.0 in stage 2.0 (TID 4). 24120077 bytes result sent via BlockManager)
+21/11/28 14:29:52 INFO TaskSetManager: Starting task 3.0 in stage 2.0 (TID 5) (eliza.home, executor driver, partition 3, PROCESS_LOCAL, 4899 bytes) taskResourceAssignments Map()
+21/11/28 14:29:52 INFO Executor: Running task 3.0 in stage 2.0 (TID 5)
+21/11/28 14:29:52 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 402653184-536870912, partition values: [empty row]
+21/11/28 14:29:52 INFO InternalParquetRecordReader: RecordReader initialized will read a total of 1418974 records.
+21/11/28 14:29:52 INFO InternalParquetRecordReader: at row 0. reading next block
+21/11/28 14:29:52 INFO TaskSetManager: Finished task 2.0 in stage 2.0 (TID 4) in 11896 ms on eliza.home (executor driver) (3/5)
+21/11/28 14:29:52 INFO BlockManagerInfo: Removed taskresult_4 on eliza.home:63060 in memory (size: 23.0 MiB, free: 366.2 MiB)
+21/11/28 14:29:52 INFO InternalParquetRecordReader: block read in memory in 70 ms. row count = 1418974
+21/11/28 14:30:04 INFO MemoryStore: Block taskresult_5 stored as bytes in memory (estimated size 23.0 MiB, free 342.6 MiB)
+21/11/28 14:30:04 INFO BlockManagerInfo: Added taskresult_5 in memory on eliza.home:63060 (size: 23.0 MiB, free: 343.2 MiB)
+21/11/28 14:30:04 INFO Executor: Finished task 3.0 in stage 2.0 (TID 5). 24120077 bytes result sent via BlockManager)
+21/11/28 14:30:04 INFO TaskSetManager: Starting task 4.0 in stage 2.0 (TID 6) (eliza.home, executor driver, partition 4, PROCESS_LOCAL, 4899 bytes) taskResourceAssignments Map()
+21/11/28 14:30:04 INFO Executor: Running task 4.0 in stage 2.0 (TID 6)
+21/11/28 14:30:04 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 536870912-564472329, partition values: [empty row]
+21/11/28 14:30:04 INFO InternalParquetRecordReader: RecordReader initialized will read a total of 365342 records.
+21/11/28 14:30:04 INFO InternalParquetRecordReader: at row 0. reading next block
+21/11/28 14:30:04 INFO InternalParquetRecordReader: block read in memory in 34 ms. row count = 365342
+21/11/28 14:30:04 INFO TaskSetManager: Finished task 3.0 in stage 2.0 (TID 5) in 11880 ms on eliza.home (executor driver) (4/5)
+21/11/28 14:30:04 INFO BlockManagerInfo: Removed taskresult_5 on eliza.home:63060 in memory (size: 23.0 MiB, free: 366.2 MiB)
+21/11/28 14:30:07 INFO MemoryStore: Block taskresult_6 stored as bytes in memory (estimated size 23.0 MiB, free 342.6 MiB)
+21/11/28 14:30:07 INFO BlockManagerInfo: Added taskresult_6 in memory on eliza.home:63060 (size: 23.0 MiB, free: 343.2 MiB)
+21/11/28 14:30:07 INFO Executor: Finished task 4.0 in stage 2.0 (TID 6). 24120077 bytes result sent via BlockManager)
+21/11/28 14:30:07 INFO TaskSetManager: Finished task 4.0 in stage 2.0 (TID 6) in 3339 ms on eliza.home (executor driver) (5/5)
+21/11/28 14:30:07 INFO TaskSchedulerImpl: Removed TaskSet 2.0, whose tasks have all completed, from pool 
+21/11/28 14:30:07 INFO BlockManagerInfo: Removed taskresult_6 on eliza.home:63060 in memory (size: 23.0 MiB, free: 366.2 MiB)
+21/11/28 14:30:07 INFO DAGScheduler: ResultStage 2 (treeAggregate at Summarizer.scala:232) finished in 51.216 s
+21/11/28 14:30:07 INFO DAGScheduler: Job 2 is finished. Cancelling potential speculative or zombie tasks for this job
+21/11/28 14:30:07 INFO TaskSchedulerImpl: Killing all running tasks in stage 2: Stage finished
+21/11/28 14:30:08 INFO DAGScheduler: Job 2 finished: treeAggregate at Summarizer.scala:232, took 51.229953 s
+21/11/28 14:30:08 INFO Instrumentation: [7a00bf9a] {"numClasses":1}
+21/11/28 14:30:08 INFO Instrumentation: [7a00bf9a] {"numFeatures":999999}
+21/11/28 14:30:08 INFO Instrumentation: [7a00bf9a] {"numExamples":6042135}
+21/11/28 14:30:08 INFO Instrumentation: [7a00bf9a] {"lowestLabelWeight":"6042135.0"}
+21/11/28 14:30:08 INFO Instrumentation: [7a00bf9a] {"highestLabelWeight":"6042135.0"}
+21/11/28 14:30:08 INFO Instrumentation: [7a00bf9a] {"sumOfWeights":6042135.0}
+21/11/28 14:30:08 INFO Instrumentation: [7a00bf9a] {"actualBlockSizeInMB":"1.0"}
+21/11/28 14:30:08 WARN Instrumentation: [7a00bf9a] All labels are the same value and fitIntercept=true, so the coefficients will be zeros. Training is not needed.
+21/11/28 14:30:08 INFO FileSourceStrategy: Pushed Filters: 
+21/11/28 14:30:08 INFO FileSourceStrategy: Post-Scan Filters: 
+21/11/28 14:30:08 INFO FileSourceStrategy: Output Data Schema: struct<label: double, features: vector>
+21/11/28 14:30:08 INFO CodeGenerator: Code generated in 12.174965 ms
+21/11/28 14:30:08 INFO MemoryStore: Block broadcast_5 stored as values in memory (estimated size 309.6 KiB, free 365.3 MiB)
+21/11/28 14:30:08 INFO MemoryStore: Block broadcast_5_piece0 stored as bytes in memory (estimated size 28.4 KiB, free 365.3 MiB)
+21/11/28 14:30:08 INFO BlockManagerInfo: Added broadcast_5_piece0 in memory on eliza.home:63060 (size: 28.4 KiB, free: 366.2 MiB)
+21/11/28 14:30:08 INFO SparkContext: Created broadcast 5 from rdd at ClassificationSummary.scala:58
+21/11/28 14:30:08 INFO FileSourceScanExec: Planning scan with bin packing, max size: 134217728 bytes, open cost is considered as scanning 4194304 bytes.
+21/11/28 14:30:08 INFO FileSourceStrategy: Pushed Filters: 
+21/11/28 14:30:08 INFO FileSourceStrategy: Post-Scan Filters: 
+21/11/28 14:30:08 INFO FileSourceStrategy: Output Data Schema: struct<label: double, features: vector>
+21/11/28 14:30:08 INFO CodeGenerator: Code generated in 16.755751 ms
+21/11/28 14:30:08 INFO MemoryStore: Block broadcast_6 stored as values in memory (estimated size 309.6 KiB, free 365.0 MiB)
+21/11/28 14:30:08 INFO MemoryStore: Block broadcast_6_piece0 stored as bytes in memory (estimated size 28.4 KiB, free 364.9 MiB)
+21/11/28 14:30:08 INFO BlockManagerInfo: Added broadcast_6_piece0 in memory on eliza.home:63060 (size: 28.4 KiB, free: 366.2 MiB)
+21/11/28 14:30:08 INFO SparkContext: Created broadcast 6 from rdd at ClassificationSummary.scala:191
+21/11/28 14:30:08 INFO FileSourceScanExec: Planning scan with bin packing, max size: 134217728 bytes, open cost is considered as scanning 4194304 bytes.
+21/11/28 14:30:09 INFO FileSourceStrategy: Pushed Filters: IsNotNull(label)
+21/11/28 14:30:09 INFO FileSourceStrategy: Post-Scan Filters: isnotnull(label#4),(label#4 = UDF(UDF(features#5)))
+21/11/28 14:30:09 INFO FileSourceStrategy: Output Data Schema: struct<label: double, features: vector>
+21/11/28 14:30:09 INFO CodeGenerator: Code generated in 14.118485 ms
+21/11/28 14:30:09 INFO CodeGenerator: Code generated in 20.394901 ms
+21/11/28 14:30:09 INFO MemoryStore: Block broadcast_7 stored as values in memory (estimated size 309.6 KiB, free 364.6 MiB)
+21/11/28 14:30:09 INFO MemoryStore: Block broadcast_7_piece0 stored as bytes in memory (estimated size 28.4 KiB, free 364.6 MiB)
+21/11/28 14:30:09 INFO BlockManagerInfo: Added broadcast_7_piece0 in memory on eliza.home:63060 (size: 28.4 KiB, free: 366.2 MiB)
+21/11/28 14:30:09 INFO SparkContext: Created broadcast 7 from count at NativeMethodAccessorImpl.java:0
+21/11/28 14:30:09 INFO FileSourceScanExec: Planning scan with bin packing, max size: 134217728 bytes, open cost is considered as scanning 4194304 bytes.
+21/11/28 14:30:09 INFO SparkContext: Starting job: count at NativeMethodAccessorImpl.java:0
+21/11/28 14:30:09 INFO DAGScheduler: Registering RDD 36 (count at NativeMethodAccessorImpl.java:0) as input to shuffle 0
+21/11/28 14:30:09 INFO DAGScheduler: Got job 3 (count at NativeMethodAccessorImpl.java:0) with 1 output partitions
+21/11/28 14:30:09 INFO DAGScheduler: Final stage: ResultStage 4 (count at NativeMethodAccessorImpl.java:0)
+21/11/28 14:30:09 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 3)
+21/11/28 14:30:09 INFO DAGScheduler: Missing parents: List(ShuffleMapStage 3)
+21/11/28 14:30:09 INFO DAGScheduler: Submitting ShuffleMapStage 3 (MapPartitionsRDD[36] at count at NativeMethodAccessorImpl.java:0), which has no missing parents
+21/11/28 14:30:09 INFO MemoryStore: Block broadcast_8 stored as values in memory (estimated size 40.5 KiB, free 364.6 MiB)
+21/11/28 14:30:09 INFO MemoryStore: Block broadcast_8_piece0 stored as bytes in memory (estimated size 18.4 KiB, free 364.6 MiB)
+21/11/28 14:30:09 INFO BlockManagerInfo: Added broadcast_8_piece0 in memory on eliza.home:63060 (size: 18.4 KiB, free: 366.1 MiB)
+21/11/28 14:30:09 INFO SparkContext: Created broadcast 8 from broadcast at DAGScheduler.scala:1388
+21/11/28 14:30:09 INFO DAGScheduler: Submitting 5 missing tasks from ShuffleMapStage 3 (MapPartitionsRDD[36] at count at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0, 1, 2, 3, 4))
+21/11/28 14:30:09 INFO TaskSchedulerImpl: Adding task set 3.0 with 5 tasks resource profile 0
+21/11/28 14:30:09 INFO TaskSetManager: Starting task 0.0 in stage 3.0 (TID 7) (eliza.home, executor driver, partition 0, PROCESS_LOCAL, 4888 bytes) taskResourceAssignments Map()
+21/11/28 14:30:09 INFO Executor: Running task 0.0 in stage 3.0 (TID 7)
+21/11/28 14:30:09 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 0-134217728, partition values: [empty row]
+21/11/28 14:30:09 INFO FilterCompat: Filtering using predicate: noteq(label, null)
+21/11/28 14:30:09 INFO InternalParquetRecordReader: RecordReader initialized will read a total of 1419538 records.
+21/11/28 14:30:09 INFO InternalParquetRecordReader: at row 0. reading next block
+21/11/28 14:30:09 INFO InternalParquetRecordReader: block read in memory in 87 ms. row count = 1419538
+21/11/28 14:30:09 INFO CodeGenerator: Code generated in 11.506627 ms
+21/11/28 14:30:10 INFO BlockManagerInfo: Removed broadcast_3_piece0 on eliza.home:63060 in memory (size: 28.4 KiB, free: 366.2 MiB)
+21/11/28 14:30:10 INFO BlockManagerInfo: Removed broadcast_4_piece0 on eliza.home:63060 in memory (size: 9.5 KiB, free: 366.2 MiB)
+21/11/28 14:30:10 INFO BlockManagerInfo: Removed broadcast_2_piece0 on eliza.home:63060 in memory (size: 28.4 KiB, free: 366.2 MiB)
+21/11/28 14:30:10 INFO CodeGenerator: Code generated in 1120.859324 ms
+21/11/28 14:30:18 INFO Executor: Finished task 0.0 in stage 3.0 (TID 7). 2256 bytes result sent to driver
+21/11/28 14:30:18 INFO TaskSetManager: Starting task 1.0 in stage 3.0 (TID 8) (eliza.home, executor driver, partition 1, PROCESS_LOCAL, 4888 bytes) taskResourceAssignments Map()
+21/11/28 14:30:18 INFO Executor: Running task 1.0 in stage 3.0 (TID 8)
+21/11/28 14:30:18 INFO TaskSetManager: Finished task 0.0 in stage 3.0 (TID 7) in 8879 ms on eliza.home (executor driver) (1/5)
+21/11/28 14:30:18 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 134217728-268435456, partition values: [empty row]
+21/11/28 14:30:18 INFO FilterCompat: Filtering using predicate: noteq(label, null)
+21/11/28 14:30:18 INFO InternalParquetRecordReader: RecordReader initialized will read a total of 1419538 records.
+21/11/28 14:30:18 INFO InternalParquetRecordReader: at row 0. reading next block
+21/11/28 14:30:18 INFO InternalParquetRecordReader: block read in memory in 67 ms. row count = 1419538
+21/11/28 14:30:26 INFO Executor: Finished task 1.0 in stage 3.0 (TID 8). 2256 bytes result sent to driver
+21/11/28 14:30:26 INFO TaskSetManager: Starting task 2.0 in stage 3.0 (TID 9) (eliza.home, executor driver, partition 2, PROCESS_LOCAL, 4888 bytes) taskResourceAssignments Map()
+21/11/28 14:30:26 INFO TaskSetManager: Finished task 1.0 in stage 3.0 (TID 8) in 8273 ms on eliza.home (executor driver) (2/5)
+21/11/28 14:30:26 INFO Executor: Running task 2.0 in stage 3.0 (TID 9)
+21/11/28 14:30:26 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 268435456-402653184, partition values: [empty row]
+21/11/28 14:30:26 INFO FilterCompat: Filtering using predicate: noteq(label, null)
+21/11/28 14:30:26 INFO InternalParquetRecordReader: RecordReader initialized will read a total of 1418743 records.
+21/11/28 14:30:26 INFO InternalParquetRecordReader: at row 0. reading next block
+21/11/28 14:30:26 INFO InternalParquetRecordReader: block read in memory in 57 ms. row count = 1418743
+21/11/28 14:30:35 INFO Executor: Finished task 2.0 in stage 3.0 (TID 9). 2256 bytes result sent to driver
+21/11/28 14:30:35 INFO TaskSetManager: Starting task 3.0 in stage 3.0 (TID 10) (eliza.home, executor driver, partition 3, PROCESS_LOCAL, 4888 bytes) taskResourceAssignments Map()
+21/11/28 14:30:35 INFO Executor: Running task 3.0 in stage 3.0 (TID 10)
+21/11/28 14:30:35 INFO TaskSetManager: Finished task 2.0 in stage 3.0 (TID 9) in 8691 ms on eliza.home (executor driver) (3/5)
+21/11/28 14:30:35 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 402653184-536870912, partition values: [empty row]
+21/11/28 14:30:35 INFO FilterCompat: Filtering using predicate: noteq(label, null)
+21/11/28 14:30:35 INFO InternalParquetRecordReader: RecordReader initialized will read a total of 1418974 records.
+21/11/28 14:30:35 INFO InternalParquetRecordReader: at row 0. reading next block
+21/11/28 14:30:35 INFO InternalParquetRecordReader: block read in memory in 71 ms. row count = 1418974
+21/11/28 14:30:43 INFO Executor: Finished task 3.0 in stage 3.0 (TID 10). 2256 bytes result sent to driver
+21/11/28 14:30:43 INFO TaskSetManager: Starting task 4.0 in stage 3.0 (TID 11) (eliza.home, executor driver, partition 4, PROCESS_LOCAL, 4888 bytes) taskResourceAssignments Map()
+21/11/28 14:30:43 INFO Executor: Running task 4.0 in stage 3.0 (TID 11)
+21/11/28 14:30:43 INFO TaskSetManager: Finished task 3.0 in stage 3.0 (TID 10) in 8308 ms on eliza.home (executor driver) (4/5)
+21/11/28 14:30:43 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 536870912-564472329, partition values: [empty row]
+21/11/28 14:30:43 INFO FilterCompat: Filtering using predicate: noteq(label, null)
+21/11/28 14:30:43 INFO InternalParquetRecordReader: RecordReader initialized will read a total of 365342 records.
+21/11/28 14:30:43 INFO InternalParquetRecordReader: at row 0. reading next block
+21/11/28 14:30:43 INFO InternalParquetRecordReader: block read in memory in 14 ms. row count = 365342
+21/11/28 14:30:46 INFO Executor: Finished task 4.0 in stage 3.0 (TID 11). 2256 bytes result sent to driver
+21/11/28 14:30:46 INFO TaskSetManager: Finished task 4.0 in stage 3.0 (TID 11) in 2534 ms on eliza.home (executor driver) (5/5)
+21/11/28 14:30:46 INFO TaskSchedulerImpl: Removed TaskSet 3.0, whose tasks have all completed, from pool 
+21/11/28 14:30:46 INFO DAGScheduler: ShuffleMapStage 3 (count at NativeMethodAccessorImpl.java:0) finished in 36.701 s
+21/11/28 14:30:46 INFO DAGScheduler: looking for newly runnable stages
+21/11/28 14:30:46 INFO DAGScheduler: running: Set()
+21/11/28 14:30:46 INFO DAGScheduler: waiting: Set(ResultStage 4)
+21/11/28 14:30:46 INFO DAGScheduler: failed: Set()
+21/11/28 14:30:46 INFO DAGScheduler: Submitting ResultStage 4 (MapPartitionsRDD[39] at count at NativeMethodAccessorImpl.java:0), which has no missing parents
+21/11/28 14:30:46 INFO MemoryStore: Block broadcast_9 stored as values in memory (estimated size 10.1 KiB, free 365.2 MiB)
+21/11/28 14:30:46 INFO MemoryStore: Block broadcast_9_piece0 stored as bytes in memory (estimated size 5.0 KiB, free 365.2 MiB)
+21/11/28 14:30:46 INFO BlockManagerInfo: Added broadcast_9_piece0 in memory on eliza.home:63060 (size: 5.0 KiB, free: 366.2 MiB)
+21/11/28 14:30:46 INFO SparkContext: Created broadcast 9 from broadcast at DAGScheduler.scala:1388
+21/11/28 14:30:46 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 4 (MapPartitionsRDD[39] at count at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0))
+21/11/28 14:30:46 INFO TaskSchedulerImpl: Adding task set 4.0 with 1 tasks resource profile 0
+21/11/28 14:30:46 INFO TaskSetManager: Starting task 0.0 in stage 4.0 (TID 12) (eliza.home, executor driver, partition 0, NODE_LOCAL, 4453 bytes) taskResourceAssignments Map()
+21/11/28 14:30:46 INFO Executor: Running task 0.0 in stage 4.0 (TID 12)
+21/11/28 14:30:46 INFO ShuffleBlockFetcherIterator: Getting 5 (300.0 B) non-empty blocks including 5 (300.0 B) local and 0 (0.0 B) host-local and 0 (0.0 B) remote blocks
+21/11/28 14:30:46 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 6 ms
+21/11/28 14:30:46 INFO Executor: Finished task 0.0 in stage 4.0 (TID 12). 2648 bytes result sent to driver
+21/11/28 14:30:46 INFO TaskSetManager: Finished task 0.0 in stage 4.0 (TID 12) in 49 ms on eliza.home (executor driver) (1/1)
+21/11/28 14:30:46 INFO TaskSchedulerImpl: Removed TaskSet 4.0, whose tasks have all completed, from pool 
+21/11/28 14:30:46 INFO DAGScheduler: ResultStage 4 (count at NativeMethodAccessorImpl.java:0) finished in 0.057 s
+21/11/28 14:30:46 INFO DAGScheduler: Job 3 is finished. Cancelling potential speculative or zombie tasks for this job
+21/11/28 14:30:46 INFO TaskSchedulerImpl: Killing all running tasks in stage 4: Stage finished
+21/11/28 14:30:46 INFO DAGScheduler: Job 3 finished: count at NativeMethodAccessorImpl.java:0, took 36.777110 s
+21/11/28 14:30:46 INFO FileSourceStrategy: Pushed Filters: 
+21/11/28 14:30:46 INFO FileSourceStrategy: Post-Scan Filters: 
+21/11/28 14:30:46 INFO FileSourceStrategy: Output Data Schema: struct<>
+21/11/28 14:30:46 INFO CodeGenerator: Code generated in 10.932794 ms
+21/11/28 14:30:46 INFO MemoryStore: Block broadcast_10 stored as values in memory (estimated size 307.0 KiB, free 364.9 MiB)
+21/11/28 14:30:46 INFO MemoryStore: Block broadcast_10_piece0 stored as bytes in memory (estimated size 27.9 KiB, free 364.9 MiB)
+21/11/28 14:30:46 INFO BlockManagerInfo: Added broadcast_10_piece0 in memory on eliza.home:63060 (size: 27.9 KiB, free: 366.2 MiB)
+21/11/28 14:30:46 INFO SparkContext: Created broadcast 10 from count at NativeMethodAccessorImpl.java:0
+21/11/28 14:30:46 INFO FileSourceScanExec: Planning scan with bin packing, max size: 134217728 bytes, open cost is considered as scanning 4194304 bytes.
+21/11/28 14:30:46 INFO SparkContext: Starting job: count at NativeMethodAccessorImpl.java:0
+21/11/28 14:30:46 INFO DAGScheduler: Registering RDD 43 (count at NativeMethodAccessorImpl.java:0) as input to shuffle 1
+21/11/28 14:30:46 INFO DAGScheduler: Got job 4 (count at NativeMethodAccessorImpl.java:0) with 1 output partitions
+21/11/28 14:30:46 INFO DAGScheduler: Final stage: ResultStage 6 (count at NativeMethodAccessorImpl.java:0)
+21/11/28 14:30:46 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 5)
+21/11/28 14:30:46 INFO DAGScheduler: Missing parents: List(ShuffleMapStage 5)
+21/11/28 14:30:46 INFO DAGScheduler: Submitting ShuffleMapStage 5 (MapPartitionsRDD[43] at count at NativeMethodAccessorImpl.java:0), which has no missing parents
+21/11/28 14:30:46 INFO MemoryStore: Block broadcast_11 stored as values in memory (estimated size 14.7 KiB, free 364.9 MiB)
+21/11/28 14:30:46 INFO MemoryStore: Block broadcast_11_piece0 stored as bytes in memory (estimated size 7.0 KiB, free 364.9 MiB)
+21/11/28 14:30:46 INFO BlockManagerInfo: Added broadcast_11_piece0 in memory on eliza.home:63060 (size: 7.0 KiB, free: 366.2 MiB)
+21/11/28 14:30:46 INFO SparkContext: Created broadcast 11 from broadcast at DAGScheduler.scala:1388
+21/11/28 14:30:46 INFO DAGScheduler: Submitting 5 missing tasks from ShuffleMapStage 5 (MapPartitionsRDD[43] at count at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0, 1, 2, 3, 4))
+21/11/28 14:30:46 INFO TaskSchedulerImpl: Adding task set 5.0 with 5 tasks resource profile 0
+21/11/28 14:30:46 INFO TaskSetManager: Starting task 0.0 in stage 5.0 (TID 13) (eliza.home, executor driver, partition 0, PROCESS_LOCAL, 4888 bytes) taskResourceAssignments Map()
+21/11/28 14:30:46 INFO Executor: Running task 0.0 in stage 5.0 (TID 13)
+21/11/28 14:30:46 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 0-134217728, partition values: [empty row]
+21/11/28 14:30:46 INFO Executor: Finished task 0.0 in stage 5.0 (TID 13). 2134 bytes result sent to driver
+21/11/28 14:30:46 INFO TaskSetManager: Starting task 1.0 in stage 5.0 (TID 14) (eliza.home, executor driver, partition 1, PROCESS_LOCAL, 4888 bytes) taskResourceAssignments Map()
+21/11/28 14:30:46 INFO TaskSetManager: Finished task 0.0 in stage 5.0 (TID 13) in 36 ms on eliza.home (executor driver) (1/5)
+21/11/28 14:30:46 INFO Executor: Running task 1.0 in stage 5.0 (TID 14)
+21/11/28 14:30:46 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 134217728-268435456, partition values: [empty row]
+21/11/28 14:30:46 INFO Executor: Finished task 1.0 in stage 5.0 (TID 14). 2134 bytes result sent to driver
+21/11/28 14:30:46 INFO TaskSetManager: Starting task 2.0 in stage 5.0 (TID 15) (eliza.home, executor driver, partition 2, PROCESS_LOCAL, 4888 bytes) taskResourceAssignments Map()
+21/11/28 14:30:46 INFO TaskSetManager: Finished task 1.0 in stage 5.0 (TID 14) in 29 ms on eliza.home (executor driver) (2/5)
+21/11/28 14:30:46 INFO Executor: Running task 2.0 in stage 5.0 (TID 15)
+21/11/28 14:30:46 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 268435456-402653184, partition values: [empty row]
+21/11/28 14:30:46 INFO Executor: Finished task 2.0 in stage 5.0 (TID 15). 2134 bytes result sent to driver
+21/11/28 14:30:46 INFO TaskSetManager: Starting task 3.0 in stage 5.0 (TID 16) (eliza.home, executor driver, partition 3, PROCESS_LOCAL, 4888 bytes) taskResourceAssignments Map()
+21/11/28 14:30:46 INFO Executor: Running task 3.0 in stage 5.0 (TID 16)
+21/11/28 14:30:46 INFO TaskSetManager: Finished task 2.0 in stage 5.0 (TID 15) in 31 ms on eliza.home (executor driver) (3/5)
+21/11/28 14:30:46 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 402653184-536870912, partition values: [empty row]
+21/11/28 14:30:46 INFO Executor: Finished task 3.0 in stage 5.0 (TID 16). 2134 bytes result sent to driver
+21/11/28 14:30:46 INFO TaskSetManager: Starting task 4.0 in stage 5.0 (TID 17) (eliza.home, executor driver, partition 4, PROCESS_LOCAL, 4888 bytes) taskResourceAssignments Map()
+21/11/28 14:30:46 INFO TaskSetManager: Finished task 3.0 in stage 5.0 (TID 16) in 27 ms on eliza.home (executor driver) (4/5)
+21/11/28 14:30:46 INFO Executor: Running task 4.0 in stage 5.0 (TID 17)
+21/11/28 14:30:46 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 536870912-564472329, partition values: [empty row]
+21/11/28 14:30:46 INFO Executor: Finished task 4.0 in stage 5.0 (TID 17). 2134 bytes result sent to driver
+21/11/28 14:30:46 INFO TaskSetManager: Finished task 4.0 in stage 5.0 (TID 17) in 21 ms on eliza.home (executor driver) (5/5)
+21/11/28 14:30:46 INFO TaskSchedulerImpl: Removed TaskSet 5.0, whose tasks have all completed, from pool 
+21/11/28 14:30:46 INFO DAGScheduler: ShuffleMapStage 5 (count at NativeMethodAccessorImpl.java:0) finished in 0.144 s
+21/11/28 14:30:46 INFO DAGScheduler: looking for newly runnable stages
+21/11/28 14:30:46 INFO DAGScheduler: running: Set()
+21/11/28 14:30:46 INFO DAGScheduler: waiting: Set(ResultStage 6)
+21/11/28 14:30:46 INFO DAGScheduler: failed: Set()
+21/11/28 14:30:46 INFO DAGScheduler: Submitting ResultStage 6 (MapPartitionsRDD[46] at count at NativeMethodAccessorImpl.java:0), which has no missing parents
+21/11/28 14:30:46 INFO MemoryStore: Block broadcast_12 stored as values in memory (estimated size 10.1 KiB, free 364.9 MiB)
+21/11/28 14:30:46 INFO MemoryStore: Block broadcast_12_piece0 stored as bytes in memory (estimated size 5.0 KiB, free 364.9 MiB)
+21/11/28 14:30:46 INFO BlockManagerInfo: Added broadcast_12_piece0 in memory on eliza.home:63060 (size: 5.0 KiB, free: 366.2 MiB)
+21/11/28 14:30:46 INFO SparkContext: Created broadcast 12 from broadcast at DAGScheduler.scala:1388
+21/11/28 14:30:46 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 6 (MapPartitionsRDD[46] at count at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0))
+21/11/28 14:30:46 INFO TaskSchedulerImpl: Adding task set 6.0 with 1 tasks resource profile 0
+21/11/28 14:30:46 INFO TaskSetManager: Starting task 0.0 in stage 6.0 (TID 18) (eliza.home, executor driver, partition 0, NODE_LOCAL, 4453 bytes) taskResourceAssignments Map()
+21/11/28 14:30:46 INFO Executor: Running task 0.0 in stage 6.0 (TID 18)
+21/11/28 14:30:46 INFO ShuffleBlockFetcherIterator: Getting 5 (300.0 B) non-empty blocks including 5 (300.0 B) local and 0 (0.0 B) host-local and 0 (0.0 B) remote blocks
+21/11/28 14:30:46 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+21/11/28 14:30:46 INFO Executor: Finished task 0.0 in stage 6.0 (TID 18). 2648 bytes result sent to driver
+21/11/28 14:30:46 INFO TaskSetManager: Finished task 0.0 in stage 6.0 (TID 18) in 13 ms on eliza.home (executor driver) (1/1)
+21/11/28 14:30:46 INFO TaskSchedulerImpl: Removed TaskSet 6.0, whose tasks have all completed, from pool 
+21/11/28 14:30:46 INFO DAGScheduler: ResultStage 6 (count at NativeMethodAccessorImpl.java:0) finished in 0.027 s
+21/11/28 14:30:46 INFO DAGScheduler: Job 4 is finished. Cancelling potential speculative or zombie tasks for this job
+21/11/28 14:30:46 INFO TaskSchedulerImpl: Killing all running tasks in stage 6: Stage finished
+21/11/28 14:30:46 INFO DAGScheduler: Job 4 finished: count at NativeMethodAccessorImpl.java:0, took 0.178144 s
+21/11/28 14:30:46 INFO SparkUI: Stopped Spark web UI at http://eliza.home:4041
+21/11/28 14:30:46 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+21/11/28 14:30:46 INFO MemoryStore: MemoryStore cleared
+21/11/28 14:30:46 INFO BlockManager: BlockManager stopped
+21/11/28 14:30:46 INFO BlockManagerMaster: BlockManagerMaster stopped
+21/11/28 14:30:46 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+21/11/28 14:30:46 INFO SparkContext: Successfully stopped SparkContext
+21/11/28 14:30:46 INFO ShutdownHookManager: Shutdown hook called
+21/11/28 14:30:46 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-6eb4cb75-c53c-4842-a9c5-6b8317aeae0a
+21/11/28 14:30:46 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-b5b3cf73-cbcb-4236-a309-db2b09467810/pyspark-9aee50dc-451a-4a19-ad08-29d2161ae964
+21/11/28 14:30:46 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-b5b3cf73-cbcb-4236-a309-db2b09467810
+
+real	1m38.765s
+user	2m32.535s
+sys	0m7.454s
+21/11/28 14:30:48 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+21/11/28 14:30:49 INFO SparkContext: Running Spark version 3.1.2
+21/11/28 14:30:49 INFO ResourceUtils: ==============================================================
+21/11/28 14:30:49 INFO ResourceUtils: No custom resources configured for spark.driver.
+21/11/28 14:30:49 INFO ResourceUtils: ==============================================================
+21/11/28 14:30:49 INFO SparkContext: Submitted application: SparkML script
+21/11/28 14:30:49 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+21/11/28 14:30:49 INFO ResourceProfile: Limiting resource is cpu
+21/11/28 14:30:49 INFO ResourceProfileManager: Added ResourceProfile id: 0
+21/11/28 14:30:49 INFO SecurityManager: Changing view acls to: david
+21/11/28 14:30:49 INFO SecurityManager: Changing modify acls to: david
+21/11/28 14:30:49 INFO SecurityManager: Changing view acls groups to: 
+21/11/28 14:30:49 INFO SecurityManager: Changing modify acls groups to: 
+21/11/28 14:30:49 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(david); groups with view permissions: Set(); users  with modify permissions: Set(david); groups with modify permissions: Set()
+21/11/28 14:30:49 INFO Utils: Successfully started service 'sparkDriver' on port 63092.
+21/11/28 14:30:49 INFO SparkEnv: Registering MapOutputTracker
+21/11/28 14:30:49 INFO SparkEnv: Registering BlockManagerMaster
+21/11/28 14:30:49 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+21/11/28 14:30:49 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+21/11/28 14:30:49 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+21/11/28 14:30:49 INFO DiskBlockManager: Created local directory at /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/blockmgr-42e0ec01-cb47-4cb8-abae-c94cb88db166
+21/11/28 14:30:49 INFO MemoryStore: MemoryStore started with capacity 366.3 MiB
+21/11/28 14:30:49 INFO SparkEnv: Registering OutputCommitCoordinator
+21/11/28 14:30:49 WARN Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
+21/11/28 14:30:49 INFO Utils: Successfully started service 'SparkUI' on port 4041.
+21/11/28 14:30:50 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://eliza.home:4041
+21/11/28 14:30:50 INFO Executor: Starting executor ID driver on host eliza.home
+21/11/28 14:30:50 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 63093.
+21/11/28 14:30:50 INFO NettyBlockTransferService: Server created on eliza.home:63093
+21/11/28 14:30:50 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+21/11/28 14:30:50 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, eliza.home, 63093, None)
+21/11/28 14:30:50 INFO BlockManagerMasterEndpoint: Registering block manager eliza.home:63093 with 366.3 MiB RAM, BlockManagerId(driver, eliza.home, 63093, None)
+21/11/28 14:30:50 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, eliza.home, 63093, None)
+21/11/28 14:30:50 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, eliza.home, 63093, None)
+21/11/28 14:30:50 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir ('file:/Users/david/Projects/pipelines/spark-warehouse').
+21/11/28 14:30:50 INFO SharedState: Warehouse path is 'file:/Users/david/Projects/pipelines/spark-warehouse'.
+21/11/28 14:30:51 INFO InMemoryFileIndex: It took 25 ms to list leaf files for 1 paths.
+21/11/28 14:30:51 INFO SparkContext: Starting job: load at NativeMethodAccessorImpl.java:0
+21/11/28 14:30:51 INFO DAGScheduler: Got job 0 (load at NativeMethodAccessorImpl.java:0) with 1 output partitions
+21/11/28 14:30:51 INFO DAGScheduler: Final stage: ResultStage 0 (load at NativeMethodAccessorImpl.java:0)
+21/11/28 14:30:51 INFO DAGScheduler: Parents of final stage: List()
+21/11/28 14:30:51 INFO DAGScheduler: Missing parents: List()
+21/11/28 14:30:51 INFO DAGScheduler: Submitting ResultStage 0 (MapPartitionsRDD[1] at load at NativeMethodAccessorImpl.java:0), which has no missing parents
+21/11/28 14:30:51 INFO MemoryStore: Block broadcast_0 stored as values in memory (estimated size 83.7 KiB, free 366.2 MiB)
+21/11/28 14:30:51 INFO MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 29.5 KiB, free 366.2 MiB)
+21/11/28 14:30:51 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on eliza.home:63093 (size: 29.5 KiB, free: 366.3 MiB)
+21/11/28 14:30:51 INFO SparkContext: Created broadcast 0 from broadcast at DAGScheduler.scala:1388
+21/11/28 14:30:51 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 0 (MapPartitionsRDD[1] at load at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0))
+21/11/28 14:30:51 INFO TaskSchedulerImpl: Adding task set 0.0 with 1 tasks resource profile 0
+21/11/28 14:30:51 INFO TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0) (eliza.home, executor driver, partition 0, PROCESS_LOCAL, 4648 bytes) taskResourceAssignments Map()
+21/11/28 14:30:51 INFO Executor: Running task 0.0 in stage 0.0 (TID 0)
+21/11/28 14:30:52 INFO Executor: Finished task 0.0 in stage 0.0 (TID 0). 2558 bytes result sent to driver
+21/11/28 14:30:52 INFO TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 625 ms on eliza.home (executor driver) (1/1)
+21/11/28 14:30:52 INFO TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool 
+21/11/28 14:30:52 INFO DAGScheduler: ResultStage 0 (load at NativeMethodAccessorImpl.java:0) finished in 0.817 s
+21/11/28 14:30:52 INFO DAGScheduler: Job 0 is finished. Cancelling potential speculative or zombie tasks for this job
+21/11/28 14:30:52 INFO TaskSchedulerImpl: Killing all running tasks in stage 0: Stage finished
+21/11/28 14:30:52 INFO DAGScheduler: Job 0 finished: load at NativeMethodAccessorImpl.java:0, took 0.845988 s
+21/11/28 14:30:53 INFO BlockManagerInfo: Removed broadcast_0_piece0 on eliza.home:63093 in memory (size: 29.5 KiB, free: 366.3 MiB)
+21/11/28 14:30:53 INFO InMemoryFileIndex: It took 1 ms to list leaf files for 1 paths.
+21/11/28 14:30:53 INFO SparkContext: Starting job: load at NativeMethodAccessorImpl.java:0
+21/11/28 14:30:53 INFO DAGScheduler: Got job 1 (load at NativeMethodAccessorImpl.java:0) with 1 output partitions
+21/11/28 14:30:53 INFO DAGScheduler: Final stage: ResultStage 1 (load at NativeMethodAccessorImpl.java:0)
+21/11/28 14:30:53 INFO DAGScheduler: Parents of final stage: List()
+21/11/28 14:30:53 INFO DAGScheduler: Missing parents: List()
+21/11/28 14:30:53 INFO DAGScheduler: Submitting ResultStage 1 (MapPartitionsRDD[3] at load at NativeMethodAccessorImpl.java:0), which has no missing parents
+21/11/28 14:30:53 INFO MemoryStore: Block broadcast_1 stored as values in memory (estimated size 83.7 KiB, free 366.2 MiB)
+21/11/28 14:30:53 INFO MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 29.5 KiB, free 366.2 MiB)
+21/11/28 14:30:53 INFO BlockManagerInfo: Added broadcast_1_piece0 in memory on eliza.home:63093 (size: 29.5 KiB, free: 366.3 MiB)
+21/11/28 14:30:53 INFO SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:1388
+21/11/28 14:30:53 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 1 (MapPartitionsRDD[3] at load at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0))
+21/11/28 14:30:53 INFO TaskSchedulerImpl: Adding task set 1.0 with 1 tasks resource profile 0
+21/11/28 14:30:53 INFO TaskSetManager: Starting task 0.0 in stage 1.0 (TID 1) (eliza.home, executor driver, partition 0, PROCESS_LOCAL, 4648 bytes) taskResourceAssignments Map()
+21/11/28 14:30:53 INFO Executor: Running task 0.0 in stage 1.0 (TID 1)
+21/11/28 14:30:53 INFO Executor: Finished task 0.0 in stage 1.0 (TID 1). 2472 bytes result sent to driver
+21/11/28 14:30:53 INFO TaskSetManager: Finished task 0.0 in stage 1.0 (TID 1) in 14 ms on eliza.home (executor driver) (1/1)
+21/11/28 14:30:53 INFO TaskSchedulerImpl: Removed TaskSet 1.0, whose tasks have all completed, from pool 
+21/11/28 14:30:53 INFO DAGScheduler: ResultStage 1 (load at NativeMethodAccessorImpl.java:0) finished in 0.032 s
+21/11/28 14:30:53 INFO DAGScheduler: Job 1 is finished. Cancelling potential speculative or zombie tasks for this job
+21/11/28 14:30:53 INFO TaskSchedulerImpl: Killing all running tasks in stage 1: Stage finished
+21/11/28 14:30:53 INFO DAGScheduler: Job 1 finished: load at NativeMethodAccessorImpl.java:0, took 0.034601 s
+21/11/28 14:30:53 INFO BlockManagerInfo: Removed broadcast_1_piece0 on eliza.home:63093 in memory (size: 29.5 KiB, free: 366.3 MiB)
+21/11/28 14:30:54 INFO Instrumentation: [6c67ef22] Stage class: RandomForestClassifier
+21/11/28 14:30:54 INFO Instrumentation: [6c67ef22] Stage uid: RandomForestClassifier_ac3d267d692a
+21/11/28 14:30:55 INFO FileSourceStrategy: Pushed Filters: 
+21/11/28 14:30:55 INFO FileSourceStrategy: Post-Scan Filters: 
+21/11/28 14:30:55 INFO FileSourceStrategy: Output Data Schema: struct<label: double, features: vector>
+21/11/28 14:30:56 INFO CodeGenerator: Code generated in 301.053734 ms
+21/11/28 14:30:56 INFO MemoryStore: Block broadcast_2 stored as values in memory (estimated size 309.6 KiB, free 366.0 MiB)
+21/11/28 14:30:56 INFO MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 28.4 KiB, free 366.0 MiB)
+21/11/28 14:30:56 INFO BlockManagerInfo: Added broadcast_2_piece0 in memory on eliza.home:63093 (size: 28.4 KiB, free: 366.3 MiB)
+21/11/28 14:30:56 INFO SparkContext: Created broadcast 2 from rdd at Instrumentation.scala:62
+21/11/28 14:30:56 INFO FileSourceScanExec: Planning scan with bin packing, max size: 134217728 bytes, open cost is considered as scanning 4194304 bytes.
+21/11/28 14:30:56 INFO Instrumentation: [6c67ef22] training: numPartitions=5 storageLevel=StorageLevel(1 replicas)
+21/11/28 14:30:56 INFO FileSourceStrategy: Pushed Filters: 
+21/11/28 14:30:56 INFO FileSourceStrategy: Post-Scan Filters: 
+21/11/28 14:30:56 INFO FileSourceStrategy: Output Data Schema: struct<label: double>
+21/11/28 14:30:56 INFO CodeGenerator: Code generated in 23.820642 ms
+21/11/28 14:30:56 INFO CodeGenerator: Code generated in 24.425814 ms
+21/11/28 14:30:56 INFO MemoryStore: Block broadcast_3 stored as values in memory (estimated size 307.3 KiB, free 365.7 MiB)
+21/11/28 14:30:56 INFO MemoryStore: Block broadcast_3_piece0 stored as bytes in memory (estimated size 28.0 KiB, free 365.6 MiB)
+21/11/28 14:30:56 INFO BlockManagerInfo: Added broadcast_3_piece0 in memory on eliza.home:63093 (size: 28.0 KiB, free: 366.2 MiB)
+21/11/28 14:30:56 INFO SparkContext: Created broadcast 3 from take at Classifier.scala:146
+21/11/28 14:30:56 INFO FileSourceScanExec: Planning scan with bin packing, max size: 134217728 bytes, open cost is considered as scanning 4194304 bytes.
+21/11/28 14:30:56 INFO SparkContext: Starting job: take at Classifier.scala:146
+21/11/28 14:30:56 INFO DAGScheduler: Registering RDD 13 (take at Classifier.scala:146) as input to shuffle 0
+21/11/28 14:30:56 INFO DAGScheduler: Got job 2 (take at Classifier.scala:146) with 1 output partitions
+21/11/28 14:30:56 INFO DAGScheduler: Final stage: ResultStage 3 (take at Classifier.scala:146)
+21/11/28 14:30:56 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 2)
+21/11/28 14:30:56 INFO DAGScheduler: Missing parents: List(ShuffleMapStage 2)
+21/11/28 14:30:56 INFO DAGScheduler: Submitting ShuffleMapStage 2 (MapPartitionsRDD[13] at take at Classifier.scala:146), which has no missing parents
+21/11/28 14:30:56 INFO MemoryStore: Block broadcast_4 stored as values in memory (estimated size 16.3 KiB, free 365.6 MiB)
+21/11/28 14:30:56 INFO MemoryStore: Block broadcast_4_piece0 stored as bytes in memory (estimated size 7.5 KiB, free 365.6 MiB)
+21/11/28 14:30:56 INFO BlockManagerInfo: Added broadcast_4_piece0 in memory on eliza.home:63093 (size: 7.5 KiB, free: 366.2 MiB)
+21/11/28 14:30:56 INFO SparkContext: Created broadcast 4 from broadcast at DAGScheduler.scala:1388
+21/11/28 14:30:56 INFO DAGScheduler: Submitting 5 missing tasks from ShuffleMapStage 2 (MapPartitionsRDD[13] at take at Classifier.scala:146) (first 15 tasks are for partitions Vector(0, 1, 2, 3, 4))
+21/11/28 14:30:56 INFO TaskSchedulerImpl: Adding task set 2.0 with 5 tasks resource profile 0
+21/11/28 14:30:56 INFO TaskSetManager: Starting task 0.0 in stage 2.0 (TID 2) (eliza.home, executor driver, partition 0, PROCESS_LOCAL, 4888 bytes) taskResourceAssignments Map()
+21/11/28 14:30:56 INFO Executor: Running task 0.0 in stage 2.0 (TID 2)
+21/11/28 14:30:56 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 0-134217728, partition values: [empty row]
+21/11/28 14:30:56 INFO CodecPool: Got brand-new decompressor [.snappy]
+21/11/28 14:30:57 INFO Executor: Finished task 0.0 in stage 2.0 (TID 2). 2177 bytes result sent to driver
+21/11/28 14:30:57 INFO TaskSetManager: Starting task 1.0 in stage 2.0 (TID 3) (eliza.home, executor driver, partition 1, PROCESS_LOCAL, 4888 bytes) taskResourceAssignments Map()
+21/11/28 14:30:57 INFO Executor: Running task 1.0 in stage 2.0 (TID 3)
+21/11/28 14:30:57 INFO TaskSetManager: Finished task 0.0 in stage 2.0 (TID 2) in 436 ms on eliza.home (executor driver) (1/5)
+21/11/28 14:30:57 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 134217728-268435456, partition values: [empty row]
+21/11/28 14:30:57 INFO Executor: Finished task 1.0 in stage 2.0 (TID 3). 2134 bytes result sent to driver
+21/11/28 14:30:57 INFO TaskSetManager: Starting task 2.0 in stage 2.0 (TID 4) (eliza.home, executor driver, partition 2, PROCESS_LOCAL, 4888 bytes) taskResourceAssignments Map()
+21/11/28 14:30:57 INFO Executor: Running task 2.0 in stage 2.0 (TID 4)
+21/11/28 14:30:57 INFO TaskSetManager: Finished task 1.0 in stage 2.0 (TID 3) in 21 ms on eliza.home (executor driver) (2/5)
+21/11/28 14:30:57 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 268435456-402653184, partition values: [empty row]
+21/11/28 14:30:57 INFO Executor: Finished task 2.0 in stage 2.0 (TID 4). 2134 bytes result sent to driver
+21/11/28 14:30:57 INFO TaskSetManager: Starting task 3.0 in stage 2.0 (TID 5) (eliza.home, executor driver, partition 3, PROCESS_LOCAL, 4888 bytes) taskResourceAssignments Map()
+21/11/28 14:30:57 INFO Executor: Running task 3.0 in stage 2.0 (TID 5)
+21/11/28 14:30:57 INFO TaskSetManager: Finished task 2.0 in stage 2.0 (TID 4) in 17 ms on eliza.home (executor driver) (3/5)
+21/11/28 14:30:57 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 402653184-536870912, partition values: [empty row]
+21/11/28 14:30:57 INFO Executor: Finished task 3.0 in stage 2.0 (TID 5). 2134 bytes result sent to driver
+21/11/28 14:30:57 INFO TaskSetManager: Starting task 4.0 in stage 2.0 (TID 6) (eliza.home, executor driver, partition 4, PROCESS_LOCAL, 4888 bytes) taskResourceAssignments Map()
+21/11/28 14:30:57 INFO TaskSetManager: Finished task 3.0 in stage 2.0 (TID 5) in 15 ms on eliza.home (executor driver) (4/5)
+21/11/28 14:30:57 INFO Executor: Running task 4.0 in stage 2.0 (TID 6)
+21/11/28 14:30:57 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 536870912-564472329, partition values: [empty row]
+21/11/28 14:30:57 INFO Executor: Finished task 4.0 in stage 2.0 (TID 6). 2134 bytes result sent to driver
+21/11/28 14:30:57 INFO TaskSetManager: Finished task 4.0 in stage 2.0 (TID 6) in 11 ms on eliza.home (executor driver) (5/5)
+21/11/28 14:30:57 INFO TaskSchedulerImpl: Removed TaskSet 2.0, whose tasks have all completed, from pool 
+21/11/28 14:30:57 INFO DAGScheduler: ShuffleMapStage 2 (take at Classifier.scala:146) finished in 0.523 s
+21/11/28 14:30:57 INFO DAGScheduler: looking for newly runnable stages
+21/11/28 14:30:57 INFO DAGScheduler: running: Set()
+21/11/28 14:30:57 INFO DAGScheduler: waiting: Set(ResultStage 3)
+21/11/28 14:30:57 INFO DAGScheduler: failed: Set()
+21/11/28 14:30:57 INFO DAGScheduler: Submitting ResultStage 3 (MapPartitionsRDD[16] at take at Classifier.scala:146), which has no missing parents
+21/11/28 14:30:57 INFO MemoryStore: Block broadcast_5 stored as values in memory (estimated size 10.8 KiB, free 365.6 MiB)
+21/11/28 14:30:57 INFO MemoryStore: Block broadcast_5_piece0 stored as bytes in memory (estimated size 5.3 KiB, free 365.6 MiB)
+21/11/28 14:30:57 INFO BlockManagerInfo: Added broadcast_5_piece0 in memory on eliza.home:63093 (size: 5.3 KiB, free: 366.2 MiB)
+21/11/28 14:30:57 INFO SparkContext: Created broadcast 5 from broadcast at DAGScheduler.scala:1388
+21/11/28 14:30:57 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 3 (MapPartitionsRDD[16] at take at Classifier.scala:146) (first 15 tasks are for partitions Vector(0))
+21/11/28 14:30:57 INFO TaskSchedulerImpl: Adding task set 3.0 with 1 tasks resource profile 0
+21/11/28 14:30:57 INFO TaskSetManager: Starting task 0.0 in stage 3.0 (TID 7) (eliza.home, executor driver, partition 0, NODE_LOCAL, 4453 bytes) taskResourceAssignments Map()
+21/11/28 14:30:57 INFO Executor: Running task 0.0 in stage 3.0 (TID 7)
+21/11/28 14:30:57 INFO ShuffleBlockFetcherIterator: Getting 5 (300.0 B) non-empty blocks including 5 (300.0 B) local and 0 (0.0 B) host-local and 0 (0.0 B) remote blocks
+21/11/28 14:30:57 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 6 ms
+21/11/28 14:30:57 INFO Executor: Finished task 0.0 in stage 3.0 (TID 7). 2641 bytes result sent to driver
+21/11/28 14:30:57 INFO TaskSetManager: Finished task 0.0 in stage 3.0 (TID 7) in 51 ms on eliza.home (executor driver) (1/1)
+21/11/28 14:30:57 INFO TaskSchedulerImpl: Removed TaskSet 3.0, whose tasks have all completed, from pool 
+21/11/28 14:30:57 INFO DAGScheduler: ResultStage 3 (take at Classifier.scala:146) finished in 0.059 s
+21/11/28 14:30:57 INFO DAGScheduler: Job 2 is finished. Cancelling potential speculative or zombie tasks for this job
+21/11/28 14:30:57 INFO TaskSchedulerImpl: Killing all running tasks in stage 3: Stage finished
+21/11/28 14:30:57 INFO DAGScheduler: Job 2 finished: take at Classifier.scala:146, took 0.604322 s
+21/11/28 14:30:57 INFO CodeGenerator: Code generated in 8.233394 ms
+21/11/28 14:30:57 INFO RandomForestClassifier: org.apache.spark.ml.classification.RandomForestClassifier inferred 1 classes for labelCol=RandomForestClassifier_ac3d267d692a__labelCol since numClasses was not specified in the column metadata.
+21/11/28 14:30:57 INFO FileSourceStrategy: Pushed Filters: 
+21/11/28 14:30:57 INFO FileSourceStrategy: Post-Scan Filters: 
+21/11/28 14:30:57 INFO FileSourceStrategy: Output Data Schema: struct<label: double, features: vector>
+21/11/28 14:30:57 INFO CodeGenerator: Code generated in 16.320269 ms
+21/11/28 14:30:57 INFO MemoryStore: Block broadcast_6 stored as values in memory (estimated size 309.6 KiB, free 365.3 MiB)
+21/11/28 14:30:57 INFO MemoryStore: Block broadcast_6_piece0 stored as bytes in memory (estimated size 28.4 KiB, free 365.3 MiB)
+21/11/28 14:30:57 INFO BlockManagerInfo: Added broadcast_6_piece0 in memory on eliza.home:63093 (size: 28.4 KiB, free: 366.2 MiB)
+21/11/28 14:30:57 INFO SparkContext: Created broadcast 6 from rdd at Predictor.scala:81
+21/11/28 14:30:57 INFO FileSourceScanExec: Planning scan with bin packing, max size: 134217728 bytes, open cost is considered as scanning 4194304 bytes.
+21/11/28 14:30:57 INFO Instrumentation: [6c67ef22] {"numTrees":50}
+21/11/28 14:30:57 INFO BlockManagerInfo: Removed broadcast_5_piece0 on eliza.home:63093 in memory (size: 5.3 KiB, free: 366.2 MiB)
+21/11/28 14:30:57 INFO SparkContext: Starting job: take at DecisionTreeMetadata.scala:119
+21/11/28 14:30:57 INFO DAGScheduler: Got job 3 (take at DecisionTreeMetadata.scala:119) with 1 output partitions
+21/11/28 14:30:57 INFO DAGScheduler: Final stage: ResultStage 4 (take at DecisionTreeMetadata.scala:119)
+21/11/28 14:30:57 INFO DAGScheduler: Parents of final stage: List()
+21/11/28 14:30:57 INFO DAGScheduler: Missing parents: List()
+21/11/28 14:30:57 INFO DAGScheduler: Submitting ResultStage 4 (MapPartitionsRDD[26] at map at DecisionTreeMetadata.scala:119), which has no missing parents
+21/11/28 14:30:57 INFO MemoryStore: Block broadcast_7 stored as values in memory (estimated size 20.8 KiB, free 365.3 MiB)
+21/11/28 14:30:57 INFO MemoryStore: Block broadcast_7_piece0 stored as bytes in memory (estimated size 9.2 KiB, free 365.3 MiB)
+21/11/28 14:30:57 INFO BlockManagerInfo: Added broadcast_7_piece0 in memory on eliza.home:63093 (size: 9.2 KiB, free: 366.2 MiB)
+21/11/28 14:30:57 INFO SparkContext: Created broadcast 7 from broadcast at DAGScheduler.scala:1388
+21/11/28 14:30:57 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 4 (MapPartitionsRDD[26] at map at DecisionTreeMetadata.scala:119) (first 15 tasks are for partitions Vector(0))
+21/11/28 14:30:57 INFO TaskSchedulerImpl: Adding task set 4.0 with 1 tasks resource profile 0
+21/11/28 14:30:57 INFO TaskSetManager: Starting task 0.0 in stage 4.0 (TID 8) (eliza.home, executor driver, partition 0, PROCESS_LOCAL, 4899 bytes) taskResourceAssignments Map()
+21/11/28 14:30:57 INFO Executor: Running task 0.0 in stage 4.0 (TID 8)
+21/11/28 14:30:57 INFO CodeGenerator: Code generated in 13.138612 ms
+21/11/28 14:30:57 INFO CodeGenerator: Code generated in 7.743481 ms
+21/11/28 14:30:57 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 0-134217728, partition values: [empty row]
+21/11/28 14:30:57 INFO InternalParquetRecordReader: RecordReader initialized will read a total of 1419538 records.
+21/11/28 14:30:57 INFO InternalParquetRecordReader: at row 0. reading next block
+21/11/28 14:30:57 INFO InternalParquetRecordReader: block read in memory in 78 ms. row count = 1419538
+21/11/28 14:30:57 INFO Executor: Finished task 0.0 in stage 4.0 (TID 8). 1524 bytes result sent to driver
+21/11/28 14:30:57 INFO TaskSetManager: Finished task 0.0 in stage 4.0 (TID 8) in 244 ms on eliza.home (executor driver) (1/1)
+21/11/28 14:30:57 INFO TaskSchedulerImpl: Removed TaskSet 4.0, whose tasks have all completed, from pool 
+21/11/28 14:30:57 INFO DAGScheduler: ResultStage 4 (take at DecisionTreeMetadata.scala:119) finished in 0.252 s
+21/11/28 14:30:57 INFO DAGScheduler: Job 3 is finished. Cancelling potential speculative or zombie tasks for this job
+21/11/28 14:30:57 INFO TaskSchedulerImpl: Killing all running tasks in stage 4: Stage finished
+21/11/28 14:30:57 INFO DAGScheduler: Job 3 finished: take at DecisionTreeMetadata.scala:119, took 0.255551 s
+21/11/28 14:30:57 INFO SparkContext: Starting job: aggregate at DecisionTreeMetadata.scala:125
+21/11/28 14:30:57 INFO DAGScheduler: Got job 4 (aggregate at DecisionTreeMetadata.scala:125) with 5 output partitions
+21/11/28 14:30:57 INFO DAGScheduler: Final stage: ResultStage 5 (aggregate at DecisionTreeMetadata.scala:125)
+21/11/28 14:30:57 INFO DAGScheduler: Parents of final stage: List()
+21/11/28 14:30:57 INFO DAGScheduler: Missing parents: List()
+21/11/28 14:30:57 INFO DAGScheduler: Submitting ResultStage 5 (MapPartitionsRDD[25] at retag at RandomForest.scala:274), which has no missing parents
+21/11/28 14:30:57 INFO MemoryStore: Block broadcast_8 stored as values in memory (estimated size 20.8 KiB, free 365.2 MiB)
+21/11/28 14:30:57 INFO MemoryStore: Block broadcast_8_piece0 stored as bytes in memory (estimated size 9.2 KiB, free 365.2 MiB)
+21/11/28 14:30:57 INFO BlockManagerInfo: Added broadcast_8_piece0 in memory on eliza.home:63093 (size: 9.2 KiB, free: 366.2 MiB)
+21/11/28 14:30:57 INFO SparkContext: Created broadcast 8 from broadcast at DAGScheduler.scala:1388
+21/11/28 14:30:57 INFO DAGScheduler: Submitting 5 missing tasks from ResultStage 5 (MapPartitionsRDD[25] at retag at RandomForest.scala:274) (first 15 tasks are for partitions Vector(0, 1, 2, 3, 4))
+21/11/28 14:30:57 INFO TaskSchedulerImpl: Adding task set 5.0 with 5 tasks resource profile 0
+21/11/28 14:30:57 INFO TaskSetManager: Starting task 0.0 in stage 5.0 (TID 9) (eliza.home, executor driver, partition 0, PROCESS_LOCAL, 4899 bytes) taskResourceAssignments Map()
+21/11/28 14:30:57 INFO Executor: Running task 0.0 in stage 5.0 (TID 9)
+21/11/28 14:30:57 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 0-134217728, partition values: [empty row]
+21/11/28 14:30:57 INFO InternalParquetRecordReader: RecordReader initialized will read a total of 1419538 records.
+21/11/28 14:30:57 INFO InternalParquetRecordReader: at row 0. reading next block
+21/11/28 14:30:57 INFO InternalParquetRecordReader: block read in memory in 67 ms. row count = 1419538
+21/11/28 14:30:58 INFO BlockManagerInfo: Removed broadcast_4_piece0 on eliza.home:63093 in memory (size: 7.5 KiB, free: 366.2 MiB)
+21/11/28 14:30:58 INFO BlockManagerInfo: Removed broadcast_3_piece0 on eliza.home:63093 in memory (size: 28.0 KiB, free: 366.2 MiB)
+21/11/28 14:30:58 INFO BlockManagerInfo: Removed broadcast_7_piece0 on eliza.home:63093 in memory (size: 9.2 KiB, free: 366.2 MiB)
+21/11/28 14:31:06 INFO Executor: Finished task 0.0 in stage 5.0 (TID 9). 1639 bytes result sent to driver
+21/11/28 14:31:06 INFO TaskSetManager: Starting task 1.0 in stage 5.0 (TID 10) (eliza.home, executor driver, partition 1, PROCESS_LOCAL, 4899 bytes) taskResourceAssignments Map()
+21/11/28 14:31:06 INFO Executor: Running task 1.0 in stage 5.0 (TID 10)
+21/11/28 14:31:06 INFO TaskSetManager: Finished task 0.0 in stage 5.0 (TID 9) in 8223 ms on eliza.home (executor driver) (1/5)
+21/11/28 14:31:06 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 134217728-268435456, partition values: [empty row]
+21/11/28 14:31:06 INFO InternalParquetRecordReader: RecordReader initialized will read a total of 1419538 records.
+21/11/28 14:31:06 INFO InternalParquetRecordReader: at row 0. reading next block
+21/11/28 14:31:06 INFO InternalParquetRecordReader: block read in memory in 65 ms. row count = 1419538
+21/11/28 14:31:13 INFO Executor: Finished task 1.0 in stage 5.0 (TID 10). 1639 bytes result sent to driver
+21/11/28 14:31:13 INFO TaskSetManager: Starting task 2.0 in stage 5.0 (TID 11) (eliza.home, executor driver, partition 2, PROCESS_LOCAL, 4899 bytes) taskResourceAssignments Map()
+21/11/28 14:31:13 INFO Executor: Running task 2.0 in stage 5.0 (TID 11)
+21/11/28 14:31:13 INFO TaskSetManager: Finished task 1.0 in stage 5.0 (TID 10) in 7926 ms on eliza.home (executor driver) (2/5)
+21/11/28 14:31:13 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 268435456-402653184, partition values: [empty row]
+21/11/28 14:31:13 INFO InternalParquetRecordReader: RecordReader initialized will read a total of 1418743 records.
+21/11/28 14:31:13 INFO InternalParquetRecordReader: at row 0. reading next block
+21/11/28 14:31:14 INFO InternalParquetRecordReader: block read in memory in 64 ms. row count = 1418743
+21/11/28 14:31:21 INFO Executor: Finished task 2.0 in stage 5.0 (TID 11). 1639 bytes result sent to driver
+21/11/28 14:31:21 INFO TaskSetManager: Starting task 3.0 in stage 5.0 (TID 12) (eliza.home, executor driver, partition 3, PROCESS_LOCAL, 4899 bytes) taskResourceAssignments Map()
+21/11/28 14:31:21 INFO TaskSetManager: Finished task 2.0 in stage 5.0 (TID 11) in 7525 ms on eliza.home (executor driver) (3/5)
+21/11/28 14:31:21 INFO Executor: Running task 3.0 in stage 5.0 (TID 12)
+21/11/28 14:31:21 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 402653184-536870912, partition values: [empty row]
+21/11/28 14:31:21 INFO InternalParquetRecordReader: RecordReader initialized will read a total of 1418974 records.
+21/11/28 14:31:21 INFO InternalParquetRecordReader: at row 0. reading next block
+21/11/28 14:31:21 INFO InternalParquetRecordReader: block read in memory in 47 ms. row count = 1418974
+21/11/28 14:31:29 INFO Executor: Finished task 3.0 in stage 5.0 (TID 12). 1639 bytes result sent to driver
+21/11/28 14:31:29 INFO TaskSetManager: Starting task 4.0 in stage 5.0 (TID 13) (eliza.home, executor driver, partition 4, PROCESS_LOCAL, 4899 bytes) taskResourceAssignments Map()
+21/11/28 14:31:29 INFO TaskSetManager: Finished task 3.0 in stage 5.0 (TID 12) in 8097 ms on eliza.home (executor driver) (4/5)
+21/11/28 14:31:29 INFO Executor: Running task 4.0 in stage 5.0 (TID 13)
+21/11/28 14:31:29 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 536870912-564472329, partition values: [empty row]
+21/11/28 14:31:29 INFO InternalParquetRecordReader: RecordReader initialized will read a total of 365342 records.
+21/11/28 14:31:29 INFO InternalParquetRecordReader: at row 0. reading next block
+21/11/28 14:31:29 INFO InternalParquetRecordReader: block read in memory in 18 ms. row count = 365342
+21/11/28 14:31:31 INFO Executor: Finished task 4.0 in stage 5.0 (TID 13). 1639 bytes result sent to driver
+21/11/28 14:31:31 INFO TaskSetManager: Finished task 4.0 in stage 5.0 (TID 13) in 1925 ms on eliza.home (executor driver) (5/5)
+21/11/28 14:31:31 INFO TaskSchedulerImpl: Removed TaskSet 5.0, whose tasks have all completed, from pool 
+21/11/28 14:31:31 INFO DAGScheduler: ResultStage 5 (aggregate at DecisionTreeMetadata.scala:125) finished in 33.699 s
+21/11/28 14:31:31 INFO DAGScheduler: Job 4 is finished. Cancelling potential speculative or zombie tasks for this job
+21/11/28 14:31:31 INFO TaskSchedulerImpl: Killing all running tasks in stage 5: Stage finished
+21/11/28 14:31:31 INFO DAGScheduler: Job 4 finished: aggregate at DecisionTreeMetadata.scala:125, took 33.701874 s
+21/11/28 14:31:32 INFO SparkContext: Starting job: collectAsMap at RandomForest.scala:1054
+21/11/28 14:31:32 INFO DAGScheduler: Registering RDD 29 (flatMap at RandomForest.scala:1039) as input to shuffle 1
+21/11/28 14:31:32 INFO DAGScheduler: Got job 5 (collectAsMap at RandomForest.scala:1054) with 5 output partitions
+21/11/28 14:31:32 INFO DAGScheduler: Final stage: ResultStage 7 (collectAsMap at RandomForest.scala:1054)
+21/11/28 14:31:32 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 6)
+21/11/28 14:31:32 INFO DAGScheduler: Missing parents: List(ShuffleMapStage 6)
+21/11/28 14:31:32 INFO DAGScheduler: Submitting ShuffleMapStage 6 (MapPartitionsRDD[29] at flatMap at RandomForest.scala:1039), which has no missing parents
+21/11/28 14:31:32 WARN DAGScheduler: Broadcasting large task binary with size 9.9 MiB
+21/11/28 14:31:32 INFO MemoryStore: Block broadcast_9 stored as values in memory (estimated size 9.9 MiB, free 355.7 MiB)
+21/11/28 14:31:32 INFO MemoryStore: Block broadcast_9_piece0 stored as bytes in memory (estimated size 3.9 MiB, free 351.9 MiB)
+21/11/28 14:31:32 INFO BlockManagerInfo: Added broadcast_9_piece0 in memory on eliza.home:63093 (size: 3.9 MiB, free: 362.4 MiB)
+21/11/28 14:31:32 INFO SparkContext: Created broadcast 9 from broadcast at DAGScheduler.scala:1388
+21/11/28 14:31:32 INFO DAGScheduler: Submitting 5 missing tasks from ShuffleMapStage 6 (MapPartitionsRDD[29] at flatMap at RandomForest.scala:1039) (first 15 tasks are for partitions Vector(0, 1, 2, 3, 4))
+21/11/28 14:31:32 INFO TaskSchedulerImpl: Adding task set 6.0 with 5 tasks resource profile 0
+21/11/28 14:31:32 INFO TaskSetManager: Starting task 0.0 in stage 6.0 (TID 14) (eliza.home, executor driver, partition 0, PROCESS_LOCAL, 4997 bytes) taskResourceAssignments Map()
+21/11/28 14:31:32 INFO Executor: Running task 0.0 in stage 6.0 (TID 14)
+21/11/28 14:31:32 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 0-134217728, partition values: [empty row]
+21/11/28 14:31:32 INFO InternalParquetRecordReader: RecordReader initialized will read a total of 1419538 records.
+21/11/28 14:31:32 INFO InternalParquetRecordReader: at row 0. reading next block
+21/11/28 14:31:32 INFO InternalParquetRecordReader: block read in memory in 72 ms. row count = 1419538
+21/11/28 14:31:33 INFO BlockManagerInfo: Removed broadcast_8_piece0 on eliza.home:63093 in memory (size: 9.2 KiB, free: 362.4 MiB)
+21/11/28 14:33:08 INFO Executor: Finished task 0.0 in stage 6.0 (TID 14). 1863 bytes result sent to driver
+21/11/28 14:33:08 INFO TaskSetManager: Starting task 1.0 in stage 6.0 (TID 15) (eliza.home, executor driver, partition 1, PROCESS_LOCAL, 4997 bytes) taskResourceAssignments Map()
+21/11/28 14:33:08 INFO Executor: Running task 1.0 in stage 6.0 (TID 15)
+21/11/28 14:33:08 INFO TaskSetManager: Finished task 0.0 in stage 6.0 (TID 14) in 96323 ms on eliza.home (executor driver) (1/5)
+21/11/28 14:33:08 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 134217728-268435456, partition values: [empty row]
+21/11/28 14:33:08 INFO InternalParquetRecordReader: RecordReader initialized will read a total of 1419538 records.
+21/11/28 14:33:08 INFO InternalParquetRecordReader: at row 0. reading next block
+21/11/28 14:33:09 INFO InternalParquetRecordReader: block read in memory in 65 ms. row count = 1419538
+21/11/28 14:34:48 INFO Executor: Finished task 1.0 in stage 6.0 (TID 15). 1863 bytes result sent to driver
+21/11/28 14:34:48 INFO TaskSetManager: Starting task 2.0 in stage 6.0 (TID 16) (eliza.home, executor driver, partition 2, PROCESS_LOCAL, 4997 bytes) taskResourceAssignments Map()
+21/11/28 14:34:48 INFO TaskSetManager: Finished task 1.0 in stage 6.0 (TID 15) in 99396 ms on eliza.home (executor driver) (2/5)
+21/11/28 14:34:48 INFO Executor: Running task 2.0 in stage 6.0 (TID 16)
+21/11/28 14:34:48 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 268435456-402653184, partition values: [empty row]
+21/11/28 14:34:48 INFO InternalParquetRecordReader: RecordReader initialized will read a total of 1418743 records.
+21/11/28 14:34:48 INFO InternalParquetRecordReader: at row 0. reading next block
+21/11/28 14:34:48 INFO InternalParquetRecordReader: block read in memory in 55 ms. row count = 1418743
+21/11/28 14:36:15 INFO Executor: Finished task 2.0 in stage 6.0 (TID 16). 1863 bytes result sent to driver
+21/11/28 14:36:15 INFO TaskSetManager: Starting task 3.0 in stage 6.0 (TID 17) (eliza.home, executor driver, partition 3, PROCESS_LOCAL, 4997 bytes) taskResourceAssignments Map()
+21/11/28 14:36:15 INFO Executor: Running task 3.0 in stage 6.0 (TID 17)
+21/11/28 14:36:15 INFO TaskSetManager: Finished task 2.0 in stage 6.0 (TID 16) in 87399 ms on eliza.home (executor driver) (3/5)
+21/11/28 14:36:15 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 402653184-536870912, partition values: [empty row]
+21/11/28 14:36:15 INFO InternalParquetRecordReader: RecordReader initialized will read a total of 1418974 records.
+21/11/28 14:36:15 INFO InternalParquetRecordReader: at row 0. reading next block
+21/11/28 14:36:15 INFO InternalParquetRecordReader: block read in memory in 46 ms. row count = 1418974
+21/11/28 14:37:40 INFO Executor: Finished task 3.0 in stage 6.0 (TID 17). 1863 bytes result sent to driver
+21/11/28 14:37:40 INFO TaskSetManager: Starting task 4.0 in stage 6.0 (TID 18) (eliza.home, executor driver, partition 4, PROCESS_LOCAL, 4997 bytes) taskResourceAssignments Map()
+21/11/28 14:37:40 INFO Executor: Running task 4.0 in stage 6.0 (TID 18)
+21/11/28 14:37:40 INFO TaskSetManager: Finished task 3.0 in stage 6.0 (TID 17) in 84790 ms on eliza.home (executor driver) (4/5)
+21/11/28 14:37:40 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 536870912-564472329, partition values: [empty row]
+21/11/28 14:37:40 INFO InternalParquetRecordReader: RecordReader initialized will read a total of 365342 records.
+21/11/28 14:37:40 INFO InternalParquetRecordReader: at row 0. reading next block
+21/11/28 14:37:40 INFO InternalParquetRecordReader: block read in memory in 15 ms. row count = 365342
+21/11/28 14:38:02 INFO Executor: Finished task 4.0 in stage 6.0 (TID 18). 1863 bytes result sent to driver
+21/11/28 14:38:02 INFO TaskSetManager: Finished task 4.0 in stage 6.0 (TID 18) in 21931 ms on eliza.home (executor driver) (5/5)
+21/11/28 14:38:02 INFO TaskSchedulerImpl: Removed TaskSet 6.0, whose tasks have all completed, from pool 
+21/11/28 14:38:02 INFO DAGScheduler: ShuffleMapStage 6 (flatMap at RandomForest.scala:1039) finished in 390.262 s
+21/11/28 14:38:02 INFO DAGScheduler: looking for newly runnable stages
+21/11/28 14:38:02 INFO DAGScheduler: running: Set()
+21/11/28 14:38:02 INFO DAGScheduler: waiting: Set(ResultStage 7)
+21/11/28 14:38:02 INFO DAGScheduler: failed: Set()
+21/11/28 14:38:02 INFO DAGScheduler: Submitting ResultStage 7 (MapPartitionsRDD[31] at map at RandomForest.scala:1054), which has no missing parents
+21/11/28 14:38:02 WARN DAGScheduler: Broadcasting large task binary with size 3.8 MiB
+21/11/28 14:38:02 INFO MemoryStore: Block broadcast_10 stored as values in memory (estimated size 3.8 MiB, free 348.1 MiB)
+21/11/28 14:38:02 INFO MemoryStore: Block broadcast_10_piece0 stored as bytes in memory (estimated size 24.2 KiB, free 348.0 MiB)
+21/11/28 14:38:02 INFO BlockManagerInfo: Added broadcast_10_piece0 in memory on eliza.home:63093 (size: 24.2 KiB, free: 362.3 MiB)
+21/11/28 14:38:02 INFO SparkContext: Created broadcast 10 from broadcast at DAGScheduler.scala:1388
+21/11/28 14:38:02 INFO DAGScheduler: Submitting 5 missing tasks from ResultStage 7 (MapPartitionsRDD[31] at map at RandomForest.scala:1054) (first 15 tasks are for partitions Vector(0, 1, 2, 3, 4))
+21/11/28 14:38:02 INFO TaskSchedulerImpl: Adding task set 7.0 with 5 tasks resource profile 0
+21/11/28 14:38:02 INFO TaskSetManager: Starting task 0.0 in stage 7.0 (TID 19) (eliza.home, executor driver, partition 0, NODE_LOCAL, 4271 bytes) taskResourceAssignments Map()
+21/11/28 14:38:02 INFO Executor: Running task 0.0 in stage 7.0 (TID 19)
+21/11/28 14:38:02 INFO ShuffleBlockFetcherIterator: Getting 5 (815.8 KiB) non-empty blocks including 5 (815.8 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) remote blocks
+21/11/28 14:38:02 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+21/11/28 14:38:02 INFO Executor: Finished task 0.0 in stage 7.0 (TID 19). 310573 bytes result sent to driver
+21/11/28 14:38:02 INFO TaskSetManager: Starting task 1.0 in stage 7.0 (TID 20) (eliza.home, executor driver, partition 1, NODE_LOCAL, 4271 bytes) taskResourceAssignments Map()
+21/11/28 14:38:02 INFO Executor: Running task 1.0 in stage 7.0 (TID 20)
+21/11/28 14:38:02 INFO ShuffleBlockFetcherIterator: Getting 5 (780.5 KiB) non-empty blocks including 5 (780.5 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) remote blocks
+21/11/28 14:38:02 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+21/11/28 14:38:02 INFO TaskSetManager: Finished task 0.0 in stage 7.0 (TID 19) in 441 ms on eliza.home (executor driver) (1/5)
+21/11/28 14:38:02 INFO Executor: Finished task 1.0 in stage 7.0 (TID 20). 309643 bytes result sent to driver
+21/11/28 14:38:02 INFO TaskSetManager: Starting task 2.0 in stage 7.0 (TID 21) (eliza.home, executor driver, partition 2, NODE_LOCAL, 4271 bytes) taskResourceAssignments Map()
+21/11/28 14:38:02 INFO Executor: Running task 2.0 in stage 7.0 (TID 21)
+21/11/28 14:38:02 INFO ShuffleBlockFetcherIterator: Getting 5 (773.7 KiB) non-empty blocks including 5 (773.7 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) remote blocks
+21/11/28 14:38:02 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+21/11/28 14:38:02 INFO TaskSetManager: Finished task 1.0 in stage 7.0 (TID 20) in 240 ms on eliza.home (executor driver) (2/5)
+21/11/28 14:38:03 INFO Executor: Finished task 2.0 in stage 7.0 (TID 21). 307920 bytes result sent to driver
+21/11/28 14:38:03 INFO TaskSetManager: Starting task 3.0 in stage 7.0 (TID 22) (eliza.home, executor driver, partition 3, NODE_LOCAL, 4271 bytes) taskResourceAssignments Map()
+21/11/28 14:38:03 INFO Executor: Running task 3.0 in stage 7.0 (TID 22)
+21/11/28 14:38:03 INFO ShuffleBlockFetcherIterator: Getting 5 (780.5 KiB) non-empty blocks including 5 (780.5 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) remote blocks
+21/11/28 14:38:03 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+21/11/28 14:38:03 INFO TaskSetManager: Finished task 2.0 in stage 7.0 (TID 21) in 202 ms on eliza.home (executor driver) (3/5)
+21/11/28 14:38:03 INFO Executor: Finished task 3.0 in stage 7.0 (TID 22). 308981 bytes result sent to driver
+21/11/28 14:38:03 INFO TaskSetManager: Starting task 4.0 in stage 7.0 (TID 23) (eliza.home, executor driver, partition 4, NODE_LOCAL, 4271 bytes) taskResourceAssignments Map()
+21/11/28 14:38:03 INFO Executor: Running task 4.0 in stage 7.0 (TID 23)
+21/11/28 14:38:03 INFO ShuffleBlockFetcherIterator: Getting 5 (791.4 KiB) non-empty blocks including 5 (791.4 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) remote blocks
+21/11/28 14:38:03 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+21/11/28 14:38:03 INFO TaskSetManager: Finished task 3.0 in stage 7.0 (TID 22) in 200 ms on eliza.home (executor driver) (4/5)
+21/11/28 14:38:03 INFO Executor: Finished task 4.0 in stage 7.0 (TID 23). 303010 bytes result sent to driver
+21/11/28 14:38:03 INFO TaskSetManager: Finished task 4.0 in stage 7.0 (TID 23) in 198 ms on eliza.home (executor driver) (5/5)
+21/11/28 14:38:03 INFO TaskSchedulerImpl: Removed TaskSet 7.0, whose tasks have all completed, from pool 
+21/11/28 14:38:03 INFO DAGScheduler: ResultStage 7 (collectAsMap at RandomForest.scala:1054) finished in 1.271 s
+21/11/28 14:38:03 INFO DAGScheduler: Job 5 is finished. Cancelling potential speculative or zombie tasks for this job
+21/11/28 14:38:03 INFO TaskSchedulerImpl: Killing all running tasks in stage 7: Stage finished
+21/11/28 14:38:03 INFO DAGScheduler: Job 5 finished: collectAsMap at RandomForest.scala:1054, took 391.574367 s
+21/11/28 14:38:03 INFO BlockManagerInfo: Removed broadcast_10_piece0 on eliza.home:63093 in memory (size: 24.2 KiB, free: 362.4 MiB)
+21/11/28 14:38:04 INFO MemoryStore: Block broadcast_11 stored as values in memory (estimated size 19.7 MiB, free 332.2 MiB)
+21/11/28 14:38:04 INFO MemoryStore: Block broadcast_11_piece0 stored as bytes in memory (estimated size 399.4 KiB, free 331.8 MiB)
+21/11/28 14:38:04 INFO BlockManagerInfo: Added broadcast_11_piece0 in memory on eliza.home:63093 (size: 399.4 KiB, free: 362.0 MiB)
+21/11/28 14:38:04 INFO SparkContext: Created broadcast 11 from broadcast at RandomForest.scala:293
+21/11/28 14:38:04 INFO Instrumentation: [6c67ef22] {"numFeatures":999999}
+21/11/28 14:38:04 INFO Instrumentation: [6c67ef22] {"numClasses":1}
+21/11/28 14:38:04 INFO Instrumentation: [6c67ef22] {"numExamples":6042135}
+21/11/28 14:38:04 INFO Instrumentation: [6c67ef22] {"sumOfWeights":6042135.0}
+21/11/28 14:38:04 INFO MemoryStore: Block broadcast_12 stored as values in memory (estimated size 200.5 KiB, free 331.6 MiB)
+21/11/28 14:38:04 INFO MemoryStore: Block broadcast_12_piece0 stored as bytes in memory (estimated size 196.7 KiB, free 331.4 MiB)
+21/11/28 14:38:04 INFO BlockManagerInfo: Added broadcast_12_piece0 in memory on eliza.home:63093 (size: 196.7 KiB, free: 361.8 MiB)
+21/11/28 14:38:04 INFO SparkContext: Created broadcast 12 from broadcast at RandomForest.scala:622
+21/11/28 14:38:04 INFO SparkContext: Starting job: collectAsMap at RandomForest.scala:663
+21/11/28 14:38:04 INFO DAGScheduler: Registering RDD 34 (mapPartitions at RandomForest.scala:644) as input to shuffle 2
+21/11/28 14:38:04 INFO DAGScheduler: Got job 6 (collectAsMap at RandomForest.scala:663) with 5 output partitions
+21/11/28 14:38:04 INFO DAGScheduler: Final stage: ResultStage 9 (collectAsMap at RandomForest.scala:663)
+21/11/28 14:38:04 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 8)
+21/11/28 14:38:04 INFO DAGScheduler: Missing parents: List(ShuffleMapStage 8)
+21/11/28 14:38:04 INFO DAGScheduler: Submitting ShuffleMapStage 8 (MapPartitionsRDD[34] at mapPartitions at RandomForest.scala:644), which has no missing parents
+21/11/28 14:38:05 WARN DAGScheduler: Broadcasting large task binary with size 17.6 MiB
+21/11/28 14:38:05 INFO MemoryStore: Block broadcast_13 stored as values in memory (estimated size 17.6 MiB, free 313.8 MiB)
+21/11/28 14:38:05 INFO MemoryStore: Block broadcast_13_piece0 stored as bytes in memory (estimated size 721.8 KiB, free 313.1 MiB)
+21/11/28 14:38:05 INFO BlockManagerInfo: Added broadcast_13_piece0 in memory on eliza.home:63093 (size: 721.8 KiB, free: 361.1 MiB)
+21/11/28 14:38:05 INFO SparkContext: Created broadcast 13 from broadcast at DAGScheduler.scala:1388
+21/11/28 14:38:05 INFO DAGScheduler: Submitting 5 missing tasks from ShuffleMapStage 8 (MapPartitionsRDD[34] at mapPartitions at RandomForest.scala:644) (first 15 tasks are for partitions Vector(0, 1, 2, 3, 4))
+21/11/28 14:38:05 INFO TaskSchedulerImpl: Adding task set 8.0 with 5 tasks resource profile 0
+21/11/28 14:38:05 INFO TaskSetManager: Starting task 0.0 in stage 8.0 (TID 24) (eliza.home, executor driver, partition 0, PROCESS_LOCAL, 4888 bytes) taskResourceAssignments Map()
+21/11/28 14:38:05 INFO Executor: Running task 0.0 in stage 8.0 (TID 24)
+21/11/28 14:38:05 INFO FileScanRDD: Reading File path: file:///Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet, range: 0-134217728, partition values: [empty row]
+21/11/28 14:38:05 INFO InternalParquetRecordReader: RecordReader initialized will read a total of 1419538 records.
+21/11/28 14:38:05 INFO InternalParquetRecordReader: at row 0. reading next block
+21/11/28 14:38:05 INFO InternalParquetRecordReader: block read in memory in 92 ms. row count = 1419538
+21/11/28 14:38:06 INFO BlockManagerInfo: Removed broadcast_9_piece0 on eliza.home:63093 in memory (size: 3.9 MiB, free: 365.0 MiB)
+21/11/28 14:38:06 INFO MemoryStore: Will not store rdd_33_0
+21/11/28 14:38:06 WARN MemoryStore: Not enough space to cache rdd_33_0 in memory! (computed 248.0 MiB so far)
+21/11/28 14:38:06 INFO MemoryStore: Memory use = 39.5 MiB (blocks) + 188.8 MiB (scratch space shared across 1 tasks(s)) = 228.3 MiB. Storage limit = 366.3 MiB.
+21/11/28 14:38:06 WARN BlockManager: Persisting block rdd_33_0 to disk instead.
+21/11/28 14:43:33 INFO TaskSchedulerImpl: Cancelling stage 8
+21/11/28 14:43:33 INFO TaskSchedulerImpl: Killing all running tasks in stage 8: Stage cancelled
+21/11/28 14:43:33 INFO SparkContext: Invoking stop() from shutdown hook
+21/11/28 14:43:33 INFO Executor: Executor is trying to kill task 0.0 in stage 8.0 (TID 24), reason: Stage cancelled
+21/11/28 14:43:33 INFO TaskSchedulerImpl: Stage 8 was cancelled
+21/11/28 14:43:33 INFO DAGScheduler: ShuffleMapStage 8 (mapPartitions at RandomForest.scala:644) failed in 328.926 s due to Job 6 cancelled as part of cancellation of all jobs
+21/11/28 14:43:33 INFO DAGScheduler: Job 6 failed: collectAsMap at RandomForest.scala:663, took 328.932592 s
+21/11/28 14:43:33 ERROR Instrumentation: org.apache.spark.SparkException: Job 6 cancelled as part of cancellation of all jobs
 	at org.apache.spark.scheduler.DAGScheduler.failJobAndIndependentStages(DAGScheduler.scala:2258)
 	at org.apache.spark.scheduler.DAGScheduler.handleJobCancellation(DAGScheduler.scala:2154)
 	at org.apache.spark.scheduler.DAGScheduler.$anonfun$doCancelAllJobs$2(DAGScheduler.scala:972)
@@ -112,167 +818,22 @@ java.lang.OutOfMemoryError: Java heap space
 	at org.apache.spark.util.EventLoop$$anon$1.run(EventLoop.scala:49)
 	at org.apache.spark.scheduler.DAGScheduler.runJob(DAGScheduler.scala:868)
 	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2196)
-	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2291)
-	at org.apache.spark.rdd.RDD.$anonfun$fold$1(RDD.scala:1183)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2217)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2236)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2261)
+	at org.apache.spark.rdd.RDD.$anonfun$collect$1(RDD.scala:1030)
 	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151)
 	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:112)
 	at org.apache.spark.rdd.RDD.withScope(RDD.scala:414)
-	at org.apache.spark.rdd.RDD.fold(RDD.scala:1177)
-	at org.apache.spark.rdd.RDD.$anonfun$treeAggregate$1(RDD.scala:1246)
+	at org.apache.spark.rdd.RDD.collect(RDD.scala:1029)
+	at org.apache.spark.rdd.PairRDDFunctions.$anonfun$collectAsMap$1(PairRDDFunctions.scala:737)
 	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151)
 	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:112)
 	at org.apache.spark.rdd.RDD.withScope(RDD.scala:414)
-	at org.apache.spark.rdd.RDD.treeAggregate(RDD.scala:1222)
-	at org.apache.spark.ml.stat.Summarizer$.getClassificationSummarizers(Summarizer.scala:232)
-	at org.apache.spark.ml.classification.LogisticRegression.$anonfun$train$1(LogisticRegression.scala:510)
-	at org.apache.spark.ml.util.Instrumentation$.$anonfun$instrumented$1(Instrumentation.scala:191)
-	at scala.util.Try$.apply(Try.scala:213)
-	at org.apache.spark.ml.util.Instrumentation$.instrumented(Instrumentation.scala:191)
-	at org.apache.spark.ml.classification.LogisticRegression.train(LogisticRegression.scala:494)
-	at org.apache.spark.ml.classification.LogisticRegression.train(LogisticRegression.scala:285)
-	at org.apache.spark.ml.Predictor.fit(Predictor.scala:151)
-	at org.apache.spark.ml.Predictor.fit(Predictor.scala:115)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
-	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
-	at py4j.Gateway.invoke(Gateway.java:282)
-	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
-	at py4j.commands.CallCommand.execute(CallCommand.java:79)
-	at py4j.GatewayConnection.run(GatewayConnection.java:238)
-	at java.lang.Thread.run(Thread.java:748)
-
-21/11/28 13:42:45 ERROR SparkUncaughtExceptionHandler: Uncaught exception in thread Thread[Executor task launch worker for task 4.0 in stage 2.0 (TID 6),5,main]
-java.lang.OutOfMemoryError: Java heap space
-	at scala.reflect.ManifestFactory$DoubleManifest.newArray(Manifest.scala:194)
-	at scala.reflect.ManifestFactory$DoubleManifest.newArray(Manifest.scala:191)
-	at scala.Array$.ofDim(Array.scala:221)
-	at org.apache.spark.ml.stat.SummarizerBuffer.add(Summarizer.scala:472)
-	at org.apache.spark.ml.stat.SummarizerBuffer.add(Summarizer.scala:544)
-	at org.apache.spark.ml.stat.Summarizer$.$anonfun$getClassificationSummarizers$1(Summarizer.scala:234)
-	at org.apache.spark.ml.stat.Summarizer$$$Lambda$2454/1541066980.apply(Unknown Source)
-	at scala.collection.TraversableOnce.$anonfun$foldLeft$1(TraversableOnce.scala:162)
-	at scala.collection.TraversableOnce.$anonfun$foldLeft$1$adapted(TraversableOnce.scala:162)
-	at scala.collection.TraversableOnce$$Lambda$139/1841396611.apply(Unknown Source)
-	at scala.collection.Iterator.foreach(Iterator.scala:941)
-	at scala.collection.Iterator.foreach$(Iterator.scala:941)
-	at scala.collection.AbstractIterator.foreach(Iterator.scala:1429)
-	at scala.collection.TraversableOnce.foldLeft(TraversableOnce.scala:162)
-	at scala.collection.TraversableOnce.foldLeft$(TraversableOnce.scala:160)
-	at scala.collection.AbstractIterator.foldLeft(Iterator.scala:1429)
-	at scala.collection.TraversableOnce.aggregate(TraversableOnce.scala:219)
-	at scala.collection.TraversableOnce.aggregate$(TraversableOnce.scala:219)
-	at scala.collection.AbstractIterator.aggregate(Iterator.scala:1429)
-	at org.apache.spark.rdd.RDD.$anonfun$treeAggregate$3(RDD.scala:1230)
-	at org.apache.spark.rdd.RDD$$Lambda$2456/2030165684.apply(Unknown Source)
-	at org.apache.spark.rdd.RDD.$anonfun$treeAggregate$5(RDD.scala:1231)
-	at org.apache.spark.rdd.RDD$$Lambda$2457/1025209582.apply(Unknown Source)
-	at org.apache.spark.rdd.RDD.$anonfun$mapPartitions$2(RDD.scala:863)
-	at org.apache.spark.rdd.RDD.$anonfun$mapPartitions$2$adapted(RDD.scala:863)
-	at org.apache.spark.rdd.RDD$$Lambda$1406/1889553831.apply(Unknown Source)
-	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
-	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:373)
-	at org.apache.spark.rdd.RDD.iterator(RDD.scala:337)
-	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
-	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:373)
-	at org.apache.spark.rdd.RDD.iterator(RDD.scala:337)
-21/11/28 13:42:45 ERROR SparkUncaughtExceptionHandler: Uncaught exception in thread Thread[Executor task launch worker for task 7.0 in stage 2.0 (TID 9),5,main]
-java.lang.OutOfMemoryError: Java heap space
-21/11/28 13:42:45 ERROR SparkUncaughtExceptionHandler: Uncaught exception in thread Thread[Executor task launch worker for task 9.0 in stage 2.0 (TID 11),5,main]
-java.lang.OutOfMemoryError: Java heap space
-21/11/28 13:42:45 ERROR SparkUncaughtExceptionHandler: Uncaught exception in thread Thread[Executor task launch worker for task 1.0 in stage 2.0 (TID 3),5,main]
-java.lang.OutOfMemoryError: Java heap space
-	at scala.reflect.ManifestFactory$DoubleManifest.newArray(Manifest.scala:194)
-	at scala.reflect.ManifestFactory$DoubleManifest.newArray(Manifest.scala:191)
-	at scala.Array$.ofDim(Array.scala:221)
-	at org.apache.spark.ml.stat.SummarizerBuffer.add(Summarizer.scala:476)
-	at org.apache.spark.ml.stat.SummarizerBuffer.add(Summarizer.scala:544)
-	at org.apache.spark.ml.stat.Summarizer$.$anonfun$getClassificationSummarizers$1(Summarizer.scala:234)
-	at org.apache.spark.ml.stat.Summarizer$$$Lambda$2454/1541066980.apply(Unknown Source)
-	at scala.collection.TraversableOnce.$anonfun$foldLeft$1(TraversableOnce.scala:162)
-	at scala.collection.TraversableOnce.$anonfun$foldLeft$1$adapted(TraversableOnce.scala:162)
-	at scala.collection.TraversableOnce$$Lambda$139/1841396611.apply(Unknown Source)
-	at scala.collection.Iterator.foreach(Iterator.scala:941)
-	at scala.collection.Iterator.foreach$(Iterator.scala:941)
-	at scala.collection.AbstractIterator.foreach(Iterator.scala:1429)
-	at scala.collection.TraversableOnce.foldLeft(TraversableOnce.scala:162)
-	at scala.collection.TraversableOnce.foldLeft$(TraversableOnce.scala:160)
-	at scala.collection.AbstractIterator.foldLeft(Iterator.scala:1429)
-	at scala.collection.TraversableOnce.aggregate(TraversableOnce.scala:219)
-	at scala.collection.TraversableOnce.aggregate$(TraversableOnce.scala:219)
-	at scala.collection.AbstractIterator.aggregate(Iterator.scala:1429)
-	at org.apache.spark.rdd.RDD.$anonfun$treeAggregate$3(RDD.scala:1230)
-	at org.apache.spark.rdd.RDD$$Lambda$2456/2030165684.apply(Unknown Source)
-	at org.apache.spark.rdd.RDD.$anonfun$treeAggregate$5(RDD.scala:1231)
-	at org.apache.spark.rdd.RDD$$Lambda$2457/1025209582.apply(Unknown Source)
-	at org.apache.spark.rdd.RDD.$anonfun$mapPartitions$2(RDD.scala:863)
-	at org.apache.spark.rdd.RDD.$anonfun$mapPartitions$2$adapted(RDD.scala:863)
-	at org.apache.spark.rdd.RDD$$Lambda$1406/1889553831.apply(Unknown Source)
-	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
-	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:373)
-	at org.apache.spark.rdd.RDD.iterator(RDD.scala:337)
-	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
-	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:373)
-	at org.apache.spark.rdd.RDD.iterator(RDD.scala:337)
-21/11/28 13:42:45 WARN TaskSetManager: Lost task 11.0 in stage 2.0 (TID 13) (eliza.home executor driver): TaskKilled (Stage cancelled)
-21/11/28 13:42:45 WARN TaskSetManager: Lost task 7.0 in stage 2.0 (TID 9) (eliza.home executor driver): java.lang.OutOfMemoryError: Java heap space
-
-
-real	0m14.884s
-user	0m0.296s
-sys	0m0.110s
-21/11/28 13:42:47 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
-Setting default log level to "WARN".
-To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
-21/11/28 13:42:48 WARN Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
-[Stage 0:>                                                          (0 + 1) / 1]                                                                                [Stage 2:=================================>                        (7 + 5) / 12]                                                                                [Stage 6:=================================>                        (7 + 5) / 12]Traceback (most recent call last):
-  File "run_spark.py", line 52, in <module>
-    model = pipeline.fit(training)
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/pyspark/ml/base.py", line 161, in fit
-    return self._fit(dataset)
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/pyspark/ml/pipeline.py", line 114, in _fit
-    model = stage.fit(dataset)
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/pyspark/ml/base.py", line 161, in fit
-    return self._fit(dataset)
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/pyspark/ml/wrapper.py", line 335, in _fit
-    java_model = self._fit_java(dataset)
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/pyspark/ml/wrapper.py", line 332, in _fit_java
-    return self._java_obj.fit(dataset._jdf)
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/py4j/java_gateway.py", line 1303, in __call__
-    answer = self.gateway_client.send_command(command)
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/py4j/java_gateway.py", line 1033, in send_command
-    response = connection.send_command(command)
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/py4j/java_gateway.py", line 1200, in send_command
-    answer = smart_decode(self.stream.readline()[:-1])
-  File "/usr/local/anaconda3/lib/python3.7/socket.py", line 589, in readinto
-    return self._sock.recv_into(b)
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/pyspark/context.py", line 285, in signal_handler
-    raise KeyboardInterrupt()
-KeyboardInterrupt
-21/11/28 13:43:01 ERROR Instrumentation: org.apache.spark.SparkException: Job 5 cancelled as part of cancellation of all jobs
-	at org.apache.spark.scheduler.DAGScheduler.failJobAndIndependentStages(DAGScheduler.scala:2258)
-	at org.apache.spark.scheduler.DAGScheduler.handleJobCancellation(DAGScheduler.scala:2154)
-	at org.apache.spark.scheduler.DAGScheduler.$anonfun$doCancelAllJobs$2(DAGScheduler.scala:972)
-	at scala.runtime.java8.JFunction1$mcVI$sp.apply(JFunction1$mcVI$sp.java:23)
-	at scala.collection.mutable.HashSet.foreach(HashSet.scala:79)
-	at org.apache.spark.scheduler.DAGScheduler.doCancelAllJobs(DAGScheduler.scala:971)
-	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.doOnReceive(DAGScheduler.scala:2410)
-	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2387)
-	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2376)
-	at org.apache.spark.util.EventLoop$$anon$1.run(EventLoop.scala:49)
-	at org.apache.spark.scheduler.DAGScheduler.runJob(DAGScheduler.scala:868)
-	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2196)
-	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2291)
-	at org.apache.spark.rdd.RDD.$anonfun$aggregate$1(RDD.scala:1209)
-	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151)
-	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:112)
-	at org.apache.spark.rdd.RDD.withScope(RDD.scala:414)
-	at org.apache.spark.rdd.RDD.aggregate(RDD.scala:1202)
-	at org.apache.spark.ml.tree.impl.DecisionTreeMetadata$.buildMetadata(DecisionTreeMetadata.scala:125)
-	at org.apache.spark.ml.tree.impl.RandomForest$.run(RandomForest.scala:274)
+	at org.apache.spark.rdd.PairRDDFunctions.collectAsMap(PairRDDFunctions.scala:736)
+	at org.apache.spark.ml.tree.impl.RandomForest$.findBestSplits(RandomForest.scala:663)
+	at org.apache.spark.ml.tree.impl.RandomForest$.runBagged(RandomForest.scala:208)
+	at org.apache.spark.ml.tree.impl.RandomForest$.run(RandomForest.scala:302)
 	at org.apache.spark.ml.classification.RandomForestClassifier.$anonfun$train$1(RandomForestClassifier.scala:161)
 	at org.apache.spark.ml.util.Instrumentation$.$anonfun$instrumented$1(Instrumentation.scala:191)
 	at scala.util.Try$.apply(Try.scala:213)
@@ -293,99 +854,499 @@ KeyboardInterrupt
 	at py4j.GatewayConnection.run(GatewayConnection.java:238)
 	at java.lang.Thread.run(Thread.java:748)
 
-21/11/28 13:43:01 WARN TaskSetManager: Lost task 4.0 in stage 6.0 (TID 24) (eliza.home executor driver): TaskKilled (Stage cancelled)
-21/11/28 13:43:01 WARN TaskSetManager: Lost task 1.0 in stage 6.0 (TID 21) (eliza.home executor driver): TaskKilled (Stage cancelled)
-21/11/28 13:43:01 WARN TaskSetManager: Lost task 9.0 in stage 6.0 (TID 29) (eliza.home executor driver): TaskKilled (Stage cancelled)
-21/11/28 13:43:01 WARN TaskSetManager: Lost task 11.0 in stage 6.0 (TID 31) (eliza.home executor driver): TaskKilled (Stage cancelled)
-21/11/28 13:43:01 WARN TaskSetManager: Lost task 7.0 in stage 6.0 (TID 27) (eliza.home executor driver): TaskKilled (Stage cancelled)
+21/11/28 14:43:33 INFO SparkUI: Stopped Spark web UI at http://eliza.home:4041
+21/11/28 14:43:33 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+21/11/28 14:43:33 INFO MemoryStore: MemoryStore cleared
+21/11/28 14:43:33 INFO BlockManager: BlockManager stopped
+21/11/28 14:43:33 INFO BlockManagerMaster: BlockManagerMaster stopped
+21/11/28 14:43:33 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+21/11/28 14:43:33 INFO SparkContext: Successfully stopped SparkContext
+21/11/28 14:43:33 INFO ShutdownHookManager: Shutdown hook called
+21/11/28 14:43:33 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-8faf76b4-51f7-46f4-8251-bee0caeb0c53
+21/11/28 14:43:33 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-c1930072-6ddd-47bd-9828-3cc86aa40b27
+21/11/28 14:43:33 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-8faf76b4-51f7-46f4-8251-bee0caeb0c53/pyspark-3bc928b6-ff22-4e9b-b957-2c895ed38c6b
 
-real	0m16.432s
-user	0m0.333s
-sys	0m0.142s
-Traceback (most recent call last):
-  File "run_spark.py", line 1, in <module>
-    from dspipes import MllibPipelines
-  File "/Users/david/Projects/pipelines/dspipes/MllibPipelines.py", line 2, in <module>
-    from pyspark.ml import Pipeline
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/pyspark/__init__.py", line 53, in <module>
-    from pyspark.rdd import RDD, RDDBarrier
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/pyspark/rdd.py", line 34, in <module>
-    from pyspark.java_gateway import local_connect_and_auth
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/pyspark/java_gateway.py", line 24, in <module>
-    import platform
-  File "/usr/local/anaconda3/lib/python3.7/platform.py", line 154, in <module>
-    _component_re = re.compile(r'([0-9]+|[._+-])')
-  File "/usr/local/anaconda3/lib/python3.7/re.py", line 234, in compile
-    return _compile(pattern, flags)
-  File "/usr/local/anaconda3/lib/python3.7/re.py", line 286, in _compile
-    p = sre_compile.compile(pattern, flags)
-  File "/usr/local/anaconda3/lib/python3.7/sre_compile.py", line 764, in compile
-    p = sre_parse.parse(p, flags)
-  File "/usr/local/anaconda3/lib/python3.7/sre_parse.py", line 924, in parse
-    p = _parse_sub(source, pattern, flags & SRE_FLAG_VERBOSE, 0)
-  File "/usr/local/anaconda3/lib/python3.7/sre_parse.py", line 420, in _parse_sub
-    not nested and not items))
-  File "/usr/local/anaconda3/lib/python3.7/sre_parse.py", line 805, in _parse
-    group = state.opengroup(name)
-  File "/usr/local/anaconda3/lib/python3.7/sre_parse.py", line 84, in opengroup
-    def opengroup(self, name=None):
-KeyboardInterrupt
-
-real	0m0.116s
-user	0m0.053s
-sys	0m0.030s
-Traceback (most recent call last):
-  File "run_spark.py", line 1, in <module>
-    from dspipes import MllibPipelines
-  File "/Users/david/Projects/pipelines/dspipes/MllibPipelines.py", line 2, in <module>
-    from pyspark.ml import Pipeline
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/pyspark/__init__.py", line 53, in <module>
-    from pyspark.rdd import RDD, RDDBarrier
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/pyspark/rdd.py", line 40, in <module>
-    from pyspark.statcounter import StatCounter
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/pyspark/statcounter.py", line 24, in <module>
-    from numpy import maximum, minimum, sqrt
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/numpy/__init__.py", line 145, in <module>
-    from . import lib
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/numpy/lib/__init__.py", line 23, in <module>
-    from . import scimath as emath
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/numpy/lib/scimath.py", line 229, in <module>
-    @array_function_dispatch(_unary_dispatcher)
-KeyboardInterrupt
-
-real	0m0.172s
-user	0m0.100s
-sys	0m0.040s
-21/11/28 13:43:04 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+real	12m47.227s
+user	27m58.641s
+sys	0m8.939s
+run_experiments.sh: line 3: run_spark.py: command not found
+21/11/28 14:43:35 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
-Setting default log level to "WARN".
-To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
-21/11/28 13:43:05 WARN Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
-[Stage 0:>                                                          (0 + 1) / 1]                                                                                Traceback (most recent call last):
-  File "run_spark.py", line 52, in <module>
-    model = pipeline.fit(training)
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/pyspark/ml/base.py", line 161, in fit
-    return self._fit(dataset)
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/pyspark/ml/pipeline.py", line 114, in _fit
-    model = stage.fit(dataset)
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/pyspark/ml/base.py", line 161, in fit
-    return self._fit(dataset)
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/pyspark/ml/wrapper.py", line 335, in _fit
-    java_model = self._fit_java(dataset)
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/pyspark/ml/wrapper.py", line 332, in _fit_java
-    return self._java_obj.fit(dataset._jdf)
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/py4j/java_gateway.py", line 1303, in __call__
-    answer = self.gateway_client.send_command(command)
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/py4j/java_gateway.py", line 1033, in send_command
-    response = connection.send_command(command)
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/py4j/java_gateway.py", line 1200, in send_command
-    answer = smart_decode(self.stream.readline()[:-1])
-  File "/usr/local/anaconda3/lib/python3.7/socket.py", line 589, in readinto
-    return self._sock.recv_into(b)
-  File "/usr/local/anaconda3/lib/python3.7/site-packages/pyspark/context.py", line 285, in signal_handler
-    raise KeyboardInterrupt()
-KeyboardInterrupt
+21/11/28 14:43:36 INFO SparkContext: Running Spark version 3.1.2
+21/11/28 14:43:36 INFO ResourceUtils: ==============================================================
+21/11/28 14:43:36 INFO ResourceUtils: No custom resources configured for spark.driver.
+21/11/28 14:43:36 INFO ResourceUtils: ==============================================================
+21/11/28 14:43:36 INFO SparkContext: Submitted application: run_spark.py
+21/11/28 14:43:36 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 19456, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+21/11/28 14:43:36 INFO ResourceProfile: Limiting resource is cpus at 1 tasks per executor
+21/11/28 14:43:36 INFO ResourceProfileManager: Added ResourceProfile id: 0
+21/11/28 14:43:36 INFO SecurityManager: Changing view acls to: david
+21/11/28 14:43:36 INFO SecurityManager: Changing modify acls to: david
+21/11/28 14:43:36 INFO SecurityManager: Changing view acls groups to: 
+21/11/28 14:43:36 INFO SecurityManager: Changing modify acls groups to: 
+21/11/28 14:43:36 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(david); groups with view permissions: Set(); users  with modify permissions: Set(david); groups with modify permissions: Set()
+21/11/28 14:43:36 INFO Utils: Successfully started service 'sparkDriver' on port 63283.
+21/11/28 14:43:36 INFO SparkEnv: Registering MapOutputTracker
+21/11/28 14:43:36 INFO SparkEnv: Registering BlockManagerMaster
+21/11/28 14:43:36 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+21/11/28 14:43:36 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+21/11/28 14:43:36 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+21/11/28 14:43:36 INFO DiskBlockManager: Created local directory at /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/blockmgr-05aeffd4-a1e0-4918-b1f1-7e22cf030024
+21/11/28 14:43:36 INFO MemoryStore: MemoryStore started with capacity 366.3 MiB
+21/11/28 14:43:36 INFO SparkEnv: Registering OutputCommitCoordinator
+21/11/28 14:43:37 WARN Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
+21/11/28 14:43:37 INFO Utils: Successfully started service 'SparkUI' on port 4041.
+21/11/28 14:43:37 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://eliza.home:4041
+21/11/28 14:43:37 INFO Executor: Starting executor ID driver on host eliza.home
+21/11/28 14:43:37 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 63284.
+21/11/28 14:43:37 INFO NettyBlockTransferService: Server created on eliza.home:63284
+21/11/28 14:43:37 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+21/11/28 14:43:37 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, eliza.home, 63284, None)
+21/11/28 14:43:37 INFO BlockManagerMasterEndpoint: Registering block manager eliza.home:63284 with 366.3 MiB RAM, BlockManagerId(driver, eliza.home, 63284, None)
+21/11/28 14:43:37 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, eliza.home, 63284, None)
+21/11/28 14:43:37 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, eliza.home, 63284, None)
+21/11/28 14:43:37 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir ('file:/Users/david/Projects/pipelines/spark-warehouse').
+21/11/28 14:43:37 INFO SharedState: Warehouse path is 'file:/Users/david/Projects/pipelines/spark-warehouse'.
+21/11/28 14:43:38 INFO SparkUI: Stopped Spark web UI at http://eliza.home:4041
+21/11/28 14:43:38 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+21/11/28 14:43:38 INFO MemoryStore: MemoryStore cleared
+21/11/28 14:43:38 INFO BlockManager: BlockManager stopped
+21/11/28 14:43:38 INFO BlockManagerMaster: BlockManagerMaster stopped
+21/11/28 14:43:38 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+21/11/28 14:43:38 INFO SparkContext: Successfully stopped SparkContext
+21/11/28 14:43:38 INFO ShutdownHookManager: Shutdown hook called
+21/11/28 14:43:38 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-11438cce-a494-4cc3-aeba-682fa8c6d11c
+21/11/28 14:43:38 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-28a50478-16f7-490d-a1b3-b2e0a994b579/pyspark-193adce8-2140-43bb-b2ea-51627bc4473a
+21/11/28 14:43:38 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-28a50478-16f7-490d-a1b3-b2e0a994b579
 
-real	0m7.723s
-user	0m0.301s
-sys	0m0.116s
+real	0m4.324s
+user	0m7.030s
+sys	0m0.530s
+21/11/28 14:43:39 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+log4j:WARN No appenders could be found for logger (org.apache.spark.util.ShutdownHookManager).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+
+real	0m1.516s
+user	0m2.487s
+sys	0m0.259s
+21/11/28 14:43:41 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+21/11/28 14:43:42 INFO SparkContext: Running Spark version 3.1.2
+21/11/28 14:43:42 INFO ResourceUtils: ==============================================================
+21/11/28 14:43:42 INFO ResourceUtils: No custom resources configured for spark.driver.
+21/11/28 14:43:42 INFO ResourceUtils: ==============================================================
+21/11/28 14:43:42 INFO SparkContext: Submitted application: run_spark.py
+21/11/28 14:43:42 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 19456, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+21/11/28 14:43:42 INFO ResourceProfile: Limiting resource is cpus at 1 tasks per executor
+21/11/28 14:43:42 INFO ResourceProfileManager: Added ResourceProfile id: 0
+21/11/28 14:43:42 INFO SecurityManager: Changing view acls to: david
+21/11/28 14:43:42 INFO SecurityManager: Changing modify acls to: david
+21/11/28 14:43:42 INFO SecurityManager: Changing view acls groups to: 
+21/11/28 14:43:42 INFO SecurityManager: Changing modify acls groups to: 
+21/11/28 14:43:42 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(david); groups with view permissions: Set(); users  with modify permissions: Set(david); groups with modify permissions: Set()
+21/11/28 14:43:42 INFO Utils: Successfully started service 'sparkDriver' on port 63292.
+21/11/28 14:43:42 INFO SparkEnv: Registering MapOutputTracker
+21/11/28 14:43:42 INFO SparkEnv: Registering BlockManagerMaster
+21/11/28 14:43:42 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+21/11/28 14:43:42 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+21/11/28 14:43:42 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+21/11/28 14:43:42 INFO DiskBlockManager: Created local directory at /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/blockmgr-eb4754c6-b0d3-4c7a-8bc9-192deee5ac74
+21/11/28 14:43:42 INFO MemoryStore: MemoryStore started with capacity 366.3 MiB
+21/11/28 14:43:42 INFO SparkEnv: Registering OutputCommitCoordinator
+21/11/28 14:43:43 WARN Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
+21/11/28 14:43:43 INFO Utils: Successfully started service 'SparkUI' on port 4041.
+21/11/28 14:43:43 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://eliza.home:4041
+21/11/28 14:43:43 INFO Executor: Starting executor ID driver on host eliza.home
+21/11/28 14:43:43 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 63295.
+21/11/28 14:43:43 INFO NettyBlockTransferService: Server created on eliza.home:63295
+21/11/28 14:43:43 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+21/11/28 14:43:43 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, eliza.home, 63295, None)
+21/11/28 14:43:43 INFO BlockManagerMasterEndpoint: Registering block manager eliza.home:63295 with 366.3 MiB RAM, BlockManagerId(driver, eliza.home, 63295, None)
+21/11/28 14:43:43 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, eliza.home, 63295, None)
+21/11/28 14:43:43 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, eliza.home, 63295, None)
+21/11/28 14:43:43 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir ('file:/Users/david/Projects/pipelines/spark-warehouse').
+21/11/28 14:43:43 INFO SharedState: Warehouse path is 'file:/Users/david/Projects/pipelines/spark-warehouse'.
+21/11/28 14:43:44 INFO SparkUI: Stopped Spark web UI at http://eliza.home:4041
+21/11/28 14:43:44 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+21/11/28 14:43:44 INFO MemoryStore: MemoryStore cleared
+21/11/28 14:43:44 INFO BlockManager: BlockManager stopped
+21/11/28 14:43:44 INFO BlockManagerMaster: BlockManagerMaster stopped
+21/11/28 14:43:44 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+21/11/28 14:43:44 INFO SparkContext: Successfully stopped SparkContext
+21/11/28 14:43:44 INFO ShutdownHookManager: Shutdown hook called
+21/11/28 14:43:44 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-afa38217-d989-4cb1-8f3e-cf14aae35328/pyspark-e3ccb0b2-8ca9-4a3f-b030-ec60160567db
+21/11/28 14:43:44 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-afa38217-d989-4cb1-8f3e-cf14aae35328
+21/11/28 14:43:44 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-31c1f727-d3fe-481b-8677-c0705ed66fa6
+
+real	0m4.215s
+user	0m7.438s
+sys	0m0.499s
+21/11/28 14:43:45 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+21/11/28 14:43:46 INFO SparkContext: Running Spark version 3.1.2
+21/11/28 14:43:46 INFO ResourceUtils: ==============================================================
+21/11/28 14:43:46 INFO ResourceUtils: No custom resources configured for spark.driver.
+21/11/28 14:43:46 INFO ResourceUtils: ==============================================================
+21/11/28 14:43:46 INFO SparkContext: Submitted application: run_spark.py
+21/11/28 14:43:46 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 19456, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+21/11/28 14:43:46 INFO ResourceProfile: Limiting resource is cpus at 1 tasks per executor
+21/11/28 14:43:46 INFO ResourceProfileManager: Added ResourceProfile id: 0
+21/11/28 14:43:46 INFO SecurityManager: Changing view acls to: david
+21/11/28 14:43:46 INFO SecurityManager: Changing modify acls to: david
+21/11/28 14:43:46 INFO SecurityManager: Changing view acls groups to: 
+21/11/28 14:43:46 INFO SecurityManager: Changing modify acls groups to: 
+21/11/28 14:43:46 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(david); groups with view permissions: Set(); users  with modify permissions: Set(david); groups with modify permissions: Set()
+21/11/28 14:43:46 INFO Utils: Successfully started service 'sparkDriver' on port 63299.
+21/11/28 14:43:46 INFO SparkEnv: Registering MapOutputTracker
+21/11/28 14:43:46 INFO SparkEnv: Registering BlockManagerMaster
+21/11/28 14:43:46 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+21/11/28 14:43:46 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+21/11/28 14:43:46 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+21/11/28 14:43:46 INFO DiskBlockManager: Created local directory at /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/blockmgr-5d53abd6-13c1-488b-ace3-c18c2f85ecf2
+21/11/28 14:43:46 INFO MemoryStore: MemoryStore started with capacity 366.3 MiB
+21/11/28 14:43:46 INFO SparkEnv: Registering OutputCommitCoordinator
+21/11/28 14:43:46 WARN Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
+21/11/28 14:43:46 INFO Utils: Successfully started service 'SparkUI' on port 4041.
+21/11/28 14:43:46 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://eliza.home:4041
+21/11/28 14:43:47 INFO Executor: Starting executor ID driver on host eliza.home
+21/11/28 14:43:47 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 63300.
+21/11/28 14:43:47 INFO NettyBlockTransferService: Server created on eliza.home:63300
+21/11/28 14:43:47 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+21/11/28 14:43:47 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, eliza.home, 63300, None)
+21/11/28 14:43:47 INFO BlockManagerMasterEndpoint: Registering block manager eliza.home:63300 with 366.3 MiB RAM, BlockManagerId(driver, eliza.home, 63300, None)
+21/11/28 14:43:47 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, eliza.home, 63300, None)
+21/11/28 14:43:47 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, eliza.home, 63300, None)
+21/11/28 14:43:47 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir ('file:/Users/david/Projects/pipelines/spark-warehouse').
+21/11/28 14:43:47 INFO SharedState: Warehouse path is 'file:/Users/david/Projects/pipelines/spark-warehouse'.
+21/11/28 14:43:48 INFO SparkUI: Stopped Spark web UI at http://eliza.home:4041
+21/11/28 14:43:48 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+21/11/28 14:43:48 INFO MemoryStore: MemoryStore cleared
+21/11/28 14:43:48 INFO BlockManager: BlockManager stopped
+21/11/28 14:43:48 INFO BlockManagerMaster: BlockManagerMaster stopped
+21/11/28 14:43:48 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+21/11/28 14:43:48 INFO SparkContext: Successfully stopped SparkContext
+21/11/28 14:43:48 INFO ShutdownHookManager: Shutdown hook called
+21/11/28 14:43:48 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-b436af1f-602c-4d64-8345-fae344209c16/pyspark-66c991a4-5185-48b0-bb49-84bad791ce28
+21/11/28 14:43:48 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-a326132b-c57c-4b1e-bc1a-2f227cbc55a0
+21/11/28 14:43:48 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-b436af1f-602c-4d64-8345-fae344209c16
+
+real	0m3.728s
+user	0m6.536s
+sys	0m0.452s
+21/11/28 14:43:49 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+21/11/28 14:43:50 INFO SparkContext: Running Spark version 3.1.2
+21/11/28 14:43:50 INFO ResourceUtils: ==============================================================
+21/11/28 14:43:50 INFO ResourceUtils: No custom resources configured for spark.driver.
+21/11/28 14:43:50 INFO ResourceUtils: ==============================================================
+21/11/28 14:43:50 INFO SparkContext: Submitted application: run_spark.py
+21/11/28 14:43:50 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 19456, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+21/11/28 14:43:50 INFO ResourceProfile: Limiting resource is cpus at 1 tasks per executor
+21/11/28 14:43:50 INFO ResourceProfileManager: Added ResourceProfile id: 0
+21/11/28 14:43:50 INFO SecurityManager: Changing view acls to: david
+21/11/28 14:43:50 INFO SecurityManager: Changing modify acls to: david
+21/11/28 14:43:50 INFO SecurityManager: Changing view acls groups to: 
+21/11/28 14:43:50 INFO SecurityManager: Changing modify acls groups to: 
+21/11/28 14:43:50 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(david); groups with view permissions: Set(); users  with modify permissions: Set(david); groups with modify permissions: Set()
+21/11/28 14:43:50 INFO Utils: Successfully started service 'sparkDriver' on port 63305.
+21/11/28 14:43:50 INFO SparkEnv: Registering MapOutputTracker
+21/11/28 14:43:50 INFO SparkEnv: Registering BlockManagerMaster
+21/11/28 14:43:50 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+21/11/28 14:43:50 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+21/11/28 14:43:50 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+21/11/28 14:43:50 INFO DiskBlockManager: Created local directory at /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/blockmgr-65f5d0ee-7ed3-4793-851c-105e662f085b
+21/11/28 14:43:50 INFO MemoryStore: MemoryStore started with capacity 366.3 MiB
+21/11/28 14:43:50 INFO SparkEnv: Registering OutputCommitCoordinator
+21/11/28 14:43:50 WARN Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
+21/11/28 14:43:50 INFO Utils: Successfully started service 'SparkUI' on port 4041.
+21/11/28 14:43:50 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://eliza.home:4041
+21/11/28 14:43:50 INFO Executor: Starting executor ID driver on host eliza.home
+21/11/28 14:43:50 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 63306.
+21/11/28 14:43:50 INFO NettyBlockTransferService: Server created on eliza.home:63306
+21/11/28 14:43:50 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+21/11/28 14:43:50 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, eliza.home, 63306, None)
+21/11/28 14:43:50 INFO BlockManagerMasterEndpoint: Registering block manager eliza.home:63306 with 366.3 MiB RAM, BlockManagerId(driver, eliza.home, 63306, None)
+21/11/28 14:43:50 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, eliza.home, 63306, None)
+21/11/28 14:43:50 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, eliza.home, 63306, None)
+21/11/28 14:43:51 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir ('file:/Users/david/Projects/pipelines/spark-warehouse').
+21/11/28 14:43:51 INFO SharedState: Warehouse path is 'file:/Users/david/Projects/pipelines/spark-warehouse'.
+21/11/28 14:43:51 INFO SparkUI: Stopped Spark web UI at http://eliza.home:4041
+21/11/28 14:43:51 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+21/11/28 14:43:51 INFO MemoryStore: MemoryStore cleared
+21/11/28 14:43:51 INFO BlockManager: BlockManager stopped
+21/11/28 14:43:51 INFO BlockManagerMaster: BlockManagerMaster stopped
+21/11/28 14:43:51 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+21/11/28 14:43:51 INFO SparkContext: Successfully stopped SparkContext
+21/11/28 14:43:51 INFO ShutdownHookManager: Shutdown hook called
+21/11/28 14:43:51 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-f5800661-4139-4860-b0a1-9d0753c90a32
+21/11/28 14:43:51 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-bbd6b333-a381-43c7-9a99-f0cbfbaa7c30/pyspark-3cc92ea5-2af0-4f83-9ae0-501cf689981f
+21/11/28 14:43:51 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-bbd6b333-a381-43c7-9a99-f0cbfbaa7c30
+
+real	0m3.738s
+user	0m6.528s
+sys	0m0.451s
+21/11/28 14:43:53 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+21/11/28 14:43:53 INFO SparkContext: Running Spark version 3.1.2
+21/11/28 14:43:53 INFO ResourceUtils: ==============================================================
+21/11/28 14:43:53 INFO ResourceUtils: No custom resources configured for spark.driver.
+21/11/28 14:43:53 INFO ResourceUtils: ==============================================================
+21/11/28 14:43:53 INFO SparkContext: Submitted application: run_spark.py
+21/11/28 14:43:53 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 19456, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+21/11/28 14:43:53 INFO ResourceProfile: Limiting resource is cpus at 1 tasks per executor
+21/11/28 14:43:53 INFO ResourceProfileManager: Added ResourceProfile id: 0
+21/11/28 14:43:53 INFO SecurityManager: Changing view acls to: david
+21/11/28 14:43:53 INFO SecurityManager: Changing modify acls to: david
+21/11/28 14:43:53 INFO SecurityManager: Changing view acls groups to: 
+21/11/28 14:43:53 INFO SecurityManager: Changing modify acls groups to: 
+21/11/28 14:43:53 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(david); groups with view permissions: Set(); users  with modify permissions: Set(david); groups with modify permissions: Set()
+21/11/28 14:43:54 INFO Utils: Successfully started service 'sparkDriver' on port 63311.
+21/11/28 14:43:54 INFO SparkEnv: Registering MapOutputTracker
+21/11/28 14:43:54 INFO SparkEnv: Registering BlockManagerMaster
+21/11/28 14:43:54 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+21/11/28 14:43:54 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+21/11/28 14:43:54 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+21/11/28 14:43:54 INFO DiskBlockManager: Created local directory at /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/blockmgr-23e1f5a6-4e29-44b7-a2e9-33c5394c71c2
+21/11/28 14:43:54 INFO MemoryStore: MemoryStore started with capacity 366.3 MiB
+21/11/28 14:43:54 INFO SparkEnv: Registering OutputCommitCoordinator
+21/11/28 14:43:54 WARN Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
+21/11/28 14:43:54 INFO Utils: Successfully started service 'SparkUI' on port 4041.
+21/11/28 14:43:54 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://eliza.home:4041
+21/11/28 14:43:54 INFO Executor: Starting executor ID driver on host eliza.home
+21/11/28 14:43:54 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 63312.
+21/11/28 14:43:54 INFO NettyBlockTransferService: Server created on eliza.home:63312
+21/11/28 14:43:54 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+21/11/28 14:43:54 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, eliza.home, 63312, None)
+21/11/28 14:43:54 INFO BlockManagerMasterEndpoint: Registering block manager eliza.home:63312 with 366.3 MiB RAM, BlockManagerId(driver, eliza.home, 63312, None)
+21/11/28 14:43:54 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, eliza.home, 63312, None)
+21/11/28 14:43:54 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, eliza.home, 63312, None)
+21/11/28 14:43:54 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir ('file:/Users/david/Projects/pipelines/spark-warehouse').
+21/11/28 14:43:54 INFO SharedState: Warehouse path is 'file:/Users/david/Projects/pipelines/spark-warehouse'.
+21/11/28 14:43:55 INFO SparkUI: Stopped Spark web UI at http://eliza.home:4041
+21/11/28 14:43:55 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+21/11/28 14:43:55 INFO MemoryStore: MemoryStore cleared
+21/11/28 14:43:55 INFO BlockManager: BlockManager stopped
+21/11/28 14:43:55 INFO BlockManagerMaster: BlockManagerMaster stopped
+21/11/28 14:43:55 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+21/11/28 14:43:55 INFO SparkContext: Successfully stopped SparkContext
+21/11/28 14:43:55 INFO ShutdownHookManager: Shutdown hook called
+21/11/28 14:43:55 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-0e0ee07d-a9a1-45ef-ab81-cb063179c4c6/pyspark-e32f8970-e6f0-4a15-85bb-48afa761243f
+21/11/28 14:43:55 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-33d746d3-fa4d-4aa4-899b-4fe88c346321
+21/11/28 14:43:55 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-0e0ee07d-a9a1-45ef-ab81-cb063179c4c6
+
+real	0m3.597s
+user	0m6.329s
+sys	0m0.436s
+21/11/28 14:43:56 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+21/11/28 14:43:57 INFO SparkContext: Running Spark version 3.1.2
+21/11/28 14:43:57 INFO ResourceUtils: ==============================================================
+21/11/28 14:43:57 INFO ResourceUtils: No custom resources configured for spark.driver.
+21/11/28 14:43:57 INFO ResourceUtils: ==============================================================
+21/11/28 14:43:57 INFO SparkContext: Submitted application: run_spark.py
+21/11/28 14:43:57 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 19456, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+21/11/28 14:43:57 INFO ResourceProfile: Limiting resource is cpus at 1 tasks per executor
+21/11/28 14:43:57 INFO ResourceProfileManager: Added ResourceProfile id: 0
+21/11/28 14:43:57 INFO SecurityManager: Changing view acls to: david
+21/11/28 14:43:57 INFO SecurityManager: Changing modify acls to: david
+21/11/28 14:43:57 INFO SecurityManager: Changing view acls groups to: 
+21/11/28 14:43:57 INFO SecurityManager: Changing modify acls groups to: 
+21/11/28 14:43:57 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(david); groups with view permissions: Set(); users  with modify permissions: Set(david); groups with modify permissions: Set()
+21/11/28 14:43:57 INFO Utils: Successfully started service 'sparkDriver' on port 63316.
+21/11/28 14:43:57 INFO SparkEnv: Registering MapOutputTracker
+21/11/28 14:43:57 INFO SparkEnv: Registering BlockManagerMaster
+21/11/28 14:43:57 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+21/11/28 14:43:57 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+21/11/28 14:43:57 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+21/11/28 14:43:57 INFO DiskBlockManager: Created local directory at /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/blockmgr-88e583ca-fbf2-482e-be0d-bbeef1ad74eb
+21/11/28 14:43:57 INFO MemoryStore: MemoryStore started with capacity 366.3 MiB
+21/11/28 14:43:57 INFO SparkEnv: Registering OutputCommitCoordinator
+21/11/28 14:43:58 WARN Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
+21/11/28 14:43:58 INFO Utils: Successfully started service 'SparkUI' on port 4041.
+21/11/28 14:43:58 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://eliza.home:4041
+21/11/28 14:43:58 INFO Executor: Starting executor ID driver on host eliza.home
+21/11/28 14:43:58 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 63317.
+21/11/28 14:43:58 INFO NettyBlockTransferService: Server created on eliza.home:63317
+21/11/28 14:43:58 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+21/11/28 14:43:58 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, eliza.home, 63317, None)
+21/11/28 14:43:58 INFO BlockManagerMasterEndpoint: Registering block manager eliza.home:63317 with 366.3 MiB RAM, BlockManagerId(driver, eliza.home, 63317, None)
+21/11/28 14:43:58 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, eliza.home, 63317, None)
+21/11/28 14:43:58 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, eliza.home, 63317, None)
+21/11/28 14:43:58 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir ('file:/Users/david/Projects/pipelines/spark-warehouse').
+21/11/28 14:43:58 INFO SharedState: Warehouse path is 'file:/Users/david/Projects/pipelines/spark-warehouse'.
+21/11/28 14:43:59 INFO SparkUI: Stopped Spark web UI at http://eliza.home:4041
+21/11/28 14:43:59 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+21/11/28 14:43:59 INFO MemoryStore: MemoryStore cleared
+21/11/28 14:43:59 INFO BlockManager: BlockManager stopped
+21/11/28 14:43:59 INFO BlockManagerMaster: BlockManagerMaster stopped
+21/11/28 14:43:59 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+21/11/28 14:43:59 INFO SparkContext: Successfully stopped SparkContext
+21/11/28 14:43:59 INFO ShutdownHookManager: Shutdown hook called
+21/11/28 14:43:59 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-32fc04e0-685e-434b-bf50-09dee2e30610
+21/11/28 14:43:59 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-283ce7be-ae40-45ad-b783-96388c326383
+21/11/28 14:43:59 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-283ce7be-ae40-45ad-b783-96388c326383/pyspark-378ae9c0-c7f8-4473-847d-4d49c2752042
+
+real	0m3.724s
+user	0m6.425s
+sys	0m0.439s
+21/11/28 14:44:00 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+21/11/28 14:44:01 INFO SparkContext: Running Spark version 3.1.2
+21/11/28 14:44:01 INFO ResourceUtils: ==============================================================
+21/11/28 14:44:01 INFO ResourceUtils: No custom resources configured for spark.driver.
+21/11/28 14:44:01 INFO ResourceUtils: ==============================================================
+21/11/28 14:44:01 INFO SparkContext: Submitted application: run_spark.py
+21/11/28 14:44:01 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 19456, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+21/11/28 14:44:01 INFO ResourceProfile: Limiting resource is cpus at 1 tasks per executor
+21/11/28 14:44:01 INFO ResourceProfileManager: Added ResourceProfile id: 0
+21/11/28 14:44:01 INFO SecurityManager: Changing view acls to: david
+21/11/28 14:44:01 INFO SecurityManager: Changing modify acls to: david
+21/11/28 14:44:01 INFO SecurityManager: Changing view acls groups to: 
+21/11/28 14:44:01 INFO SecurityManager: Changing modify acls groups to: 
+21/11/28 14:44:01 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(david); groups with view permissions: Set(); users  with modify permissions: Set(david); groups with modify permissions: Set()
+21/11/28 14:44:01 INFO Utils: Successfully started service 'sparkDriver' on port 63323.
+21/11/28 14:44:01 INFO SparkEnv: Registering MapOutputTracker
+21/11/28 14:44:01 INFO SparkEnv: Registering BlockManagerMaster
+21/11/28 14:44:01 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+21/11/28 14:44:01 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+21/11/28 14:44:01 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+21/11/28 14:44:01 INFO DiskBlockManager: Created local directory at /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/blockmgr-3fdb03c8-6112-4a7a-b02f-1915ca232763
+21/11/28 14:44:01 INFO MemoryStore: MemoryStore started with capacity 366.3 MiB
+21/11/28 14:44:01 INFO SparkEnv: Registering OutputCommitCoordinator
+21/11/28 14:44:01 WARN Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
+21/11/28 14:44:01 INFO Utils: Successfully started service 'SparkUI' on port 4041.
+21/11/28 14:44:01 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://eliza.home:4041
+21/11/28 14:44:02 INFO Executor: Starting executor ID driver on host eliza.home
+21/11/28 14:44:02 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 63324.
+21/11/28 14:44:02 INFO NettyBlockTransferService: Server created on eliza.home:63324
+21/11/28 14:44:02 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+21/11/28 14:44:02 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, eliza.home, 63324, None)
+21/11/28 14:44:02 INFO BlockManagerMasterEndpoint: Registering block manager eliza.home:63324 with 366.3 MiB RAM, BlockManagerId(driver, eliza.home, 63324, None)
+21/11/28 14:44:02 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, eliza.home, 63324, None)
+21/11/28 14:44:02 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, eliza.home, 63324, None)
+21/11/28 14:44:02 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir ('file:/Users/david/Projects/pipelines/spark-warehouse').
+21/11/28 14:44:02 INFO SharedState: Warehouse path is 'file:/Users/david/Projects/pipelines/spark-warehouse'.
+21/11/28 14:44:02 INFO SparkUI: Stopped Spark web UI at http://eliza.home:4041
+21/11/28 14:44:02 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+21/11/28 14:44:02 INFO MemoryStore: MemoryStore cleared
+21/11/28 14:44:02 INFO BlockManager: BlockManager stopped
+21/11/28 14:44:03 INFO BlockManagerMaster: BlockManagerMaster stopped
+21/11/28 14:44:03 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+21/11/28 14:44:03 INFO SparkContext: Successfully stopped SparkContext
+21/11/28 14:44:03 INFO ShutdownHookManager: Shutdown hook called
+21/11/28 14:44:03 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-b772498b-10c3-4396-bb03-492eac8ed21f
+21/11/28 14:44:03 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-d5ca4d77-225f-4c10-9232-4a4ca16ef37b
+21/11/28 14:44:03 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-d5ca4d77-225f-4c10-9232-4a4ca16ef37b/pyspark-3c6be9fc-d380-486b-855c-182b75253786
+
+real	0m3.775s
+user	0m6.576s
+sys	0m0.459s
+21/11/28 14:44:04 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+21/11/28 14:44:04 INFO SparkContext: Running Spark version 3.1.2
+21/11/28 14:44:04 INFO ResourceUtils: ==============================================================
+21/11/28 14:44:04 INFO ResourceUtils: No custom resources configured for spark.driver.
+21/11/28 14:44:04 INFO ResourceUtils: ==============================================================
+21/11/28 14:44:04 INFO SparkContext: Submitted application: run_spark.py
+21/11/28 14:44:04 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 19456, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+21/11/28 14:44:04 INFO ResourceProfile: Limiting resource is cpus at 1 tasks per executor
+21/11/28 14:44:04 INFO ResourceProfileManager: Added ResourceProfile id: 0
+21/11/28 14:44:05 INFO SecurityManager: Changing view acls to: david
+21/11/28 14:44:05 INFO SecurityManager: Changing modify acls to: david
+21/11/28 14:44:05 INFO SecurityManager: Changing view acls groups to: 
+21/11/28 14:44:05 INFO SecurityManager: Changing modify acls groups to: 
+21/11/28 14:44:05 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(david); groups with view permissions: Set(); users  with modify permissions: Set(david); groups with modify permissions: Set()
+21/11/28 14:44:05 INFO Utils: Successfully started service 'sparkDriver' on port 63328.
+21/11/28 14:44:05 INFO SparkEnv: Registering MapOutputTracker
+21/11/28 14:44:05 INFO SparkEnv: Registering BlockManagerMaster
+21/11/28 14:44:05 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+21/11/28 14:44:05 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+21/11/28 14:44:05 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+21/11/28 14:44:05 INFO DiskBlockManager: Created local directory at /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/blockmgr-400a724c-3836-4d2d-9ef9-45e3ba4d2927
+21/11/28 14:44:05 INFO MemoryStore: MemoryStore started with capacity 366.3 MiB
+21/11/28 14:44:05 INFO SparkEnv: Registering OutputCommitCoordinator
+21/11/28 14:44:05 WARN Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
+21/11/28 14:44:05 INFO Utils: Successfully started service 'SparkUI' on port 4041.
+21/11/28 14:44:05 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://eliza.home:4041
+21/11/28 14:44:05 INFO Executor: Starting executor ID driver on host eliza.home
+21/11/28 14:44:05 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 63329.
+21/11/28 14:44:05 INFO NettyBlockTransferService: Server created on eliza.home:63329
+21/11/28 14:44:05 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+21/11/28 14:44:05 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, eliza.home, 63329, None)
+21/11/28 14:44:05 INFO BlockManagerMasterEndpoint: Registering block manager eliza.home:63329 with 366.3 MiB RAM, BlockManagerId(driver, eliza.home, 63329, None)
+21/11/28 14:44:05 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, eliza.home, 63329, None)
+21/11/28 14:44:05 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, eliza.home, 63329, None)
+21/11/28 14:44:05 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir ('file:/Users/david/Projects/pipelines/spark-warehouse').
+21/11/28 14:44:05 INFO SharedState: Warehouse path is 'file:/Users/david/Projects/pipelines/spark-warehouse'.
+21/11/28 14:44:06 INFO SparkUI: Stopped Spark web UI at http://eliza.home:4041
+21/11/28 14:44:06 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+21/11/28 14:44:06 INFO MemoryStore: MemoryStore cleared
+21/11/28 14:44:06 INFO BlockManager: BlockManager stopped
+21/11/28 14:44:06 INFO BlockManagerMaster: BlockManagerMaster stopped
+21/11/28 14:44:06 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+21/11/28 14:44:06 INFO SparkContext: Successfully stopped SparkContext
+21/11/28 14:44:06 INFO ShutdownHookManager: Shutdown hook called
+21/11/28 14:44:06 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-cc5e77ac-cfa5-4f26-9644-a7c96824cdd6
+21/11/28 14:44:06 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-3d134c6e-bedf-4be5-aa86-7da24111828a
+21/11/28 14:44:06 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-cc5e77ac-cfa5-4f26-9644-a7c96824cdd6/pyspark-9a31bc53-2f67-48ea-872a-bf18b07dbd67
+
+real	0m3.550s
+user	0m6.247s
+sys	0m0.437s
+21/11/28 14:44:07 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+21/11/28 14:44:08 INFO SparkContext: Running Spark version 3.1.2
+21/11/28 14:44:08 INFO ResourceUtils: ==============================================================
+21/11/28 14:44:08 INFO ResourceUtils: No custom resources configured for spark.driver.
+21/11/28 14:44:08 INFO ResourceUtils: ==============================================================
+21/11/28 14:44:08 INFO SparkContext: Submitted application: run_spark.py
+21/11/28 14:44:08 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 19456, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+21/11/28 14:44:08 INFO ResourceProfile: Limiting resource is cpus at 1 tasks per executor
+21/11/28 14:44:08 INFO ResourceProfileManager: Added ResourceProfile id: 0
+21/11/28 14:44:08 INFO SecurityManager: Changing view acls to: david
+21/11/28 14:44:08 INFO SecurityManager: Changing modify acls to: david
+21/11/28 14:44:08 INFO SecurityManager: Changing view acls groups to: 
+21/11/28 14:44:08 INFO SecurityManager: Changing modify acls groups to: 
+21/11/28 14:44:08 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(david); groups with view permissions: Set(); users  with modify permissions: Set(david); groups with modify permissions: Set()
+21/11/28 14:44:08 INFO Utils: Successfully started service 'sparkDriver' on port 63333.
+21/11/28 14:44:08 INFO SparkEnv: Registering MapOutputTracker
+21/11/28 14:44:09 INFO SparkEnv: Registering BlockManagerMaster
+21/11/28 14:44:09 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+21/11/28 14:44:09 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+21/11/28 14:44:09 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+21/11/28 14:44:09 INFO DiskBlockManager: Created local directory at /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/blockmgr-6ebf23e2-9f14-41ab-b174-e3529f536ae1
+21/11/28 14:44:09 INFO MemoryStore: MemoryStore started with capacity 366.3 MiB
+21/11/28 14:44:09 INFO SparkEnv: Registering OutputCommitCoordinator
+21/11/28 14:44:09 WARN Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
+21/11/28 14:44:09 INFO Utils: Successfully started service 'SparkUI' on port 4041.
+21/11/28 14:44:09 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://eliza.home:4041
+21/11/28 14:44:09 INFO Executor: Starting executor ID driver on host eliza.home
+21/11/28 14:44:09 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 63334.
+21/11/28 14:44:09 INFO NettyBlockTransferService: Server created on eliza.home:63334
+21/11/28 14:44:09 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+21/11/28 14:44:09 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, eliza.home, 63334, None)
+21/11/28 14:44:09 INFO BlockManagerMasterEndpoint: Registering block manager eliza.home:63334 with 366.3 MiB RAM, BlockManagerId(driver, eliza.home, 63334, None)
+21/11/28 14:44:09 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, eliza.home, 63334, None)
+21/11/28 14:44:09 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, eliza.home, 63334, None)
+21/11/28 14:44:10 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir ('file:/Users/david/Projects/pipelines/spark-warehouse').
+21/11/28 14:44:10 INFO SharedState: Warehouse path is 'file:/Users/david/Projects/pipelines/spark-warehouse'.
+21/11/28 14:44:10 INFO SparkUI: Stopped Spark web UI at http://eliza.home:4041
+21/11/28 14:44:10 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+21/11/28 14:44:10 INFO MemoryStore: MemoryStore cleared
+21/11/28 14:44:10 INFO BlockManager: BlockManager stopped
+21/11/28 14:44:10 INFO BlockManagerMaster: BlockManagerMaster stopped
+21/11/28 14:44:10 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+21/11/28 14:44:10 INFO SparkContext: Successfully stopped SparkContext
+21/11/28 14:44:10 INFO ShutdownHookManager: Shutdown hook called
+21/11/28 14:44:10 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-998bd8a5-b107-4e76-a6fd-dafa92fb9ffe
+21/11/28 14:44:10 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-f08b5043-c72d-4e90-9c4a-252719a50c18
+21/11/28 14:44:10 INFO ShutdownHookManager: Deleting directory /private/var/folders/7p/zfv1hfts7x9b_dct1qg9r9_c0000gn/T/spark-998bd8a5-b107-4e76-a6fd-dafa92fb9ffe/pyspark-eeca82e2-879a-40fe-8505-23652ba1c84f
+
+real	0m4.311s
+user	0m7.599s
+sys	0m0.511s
+
+real	0m0.601s
+user	0m0.824s
+sys	0m0.141s

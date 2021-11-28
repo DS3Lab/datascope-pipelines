@@ -44,11 +44,11 @@ if __name__ == "__main__":
         sc = SparkContext("local", "SparkML script")
         spark = SparkSession(sc)
 
-    pipeline = MllibPipelines.create_numerical_pipeline('pipe_' + pipeline_number, imputer=False, clf_mode=str(modelname))
+    pipeline = MllibPipelines.create_numerical_pipeline(f'pipe_{pipeline_number}', imputer=False, clf_mode=f'{modelname}')
 
     if dataset == 'Criteo':
         if run_type == 'cluster':
-            training_path = "s3://rumbleml-data/output/output.parquet"
+            training_path = "s3://rumbleml-data/output/output.parquet/"
             test_path = "s3://rumbleml-data/criteo.kaggle2014.test.parquet"
         else:
             training_path = "/Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet"
@@ -65,5 +65,5 @@ if __name__ == "__main__":
     correctY = predictionAndLabels.filter("label == prediction").count()
     total = predictionAndLabels.count()
     #end = time.perf_counter()
-    print(dataset, modelname, pipeline_number, (correctY / total))
+    print(f'{dataset} {modelname} {pipeline_number} {correctY / total}')
     #print(f'Time: {end - start}')

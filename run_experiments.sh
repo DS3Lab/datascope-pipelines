@@ -1,2 +1,16 @@
-time python run_spark.py -m NB -p 0 -d Criteo
 time python run_spark.py -m logistic -p 0 -d Criteo
+time python run_spark.py -m RandomForest -p 0 -d Criteo
+time python run_spark.py -m LinearSVC -p 0 -d Criteo
+time python run_spark.py -m NB -p 0 -d Criteo
+time python run_spark.py -m logistic -p 1 -d Criteo
+time python run_spark.py -m RandomForest -p 1 -d Criteo
+time python run_spark.py -m LinearSVC -p 1 -d Criteo
+time python run_spark.py -m NB -p 1 -d Criteo
+time python run_spark.py -m logistic -p 3 -d Criteo
+time python run_spark.py -m RandomForest -p 3 -d Criteo
+time python run_spark.py -m LinearSVC -p 3 -d Criteo
+time python run_spark.py -m NB -p 3 -d Criteo
+time python run_spark.py -m logistic -p 5 -d Criteo
+time python run_spark.py -m RandomForest -p 5 -d Criteo
+time python run_spark.py -m LinearSVC -p 5 -d Criteo
+time python run_spark.py -m NB -p 5 -d Criteo

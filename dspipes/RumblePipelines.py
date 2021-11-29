@@ -98,7 +98,7 @@ def _create_pipeline(ops):
     res = f'get-estimator("Pipeline", {{"stages": {arr}}})'
     return res
 
-def create_rumble_program(ops_mode, clf_mode='logistic', accuracy=True, n_test=6042135, **kwargs):
+def create_rumble_program(ops_mode, clf_mode='logistic', accuracy=True, n_test=6042135, dataset='YFCC' **kwargs):
 
     pipe_ops = get_pipe_ops(ops_mode)
     clf = get_clf(clf_mode, **kwargs)
@@ -121,8 +121,16 @@ def create_rumble_program(ops_mode, clf_mode='logistic', accuracy=True, n_test=6
     # {"id": 2, "label": 1, "col1": 0.0, "col2": 2.2, "col3": -1.5}
     # }"""
 
-    tr_data = """parquet-file("s3://rumbleml-data/output/output.parquet/")"""
-    test_data = """parquet-file("s3://rumbleml-data/criteo.kaggle2014.test.parquet")"""
+    if dataset == 'Criteo':
+        tr_data = """parquet-file("s3://rumbleml-data/output/output.parquet/")"""
+        test_data = """parquet-file("s3://rumbleml-data/criteo.kaggle2014.test.parquet")"""
+        total = 6042135
+    elif dataset == 'YFCC':
+        tr_data = """parquet-file("s3://rumbleml-data/YFCC100M_train.parquet/")"""
+        test_data = """parquet-file("s3://rumbleml-data/YFCC100M_test.parquet/")""" 
+        total = 540223
+    else:
+        raise(ValueError)
 
     if accuracy:
         program = (
@@ -133,7 +141,7 @@ def create_rumble_program(ops_mode, clf_mode='logistic', accuracy=True, n_test=6
             f'let $pipeline := {pipeline}\n'
             f'let $pip := $pipeline($training-data, {{}})\n'
             f'let $prediction := $pip($test-data, {{}})\n'
-            f'let $total := 6042135\n' 
+            f'let $total := {total}\n' 
             f'return count($prediction[$$.label eq $$.prediction]) div $total'
         )
     else:

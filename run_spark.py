@@ -53,8 +53,9 @@ if __name__ == "__main__":
         else:
             training_path = "/Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet"
             test_path = "/Users/david/Projects/rumble_testbed/criteo.kaggle2014.test.parquet"
-    else:
-        assert(dataset == 'YFCC')
+    elif dataset == 'YFCC':
+        training_path = 's3://rumbleml-data/YFCC100M_train.parquet/'
+        test_path = 's3://rumbleml-data/YFCC100M_test.parquet/'
 
     training = spark.read.load(training_path)
     test = spark.read.load(test_path)

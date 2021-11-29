@@ -1,8 +1,0 @@
-time spark-submit --num-executors 3 --executor-cores 1 --executor-memory 19g s3://rumbleml-data/rumble_experiments/rumbledb-1.16.0.jar --query-path 's3://rumbleml-data/rumble_experiments/query_0_logistic_Criteo.rumble'
-time spark-submit --num-executors 3 --executor-cores 1 --executor-memory 19g s3://rumbleml-data/rumble_experiments/rumbledb-1.16.0.jar --query-path 's3://rumbleml-data/rumble_experiments/query_1_logistic_Criteo.rumble'
-time spark-submit --num-executors 3 --executor-cores 1 --executor-memory 19g s3://rumbleml-data/rumble_experiments/rumbledb-1.16.0.jar --query-path 's3://rumbleml-data/rumble_experiments/query_3_logistic_Criteo.rumble'
-time spark-submit --num-executors 3 --executor-cores 1 --executor-memory 19g s3://rumbleml-data/rumble_experiments/rumbledb-1.16.0.jar --query-path 's3://rumbleml-data/rumble_experiments/query_5_logistic_Criteo.rumble'
-time spark-submit --num-executors 3 --executor-cores 1 --executor-memory 19g s3://rumbleml-data/rumble_experiments/rumbledb-1.16.0.jar --query-path 's3://rumbleml-data/rumble_experiments/query_0_logistic_Criteo.rumble'
-time spark-submit --num-executors 3 --executor-cores 1 --executor-memory 19g s3://rumbleml-data/rumble_experiments/rumbledb-1.16.0.jar --query-path 's3://rumbleml-data/rumble_experiments/query_1_logistic_Criteo.rumble'
-time spark-submit --num-executors 3 --executor-cores 1 --executor-memory 19g s3://rumbleml-data/rumble_experiments/rumbledb-1.16.0.jar --query-path 's3://rumbleml-data/rumble_experiments/query_3_logistic_Criteo.rumble'
-time spark-submit --num-executors 3 --executor-cores 1 --executor-memory 19g s3://rumbleml-data/rumble_experiments/rumbledb-1.16.0.jar --query-path 's3://rumbleml-data/rumble_experiments/query_5_logistic_Criteo.rumble'

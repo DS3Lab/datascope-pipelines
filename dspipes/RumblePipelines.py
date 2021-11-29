@@ -98,7 +98,7 @@ def _create_pipeline(ops):
     res = f'get-estimator("Pipeline", {{"stages": {arr}}})'
     return res
 
-def create_rumble_program(ops_mode, clf_mode='logistic', accuracy=True, n_test=6042135, dataset='YFCC' **kwargs):
+def create_rumble_program(ops_mode, clf_mode='logistic', accuracy=True, n_test=6042135, dataset='YFCC', **kwargs):
 
     pipe_ops = get_pipe_ops(ops_mode)
     clf = get_clf(clf_mode, **kwargs)

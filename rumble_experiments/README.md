@@ -6,6 +6,8 @@ Note: [overview of experiments](https://www.notion.so/ds3lab/RumbleML-8de8a950dd
 
 `rumbleML_scripts_generator` generates shell scripts and rumble scripts for experiments
 
+`run_all_experiments.sh` is the shell script for all experiments. Note: Unfortunately some pipelines are restricted from running (see research log for explanation) which is why we keep a commented version of this script in [this gist](https://gist.github.com/daviddao/ad94d43c80f050a616487fd0eafb8a62)
+
 In order to run the experiments within EMR, it might be required to move run_spark.py to the root.
 We log experiments through `2>` and `1>` with
 

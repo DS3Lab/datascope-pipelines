@@ -1,5 +1,7 @@
 ## RumbleML experiments
 
+Note: [overview of experiments](https://www.notion.so/ds3lab/RumbleML-8de8a950ddd840ec920dba193b11dc4d)
+
 `rumbleML_plots.ipynb` generates all experimental plots for RumbleML paper (WIP)
 
 `rumbleML_scripts_generator` generates shell scripts and rumble scripts for experiments

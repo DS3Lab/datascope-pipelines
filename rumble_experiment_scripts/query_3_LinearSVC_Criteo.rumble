@@ -1,9 +1,0 @@
-%%rumble
-let $training-data := parquet-file("s3://rumbleml-data/output/output.parquet/")
-let $test-data := parquet-file("s3://rumbleml-data/criteo.test.parquet")
-let $pca := get-estimator("PCA", {"inputCol": "features", "outputCol": "transformedFeatures", "k": 2})
-let $linearsvc := get-estimator("LinearSVC", {"featuresCol": "transformedFeatures"})
-let $pipeline := get-estimator("Pipeline", {"stages": [$pca, $linearsvc]})
-let $pip := $pipeline($training-data, {})
-let $total := 6042135
-return count($prediction[$$.label eq $$.prediction]) div $total

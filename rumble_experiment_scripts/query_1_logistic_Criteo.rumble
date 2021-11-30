@@ -1,9 +1,0 @@
-%%rumble
-let $training-data := parquet-file("s3://rumbleml-data/output/output.parquet/")
-let $test-data := parquet-file("s3://rumbleml-data/criteo.test.parquet")
-let $scaler := get-estimator("MaxAbsScaler", {"inputCol": "features", "outputCol": "transformedFeatures"})
-let $logisticregression := get-estimator("LogisticRegression", {"featuresCol": "transformedFeatures"})
-let $pipeline := get-estimator("Pipeline", {"stages": [$scaler, $logisticregression]})
-let $pip := $pipeline($training-data, {})
-let $total := 6042135
-return count($prediction[$$.label eq $$.prediction]) div $total

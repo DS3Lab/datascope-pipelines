@@ -3,7 +3,6 @@ from pyspark import SparkContext
 from pyspark.sql import SparkSession
 from pyspark.conf import SparkConf
 
-import time
 import argparse
 
 if __name__ == "__main__":
@@ -65,6 +64,4 @@ if __name__ == "__main__":
     predictionAndLabels = prediction.select("label", "prediction") 
     correctY = predictionAndLabels.filter("label == prediction").count()
     total = predictionAndLabels.count()
-    #end = time.perf_counter()
     print(f'{dataset} {modelname} {pipeline_number} {correctY / total}')
-    #print(f'Time: {end - start}')

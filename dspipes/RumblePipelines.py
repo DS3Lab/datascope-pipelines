@@ -5,16 +5,18 @@ def get_clf(mode, outputCol="transformedFeatures", **kwargs):
     clf = ''
     if mode == 'logistic':
         clf = ('$logisticregression','LogisticRegression')
+        res = [(f'{clf[0]}',f'get-estimator("{clf[1]}", {{"featuresCol": "{outputCol}", "maxIter": 5}})')]
     elif mode=='RandomForest':
         clf = ('$randomforest','RandomForestClassifier')
+        res = [(f'{clf[0]}',f'get-estimator("{clf[1]}", {{"featuresCol": "{outputCol}", "numTrees": 5}})')]
     elif mode=='LinearSVC':
         clf = ('$linearsvc','LinearSVC')
+        res = [(f'{clf[0]}',f'get-estimator("{clf[1]}", {{"featuresCol": "{outputCol}", "maxIter": 5}})')]
     elif mode=='NB':
         clf = ('$naivebayes','NaiveBayes')
-    elif mode=='linear':
-        clf = ('$linearregression','LinearRegression')
+        res = [(f'{clf[0]}',f'get-estimator("{clf[1]}", {{"featuresCol": "{outputCol}"}})')]
+    return res
     
-    return [(f'{clf[0]}',f'get-estimator("{clf[1]}", {{"featuresCol": "{outputCol}", "maxIter": 5}})')]
 
 def get_pipe_ops(mode, inputCol="features", outputCol="transformedFeatures"):
 

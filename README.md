@@ -4,10 +4,8 @@ Datascope evaluates on three dataset types: Image, Tabular and Text
 
 The datasets are:
 - CIFAR10
-- UCI Table Data
+- 20News Group
 - HateSpeech
-
-More information [here](https://docs.google.com/presentation/d/1LuKpzSf8jTPWdhjDxqo2_VR2-n_rSnYOeS_XsnQMP1w/edit#slide=id.gd8b928dcb0_1_21)
 
 ### Installation
 

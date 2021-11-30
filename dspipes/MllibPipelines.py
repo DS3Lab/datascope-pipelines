@@ -21,10 +21,11 @@ def get_clf(mode, **kwargs):
         max_iter = kwargs.get('max_iter', 5)
         model = LogisticRegression(maxIter=max_iter)
     elif mode=='RandomForest':
-        n_estimators = kwargs.get('n_estimators', 10)
+        n_estimators = kwargs.get('n_estimators', 5)
         model = RandomForestClassifier(numTrees=n_estimators)
     elif mode=='LinearSVC':
-        model = LinearSVC()
+        max_iter = kwargs.get('max_iter', 5)
+        model = LinearSVC(maxIter=max_iter)
     elif mode=='NB':
         model = NaiveBayes()
     elif mode=='linear':

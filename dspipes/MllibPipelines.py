@@ -19,17 +19,17 @@ def get_clf(mode, **kwargs):
     '''
     if mode == 'logistic':
         max_iter = kwargs.get('max_iter', 5)
-        model = LogisticRegression(maxIter=max_iter)
+        model = LogisticRegression(featuresCol="transformed_features", maxIter=max_iter)
     elif mode=='RandomForest':
         n_estimators = kwargs.get('n_estimators', 5)
-        model = RandomForestClassifier(numTrees=n_estimators)
+        model = RandomForestClassifier(featuresCol="transformed_features", numTrees=n_estimators)
     elif mode=='LinearSVC':
         max_iter = kwargs.get('max_iter', 5)
-        model = LinearSVC(maxIter=max_iter)
+        model = LinearSVC(featuresCol="transformed_features", maxIter=max_iter)
     elif mode=='NB':
-        model = NaiveBayes()
+        model = NaiveBayes(featuresCol="transformed_features")
     elif mode=='linear':
-        model = LinearRegression()
+        model = LinearRegression(featuresCol="transformed_features")
     elif 'NN' in mode:
         solver = kwargs.get('solver', 'sgd')
         hidden_layer_sizes = kwargs.get('hidden_layer_sizes', (20,))

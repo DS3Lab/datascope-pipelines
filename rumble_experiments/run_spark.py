@@ -34,8 +34,8 @@ if __name__ == "__main__":
     if run_type == 'cluster':
         conf=SparkConf()
         conf.set("spark.executor.memory", "19g")
-        conf.set("spark.executor.instances", 3)
-        conf.set("spark.executor.cores", 1)
+        conf.set("spark.executor.instances", 4)
+        conf.set("spark.executor.cores", 2)
 
         sc = SparkContext(conf=conf)
         spark = SparkSession(sc)

@@ -5,7 +5,7 @@ from pyspark.ml import Pipeline
 # Mllib is using input / output mapping and topological sorting for this
 
 # Preprocessing
-from pyspark.ml.feature import StandardScaler, PCA, VectorAssembler, Imputer, OneHotEncoder
+from pyspark.ml.feature import StandardScaler, MaxAbsScaler, PCA, VectorAssembler, Imputer, OneHotEncoder
 
 # Models
 from pyspark.ml.regression import LinearRegression
@@ -52,13 +52,13 @@ def get_pipe_ops(mode, inputCol="features", outputCol="transformed_features"):
 
     elif mode == 'pipe_1':
         # 1-step scaler (*map)
-        scaler = StandardScaler(inputCol=inputCol, outputCol=outputCol)
+        scaler = MaxAbsScaler(inputCol=inputCol, outputCol=outputCol)
         ops = [scaler]
 
     # elif mode == 'pipe_2':
         # 2-step function scaler (*map)
         # def logVar(x):
-        #     return StandardScaler(np.log(x))
+        #     return MaxAbsScaler(np.log(x))
         # ops = [('logscaler', FunctionTransformer(logVar))]
 
     elif mode == 'pipe_3':
